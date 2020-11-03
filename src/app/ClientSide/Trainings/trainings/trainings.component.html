@@ -1,0 +1,65 @@
+<app-header></app-header>
+<br><br>
+<section id="popular-courses" class="courses">
+    <div class="container" data-aos="fade-up">
+
+       <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Trainings</li>
+        </ol>
+        <h2>Trainings</h2>
+
+      </div>
+    </section><br>
+    <!-- End Breadcrumbs -->
+
+      <div class="section-title">
+        <h2>Courses</h2>
+        <p>Popular Courses</p>
+      </div>
+
+      <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+        <div  style=" display:flex; align-items:center; justify-content: space-between; flex-wrap: wrap;">
+     
+          <div *ngFor="let training of trainings" class="col-lg-4" data-aos="fade-up" >
+          <div class="course-item" style="margin-bottom: 30px;">
+            
+            <img src="assets/images/cours/course-1.jpg" class="img-fluid" alt="...">
+            <div class="course-content">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4>{{training?.category}}</h4>
+                <p class="price">{{training?.prix}} DT</p>
+              </div>
+
+              <h3><a routerLink="/singleTraining" (click)="trainingDetails(training)"> {{training?.title}} </a></h3>
+
+              <p>{{training?.subtitle}}</p>
+              <div class="trainer d-flex justify-content-between align-items-center">
+                <div class="trainer-profile d-flex align-items-center">
+                  <img src="assets/images/cours/trainers/trainer-2.jpg" class="img-fluid" alt="">
+                  <span>{{training?.user.prenom}}</span>
+                </div>
+                <div class="trainer-rank d-flex align-items-center">
+                  <i class="bx bx-user"></i>&nbsp;{{training?.nbParticipants}}
+                  &nbsp;&nbsp;
+                  <i class="bx bx-heart"></i>&nbsp;{{training?.nblike}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <app-footer></app-footer>

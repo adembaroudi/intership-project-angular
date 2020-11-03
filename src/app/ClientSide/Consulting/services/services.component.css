@@ -1,0 +1,181 @@
+
+.section-title {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 8px 20px;
+  margin: 0;
+  background: #f5f9fc;
+  color: #428bca;
+  display: inline-block;
+  text-transform: uppercase;
+  border-radius: 50px;
+}
+
+.section-title h3 {
+  margin: 15px 0 0 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.section-title h3 span {
+  color: #428bca;
+}
+
+.section-title p {
+  margin: 15px auto 0 auto;
+  font-weight: 500;
+  color: #919191;
+}
+
+@media (min-width: 1024px) {
+  .section-title p {
+    width: 50%;
+  }
+}
+ 
+  /*--------------------------------------------------------------
+  # Our Services
+  --------------------------------------------------------------*/
+  .services {
+    padding-bottom: 20px;
+  }
+  
+  .services .icon-box {
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin: 0  0 40px 0;
+    background: #fff;
+    box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    border: 1px solid #fff;
+  }
+  
+  .services .icon {
+    margin: 0 auto 20px auto;
+    padding-top: 17px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+  }
+  
+  .services .icon i {
+    font-size: 36px;
+    line-height: 1;
+  }
+  
+  .services .title {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .services .title a {
+    color: #111;
+  }
+  
+  .services .description {
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 0;
+  }
+  
+  .services .icon-box-pink .icon {
+    background: #fceef3;
+  }
+  
+  .services .icon-box-pink .icon i {
+    color: #ff689b;
+  }
+  
+  .services .icon-box-pink:hover {
+    border-color: #ff689b;
+  }
+  
+  .services .icon-box-cyan .icon {
+    background: #e6fdfc;
+  }
+  
+  .services .icon-box-cyan .icon i {
+    color: #3fcdc7;
+  }
+  
+  .services .icon-box-cyan:hover {
+    border-color: #3fcdc7;
+  }
+  
+  .services .icon-box-green .icon {
+    background: #eafde7;
+  }
+  
+  .services .icon-box-green .icon i {
+    color: #41cf2e;
+  }
+  
+  .services .icon-box-green:hover {
+    border-color: #41cf2e;
+  }
+  
+  .services .icon-box-blue .icon {
+    background: #e1eeff;
+  }
+  
+  .services .icon-box-blue .icon i {
+    color: #2282ff;
+  }
+  
+  .services .icon-box-blue:hover {
+    border-color: #2282ff;
+  }
+
+
+
+
+
+
+
+
+  /*--------------------------------------------------------------
+  # Clients
+  --------------------------------------------------------------*/
+  .clients {
+    padding-top: 30px;
+  }
+  
+  .clients .clients-wrap {
+    border-top: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+  }
+  
+  .clients .client-logo {
+    padding: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    overflow: hidden;
+    background: #fff;
+    height: 140px;
+  }
+  
+  .clients .client-logo:hover img {
+    transform: scale(1.1);
+  }
+  
+  .clients img {
+    transition: all 0.4s ease-in-out;
+  }
+  
+
+
+ 

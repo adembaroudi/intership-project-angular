@@ -1,0 +1,203 @@
+<app-header></app-header>
+
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Blog</li>
+      </ol>
+      <h2>Blog</h2>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+  <!-- ======= Blog Section ======= -->
+  <section id="blog" class="blog">
+    <div class="container">
+      <div class="card bg-light mb-3" >
+        <div class="card-header">Add Blog</div>
+        <div class="card-body">
+          <form [formGroup]="BlogForm">
+            <div classe="form-group">
+              <mat-form-field appearance="legacy">
+    
+                <input matInput placeholder="Title" formControlName="Title">
+                <mat-icon matSuffix>Title</mat-icon>
+              </mat-form-field>
+            </div>
+    
+            <div classe="form-group">
+              <mat-form-field appearance="legacy">
+    
+                <input matInput placeholder="lastname" type="date" formControlName="date">
+                <mat-icon matSuffix>Date</mat-icon>
+              </mat-form-field>
+            </div>
+    
+            <div classe="form-group">
+              <mat-form-field appearance="legacy">
+    
+                <input matInput placeholder="auteur" formControlName="auteur">
+                <mat-icon matSuffix>auteur</mat-icon>
+              </mat-form-field>
+            </div>
+            <div classe="form-group">
+            <mat-form-field>
+              <textarea matInput formControlName="Contenue" rows="5" placeholder="Contenue"></textarea>
+            </mat-form-field>
+          </div>
+          <div classe="form-group">
+            <input type="file" class="upload" accept="image/*" fromControlName="image" name="file-input" (change)=" onFileChange($event)">
+            <mat-icon matSuffix>image</mat-icon>
+          </div>
+            <div class="form-group form-button">
+              <button type="submit" class="btn btn-primary" (click)="createBlogs()">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="row">
+
+        <div class="col-lg-8 entries">
+
+          <div class="row">
+
+            <div class="col-md-6 d-flex align-items-stretch" *ngFor="let blog of blogs; let i = index ">
+              <article class="entry">
+
+                <div class="entry-img">
+                  <img src="{{pictureBaseUrl + blog._id}}" alt="" class="img-fluid">
+                </div>
+
+                <h2 class="entry-title">
+                  <a routerLink="/singleBlog" (click)="articleDetails(blog)">{{blog.title}}</a>
+                </h2>
+
+                <div class="entry-meta">
+                  <ul>
+                    <li class="d-flex align-items-center"><i class="icofont-user"></i> <a
+                        href="blog-single.html">{{blog.auteur}}</a></li>
+                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a
+                        href="blog-single.html"><time datetime="2020-01-01">{{blog.date }}</time></a></li>
+                  </ul>
+                </div>
+
+                <div  class="entry-content" >
+                  <p>
+                    {{intros[i]}}
+                  </p>
+                  <div class="read-more">
+                    <a routerLink="/singleBlog" (click)="articleDetails(blog._id)">Read More</a>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
+                  (click)="modalOpened(i, blog)" style="border-radius: 150px; width: 50px; height: 50px;;"><i
+                    class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">edit blog</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+
+                      <form [formGroup]="updateForm">
+                        <div classe="form-group">
+                          <mat-form-field appearance="legacy">
+                            <input matInput placeholder="Title" formControlName="Title">
+                            <mat-icon matSuffix>Title</mat-icon>
+                          </mat-form-field>
+                        </div>
+
+                        <div classe="form-group">
+                          <mat-form-field appearance="legacy">
+                            <input matInput placeholder="lastname" type="date" formControlName="date">
+                            <mat-icon matSuffix>Date</mat-icon>
+                          </mat-form-field>
+                        </div>
+
+                        <div classe="form-group">
+                          <mat-form-field appearance="legacy">
+                            <input matInput placeholder="auteur" formControlName="auteur">
+                            <mat-icon matSuffix>auteur</mat-icon>
+                          </mat-form-field>
+                        </div>
+
+                        <div classe="form-group">
+                          <mat-form-field>
+                            <textarea matInput formControlName="Contenue" rows="5" placeholder="Contenue"></textarea>
+                          </mat-form-field>
+                        </div>
+                        <div classe="form-group">
+                          <input type="file" class="upload" accept="image/*" fromControlName="image" name="file-input" (change)=" onFileChange($event)">
+                          <mat-icon matSuffix>image</mat-icon>
+                      </div>
+
+                      </form>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="updateBlog(blog._id)">Save
+                          changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;"
+                  (click)="deleteBlog(i,blog._id)"><i class="fa fa-trash" style=" justify-content: center;"
+                    aria-hidden="true"></i></button>
+              </article><!-- End blog entry -->
+              
+              
+              
+            </div>
+            
+          </div>
+          <!-- End blog entries list -->
+          
+          <div class="col-lg-4">
+            
+            <div class="sidebar">
+              
+              <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="icofont-search"></i></button>
+                </form>
+                
+              </div><!-- End sidebar search formn-->
+              <br>
+              <h3 class="sidebar-title">Recent Posts</h3>
+              <div class="sidebar-item recent-posts">
+                
+                <div class="post-item clearfix" *ngFor="let r of recent">
+                  <img src="" alt="">
+                  <h4><a routerLink="/article" (click)="articleDetails(article)">{{r.Title}}</a></h4>
+                  <time datetime="2020-01-01">{{r.date }}</time>
+                </div>
+              </div>
+                
+            </div><!-- End sidebar recent posts-->
+
+          </div><!-- End sidebar -->
+
+        </div><!-- End blog sidebar -->
+
+      </div>
+
+    </div>
+  </section><!-- End Blog Section -->
+
+</main><!-- End #main -->
+
+<app-footer></app-footer>

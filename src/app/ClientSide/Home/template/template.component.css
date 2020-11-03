@@ -1,0 +1,75 @@
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+    
+    .single-well > a {
+    display: block;
+    }
+    
+    .single-well ul li {
+    color: #444;
+    display: block;
+    padding: 5px 0;
+    }
+    
+    .single-well ul li i {
+    color: #3EC1D5;
+    padding-right: 10px;
+    font-size: 12px;
+    }
+    
+    .single-well p {
+    color: #444;
+    }   
+
+
+
+    
+.section-title {
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  
+  .section-title h2 {
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 8px 20px;
+    margin: 0;
+    background: #f5f9fc;
+    color: #428bca;
+    display: inline-block;
+    text-transform: uppercase;
+    border-radius: 50px;
+  }
+  
+  .section-title h3 {
+    margin: 15px 0 0 0;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  
+  .section-title h3 span {
+    color: #428bca;
+  }
+  
+  .section-title p {
+    margin: 15px auto 0 auto;
+    font-weight: 500;
+    color: #919191;
+  }
+  
+  @media (min-width: 1024px) {
+    .section-title p {
+      width: 50%;
+    }
+  }
+
+  
+
+
+
+
+  
+
+    

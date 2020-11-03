@@ -1,0 +1,284 @@
+<app-header></app-header>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Blog</li>
+        </ol>
+        <h2>Blog</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    
+    <!-- ======= Blog Section ======= -->
+    <div *ngIf="blog">
+    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    
+      <div class="container">
+  
+        <div class="row">
+  
+          <div class="col-lg-8 entries">
+  
+            <article class="entry entry-single">
+              <div class="entry-img">
+                <img src="{{pictureBaseUrl + blog._id}}" alt="" class="img-fluid">
+              </div>
+  
+              <h2 class="entry-title">
+                <a href="blog-single.html">{{blog.Title}}</a>
+              </h2>
+              
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">{{blog.auteur}}</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{blog.date}}</time></a></li>
+                  
+                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">{{nbrs}}</a></li>
+                </ul>
+              </div>
+  
+              <div class="entry-content">
+              
+                <blockquote>
+                  <i class="icofont-quote-left quote-left"></i>
+                  <p>
+                    {{blog.Contenue}}
+                  </p>
+                  <i class="las la-quote-right quote-right"></i>
+                  <i class="icofont-quote-right quote-right"></i>
+                </blockquote>
+              </div>
+  
+              <div class="entry-footer clearfix">
+               
+  
+              </div>
+  
+            </article><!-- End blog entry -->
+            <div *ngFor = "let c of commenteret ;let i=index">
+            <div class="blog-author clearfix" >
+              <img src="assets/images/adem.jpg" class="rounded-circle float-left" alt="">
+              <h4>{{c.name}}</h4>
+              <div class="social-links">
+                <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
+                <a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
+                <a href="https://instagram.com/#"><i class="icofont-instagram"></i></a>
+              </div>
+              <div>
+              <p>
+                {{c.contenue}}
+              </p>
+            </div>
+            <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
+             style="border-radius: 150px; width: 50px; height: 50px;" (click)="modalOpened(c)"><i
+              class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">edit comment</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+
+                <form [formGroup]="updateForm">
+                  <div classe="form-group">
+                    <mat-form-field appearance="legacy">
+                      <input matInput placeholder="name" formControlName="name">
+                      <mat-icon matSuffix>Name</mat-icon>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div classe="form-group">
+                    <mat-form-field appearance="legacy">
+                      <input matInput placeholder="contenue" formControlName="contenue">
+                      <mat-icon matSuffix>Contenue</mat-icon>
+                    </mat-form-field>
+                  </div>
+
+                  <div classe="form-group">
+                    <mat-form-field>
+                      <input matInput formControlName="email"  placeholder="email">
+                      <mat-icon matSuffix>Contenue</mat-icon>
+
+                    </mat-form-field>
+                  </div>
+
+                </form>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="updateComments(c._id)">Save
+                    changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteComment(c._id,i)"
+            ><i class="fa fa-trash" style=" justify-content: center;"
+              aria-hidden="true"></i></button>
+            </div>
+            <!-- End blog author bio -->
+            <div *ngFor="let r of replys" class="blog-comments">
+  
+              <h4 class="comments-count"><i class="icofont-comment"></i>{{nbreplies}}</h4>
+  
+              
+               <div id="comment-1" class="comment clearfix" >
+                <img  class="comment-img  float-left" alt="">
+                <h5><a href="">{{c.name}}</a> <a pageScroll  href="#comm" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
+                <!-- <time datetime="2020-01-01">{{comment.date}}</time> -->
+                <p>
+                
+                </p>
+  
+                 <div id="comment-reply-2" class="comment comment-reply clearfix">
+                <img class="comment-img  float-left" alt="">
+                <h5><a href="">{{r.name}}</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
+                <time datetime="2020-01-01">{{r.date}}</time>
+                <p>
+               {{r.contenue}}
+                </p>
+  
+              </div> 
+                
+               </div>
+              </div>
+  
+        
+            </div>
+              
+  
+       <section id="comm" >   
+              <div class="reply-form">
+                <h4><a type="button"data-toggle="modal" data-target="#replyModal" >Leave a Reply</a></h4>
+             <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="replyModalLabel"
+               aria-hidden="true">
+               <div class="modal-dialog">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <h5 class="modal-title" id="replyModalLabel">add reply</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                   </div>
+   
+   
+                   <form [formGroup]="replyForm">
+                     <div classe="form-group">
+                       <mat-form-field appearance="legacy">
+                         <input matInput placeholder="name" formControlName="name">
+                         <mat-icon matSuffix>Name</mat-icon>
+                       </mat-form-field>
+                     </div>
+                     <div classe="form-group">
+                      <mat-form-field appearance="legacy">
+                        <input matInput placeholder="date" formControlName="date">
+                        <mat-icon matSuffix>Date</mat-icon>
+                      </mat-form-field>
+                    </div>
+   
+   
+                     <div classe="form-group">
+                       <mat-form-field appearance="legacy">
+                         <input matInput placeholder="contenue" formControlName="contenue">
+                         <mat-icon matSuffix>Contenue</mat-icon>
+                       </mat-form-field>
+                     </div>
+                     <div classe="form-group">
+                       <mat-form-field>
+                         <input matInput formControlName="email"  placeholder="email">
+                         <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
+                        <p class = "text-muted">Your email address will not be published* </p>
+                     </div>
+   
+                   </form>
+   
+                   <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-primary" (click)="updateComments(c._id)">Save
+                       changes</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+                <p>Your email address will not be published. Required fields are marked * </p>
+                <form [formGroup]="commentForm">
+                  <div class="row">
+                    <div class="col-md-6 form-group" >
+                      <mat-form-field style="width: 250px;">
+                      <input matInput type="text" formControlName="name" placeholder="Your Name*">
+                      </mat-form-field>
+                    </div>
+  
+                   <div class="col-md-6 form-group" >
+                      <mat-form-field>
+                      <input matInput type="text" formControlName="email" placeholder="Your Email*">
+                      </mat-form-field>
+                    </div>  
+  
+                  </div>
+  
+                  <div class="row">
+                    <div class="col form-group">
+                      <mat-form-field style="width: 550px;">
+                      <textarea matInput formControlName="contenue" placeholder="Your Comment*"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  
+                   
+                  <button type="submit" class="btn btn-primary" (click)="ajouterComment(blog._id)">Post Comment</button>
+                </form>
+              </div>
+    </section>
+  
+            <!-- End blog comments -->
+  
+          </div><!-- End blog entries list -->
+  
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="icofont-search"></i></button>
+                </form>
+
+              </div><!-- End sidebar search formn-->
+<br>
+              <h3 class="sidebar-title">Recent Posts</h3>
+              <div class="sidebar-item recent-posts">
+                
+                <div class="post-item clearfix" *ngFor="let article of articles" >
+                  <img src="{{pictureBaseUrl + blog._id}}" alt="">
+                  <h4><a routerLink="/article" (click)="articleDetails(article)" > {{article.Title}}</a></h4>
+                  <time datetime="2020-01-01">{{article.date }}</time>
+                </div>           
+
+              </div><!-- End sidebar recent posts-->
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+  
+        </div><!-- End row -->
+  
+      </div><!-- End container -->
+    
+    </section><!-- End Blog Section -->
+    </div>
+
+    <app-footer></app-footer>

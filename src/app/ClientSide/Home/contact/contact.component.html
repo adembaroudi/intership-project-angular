@@ -1,0 +1,117 @@
+<app-header></app-header>
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li>Contact</li>
+    </ol>
+    <h2>Contact</h2>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <br>
+    <div id="contact" class="contact-area">
+        <div class="contact-inner area-padding">
+          <div class="contact-overly"></div>
+          <div class="container ">
+            
+            <div class="section-title">
+              <h2>Contact</h2>
+              <h3>Get In Touch With <span>Us</span></h3>
+            </div>
+            <div class="row">
+              <!-- Start contact icon column -->
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="contact-icon text-center">
+                  <div class="single-icon">
+                    <i class="fa fa-mobile"></i>
+                    <p>
+                      Call: +216 71 190 418<br>
+                      <span>Monday-Friday (9h-16h)</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Start contact icon column -->
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="contact-icon text-center">
+                  <div class="single-icon">
+                    <i class="fa fa-envelope-o"></i>
+                    <p>
+                      Email: contact@FivePoints.fr<br>
+                      <span>Web: www.fivepoints.tn</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Start contact icon column -->
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="contact-icon text-center">
+                  <div class="single-icon">
+                    <i class="fa fa-map-marker"></i>
+                    <p>
+                      St. la bourse, building El Wafa, Bloc A 2nd floor, Lac 2, Tunis, Tunisia<br>
+                     <!--<span>NY 535022, USA</span> --> 
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+  
+              <!-- Start Google Map -->
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+              <!-- End Google Map -->
+  
+  
+              <!-- Start  contact -->
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="form contact-form">
+                    <form [formGroup]="contactForm">
+                      <div >
+                        <mat-form-field style="width: 500px;">
+                           <input matInput type="text" formControlName="name" placeholder="Your Name"/>
+                           <!--<div class="validate"></div>-->
+                        </mat-form-field>
+                      </div>
+  
+  
+                      <div >
+                       <mat-form-field style="width: 500px;">
+                          <input matInput type="text" formControlName="subject" placeholder="Subject" />
+                          <!--<div class="validate"></div>-->
+                        </mat-form-field>
+                      </div>
+  
+                      <div >
+                        <mat-form-field style="width: 500px;">
+                           <input matInput type="email" formControlName="email" placeholder="Your Email"  />
+                           <!--<div class="validate"></div>-->
+                        </mat-form-field>
+                      </div>  
+                      <div>
+                        <mat-form-field style="width: 500px;">
+                          <textarea matInput formControlName="contenuMessage"  rows="5" placeholder="Message" ></textarea>
+                        </mat-form-field>
+                      </div>
+  
+                      <div class="text-center"><button  type="submit" (click)="ajouterMessage()" style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2">Send Message</button></div>
+                  <br><br>
+                  </form>
+                </div>
+              </div>
+              <!-- End Left contact -->
+            </div>
+          </div><br><br>
+        </div>
+      </div><!-- End Contact Section -->
+      
+<app-footer></app-footer>
