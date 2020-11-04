@@ -13,6 +13,7 @@ import { BlogService } from "../../../services/blog.service";
 })
 export class BlogComponent implements OnInit {
   pictureBaseUrl: String = environment.baseuri + "/blog/getBlogsLogo/";
+  Search : ""
   id;
   intros = [];
   recent = [];
@@ -31,7 +32,7 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
     this.BlogForm = new FormGroup({
       Title: new FormControl(""),
-      date: new FormControl(""),
+      date: new FormControl(Date.now()),
       auteur: new FormControl(""),
       Contenue: new FormControl(""),
       image: new FormControl(""),

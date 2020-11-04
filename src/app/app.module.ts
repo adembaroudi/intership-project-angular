@@ -37,6 +37,7 @@ import { ContactComponent } from './ClientSide/Home/contact/contact.component';
 import { AccueilComponent } from './Dashboard/accueil/accueil.component';
 import { LoginComponent } from './Dashboard/login/login.component';
 import { RegisterComponent } from './Dashboard/register/register.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { RegisterComponent } from './Dashboard/register/register.component';
     ContactComponent,
     AccueilComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,9 @@ import { RegisterComponent } from './Dashboard/register/register.component';
     MatSelectModule,
     MatIconModule,
     Ng2PageScrollModule
+
+  ],
+  entryComponents:[
 
   ],
   providers: [TrainingService, BlogService, UserService, ContactService,CommentService, TrainingRegistrationService, RegistrationService,],
