@@ -6,8 +6,6 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class TrainingService {
 
-  private baseUrl = 'http://localhost:8081/Trainings';
-  
   BaseUrl = environment.baseuri;
   onChangeTrainings:BehaviorSubject<any>;
 
@@ -39,12 +37,12 @@ export class TrainingService {
     return this.http.get(url);;
   }
 
-  getIntroDesc(id: number){
-    return this.http.get(`${this.baseUrl}/intro/${id}`);
- };
+//   getIntroDesc(id: number){
+//     return this.http.get(`${this.baseUrl}/intro/${id}`);
+//  };
 
- like(id: number){
-  return this.http.get(`${this.baseUrl}/like/${id}`);
- };
+//  like(id: number){
+//   return this.http.get(`${this.baseUrl}/like/${id}`);
+//  };
 
 }

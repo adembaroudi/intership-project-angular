@@ -313,11 +313,15 @@
 
     <div *ngFor="let user of users" class="col-lg-3" data-aos="fade-up" >
             <div class="member">
-              <img src="assets/images/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="{{UserPicture + user._id}}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>{{user.prenom}} {{user.nom}}</h4>
+                  <h4>{{user.Firstname}} {{user.Lastname}}</h4>
+                  <!-- <h4>adem baroudi</h4> -->
+
                   <span>{{user.role}}</span>
+                  <!-- <span>coach</span> -->
+
                 </div>
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
@@ -383,30 +387,30 @@
       
     <div  style=" display:flex; align-items:center; justify-content: space-between; flex-wrap: wrap;">
  
-      <div *ngFor="let blog of blogs" class="col-lg-4" data-aos="fade-up" >
+      <div *ngFor="let r of recent ; let i = index" class="col-lg-4" data-aos="fade-up" >
         <article class="entry">
 
           <div class="entry-img">
-            <img src="assets/images/image_7.jpg" alt="" class="img-fluid">
+            <img src="{{pictureBaseUrl + r._id}}" alt="" class="img-fluid">
           </div>
 
           <h2 class="entry-title">
-            <a routerLink="/singleBlog">{{blog?.title}}</a>
+            <a routerLink="/singleBlog">{{r.title}}</a>
           </h2>
 
           <div class="entry-meta">
             <ul>
-              <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">{{blog.auteur}}</a></li>
-              <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{blog.date | date: 'dd/MM/yyyy'}}</time></a></li>
+              <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">{{r.auteur}}</a></li>
+              <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{r.date | date: 'dd/MM/yyyy'}}</time></a></li>
             </ul>
           </div>
 
           <div class="entry-content">
             <p>
-            {{blog?.subtitle}}
+              {{intros[i]}}
             </p>
             <div class="read-more">
-              <a href="blog-single.html" style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2">Read More</a>
+              <a routerLink="/singleBlog" style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2" (click)="articleDetails(r._id)">Read More</a>
             </div>
           </div>
 
@@ -525,7 +529,8 @@
                       </mat-form-field>
                     </div>
 
-                    <div class="text-center"><button type="submit"  style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2">Send Message</button></div>
+                    <div class="text-center">
+                      <button type="submit"  style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2" (click)="ajouterMessage()">Send Message</button></div>
                 <br><br>
                 </form>
               </div>

@@ -1,68 +1,76 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
 import { Blog } from "../../../entities/blog";
 import { BlogService } from "../../../services/blog.service";
 import { User } from "../../../entities/user";
 import { UserService } from "../../../services/user.service";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ContactService } from "../../../services/contact.service";
+import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-template',
-  templateUrl: './template.component.html',
-  styleUrls: ['./template.component.css']
+  selector: "app-template",
+  templateUrl: "./template.component.html",
+  styleUrls: ["./template.component.css"],
 })
 export class TemplateComponent implements OnInit {
-  blogs: any;
-  loading:boolean;
-  test :[];
+  UserPicture : String = environment.baseuri + "/user/getUserLogo/";
+  pictureBaseUrl: String = environment.baseuri + "/blog/getBlogsLogo/";
 
-  users: User[];
-  constructor(private blogService: BlogService,private userService: UserService,private contactService: ContactService,
-    private router: Router) { }
+  intros = []
+  recent = []
+  blogs= [];
+  loading: boolean;
+  test: [];
 
-    contactForm = new FormGroup({  
-      name : new FormControl('' , [Validators.required] ),
-      subject : new FormControl('' , [Validators.required] ),  
-      email : new FormControl('' , [Validators.required]),  
-      contenuMessage : new FormControl('' , [Validators.required])  
-    }); 
+  users: [];
+  constructor(
+    private blogService: BlogService,
+    private userService: UserService,
+    private contactService: ContactService,
+    private router: Router
+  ) {}
+
+  contactForm = new FormGroup({
+    name: new FormControl("", [Validators.required]),
+    subject: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required]),
+    contenuMessage: new FormControl("", [Validators.required]),
+  });
 
   ngOnInit(): void {
-    this.loading=true;
-    this.blogService.getLatestBlog().subscribe((response:any)=>{
-      this.blogService.onChangeBlogs.next(response)
-      console.log(response);
+    this.blogService.getBlogsList().subscribe((response: any) => {
+      this.blogs = response;
       
-      this.blogs = response ; 
-   });;
-      
-    this.blogService.onChangeBlogs.subscribe((data:any)=>{
-      console.log('dataaa',data);
-
-        this.blogs = data;
-        this.blogs.map(blog => {
-          this.blogService.getIntroBlog(blog.id).subscribe((res: any) => {
-            blog['subtitle'] = res.jsonString;
-          });
+      this.blogs.map((e) => {
+        this.blogService.getIntroBlog(e._id).subscribe((res: any) => {
+          this.intros.push(res.intro);
         });
+      });
     });
-  console.log('init blog');
-  console.log(this.blogService.blogs);
-  
-
-
-
-  this.userService.getUsersList().subscribe((response:any)=>{
-    console.log(response)
+    this.userService.getUsersList().subscribe((response: any) => {
+      console.log(response);
       this.users = response;
-  });
-  console.log('init user')
+      console.log(this.users);
+      
+    });
+    this.getRecentBlog() 
   }
 
-  ajouterMessage(){
+  ajouterMessage() {
     this.contactService.sendMessage(this.contactForm.value).subscribe();
-     console.log(this.contactForm.value);
-   }
-
+    console.log(this.contactForm.value);
+  }
+  getRecentBlog() {
+    this.loading = true;
+    this.blogService.getLatestBlog().subscribe((res: any) => {
+      this.blogService.onChangeBlogs.next(res);
+      this.recent = res;
+      console.log(this.recent);
+      
+    });
+  }
+  articleDetails(id: number) {
+    this.router.navigate(["/article", id]);
+  }
 }

@@ -37,15 +37,15 @@ export class TrainingsComponent implements OnInit , OnDestroy {
       this.trainingService.onChangeTrainings.next(response)
    });;
 
-    this.trainingService.onChangeTrainings.subscribe((data:any)=>{
-      console.log('dataaa',data);
-        this.trainings = data;
-        this.trainings.map(blog => {
-          this.trainingService.getIntroDesc(blog.id).subscribe((res: any) => {
-            blog['subtitle'] = res.jsonString;
-          });
-        });
-    });
+    // this.trainingService.onChangeTrainings.subscribe((data:any)=>{
+    //   console.log('dataaa',data);
+    //     this.trainings = data;
+    //     this.trainings.map(blog => {
+    //       this.trainingService.getIntroDesc(blog.id).subscribe((res: any) => {
+    //         blog['subtitle'] = res.jsonString;
+    //       });
+    //     });
+    // });
 
   }
 
@@ -54,11 +54,11 @@ export class TrainingsComponent implements OnInit , OnDestroy {
     this.router.navigate(['singleTraining', id]);
   }
 
-  onClickMe(id:number){
-    this.trainingService.like(id).subscribe((response:any)=>{
-      this.trainingService.onChangeTrainings.next(response)
-   });;
-  }
+  // onClickMe(id:number){
+  //   this.trainingService.like(id).subscribe((response:any)=>{
+  //     this.trainingService.onChangeTrainings.next(response)
+  //  });;
+  // }
 
 
 }
