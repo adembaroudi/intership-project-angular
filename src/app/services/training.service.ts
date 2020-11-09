@@ -41,8 +41,9 @@ export class TrainingService {
 //     return this.http.get(`${this.baseUrl}/intro/${id}`);
 //  };
 
-//  like(id: number){
-//   return this.http.get(`${this.baseUrl}/like/${id}`);
-//  };
+ like(id,value){
+  const url = `${this.BaseUrl}/training/voteTrainings/${id}`;
+  return this.http.put(url,value);;
+ };
 
 }

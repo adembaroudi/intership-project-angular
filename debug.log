@@ -2,3 +2,5 @@
 [1027/154958.057:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\GaaxyPro\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\ba3ab35b-a17b-48fd-b101-87c8560143e5: Le chemin d’accès spécifié est introuvable. (0x3)
 [1029/123304.846:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
 [1103/103445.985:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1109/101351.809:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1109/161824.419:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)

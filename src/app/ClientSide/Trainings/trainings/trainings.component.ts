@@ -27,10 +27,10 @@ export class TrainingsComponent implements OnInit , OnDestroy {
     // console.log('init training')
    
    
-    // this.trainingService.getTrainingsList().subscribe((response:any)=>{
-    //   console.log(response)
-    //     this.trainings = response;
-    // });
+    this.trainingService.getTrainingsList().subscribe((response:any)=>{
+      console.log(response)
+        this.trainings = response;
+    });
 
 
     this.trainingService.getTrainingsList().subscribe((response:any)=>{

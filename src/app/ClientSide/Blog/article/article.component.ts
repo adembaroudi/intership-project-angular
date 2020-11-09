@@ -1,12 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { BlogService } from "../../../services/blog.service";
 import { CommentService } from "../../../services/comment.service";
-import { CommentReply } from "../../../entities/commentReply";
 import { Blog } from "../../../entities/blog";
 import { Router, ActivatedRoute } from "@angular/router";
-import { FormGroup, FormControl, Validators, FormControlName } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+} from "@angular/forms";
 import { DatePipe } from "@angular/common";
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-article",
@@ -14,8 +17,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ["./article.component.css"],
 })
 export class ArticleComponent implements OnInit {
-  pictureBaseUrl : String = environment.baseuri + "/blog/getBlogsLogo/";
-  nbreplies : number; 
+  pictureBaseUrl: String = environment.baseuri + "/blog/getBlogsLogo/";
+  nbreplies: number;
   commenteret = [];
   nbrs: number;
   id: number;
@@ -29,7 +32,7 @@ export class ArticleComponent implements OnInit {
   now = Date.now();
   myFormattedDate = this.pipe.transform(this.now, "yyyy-mm-dd");
   index: any;
-  replyForm : FormGroup
+  replyForm: FormGroup;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -38,8 +41,6 @@ export class ArticleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.blog = new Blog();
-
     this.id = this.route.snapshot.params["id"];
 
     this.commentForm = new FormGroup({
@@ -55,11 +56,11 @@ export class ArticleComponent implements OnInit {
       email: new FormControl(this.commentForm.value.email),
     });
     this.replyForm = new FormGroup({
-      name : new FormControl(''),
-      date : new FormControl(''),
-      contenue : new FormControl(''),
-      email : new FormControl('')
-    })
+      name: new FormControl(""),
+      date: new FormControl(""),
+      contenue: new FormControl(""),
+      email: new FormControl(""),
+    });
     this.getBlogById(this.id);
     this.nbrComments(this.id);
     this.getCommentsByBlog(this.id);
@@ -76,18 +77,13 @@ export class ArticleComponent implements OnInit {
     );
   }
   getRecentArticles() {
-   
     this.blogService.getLatestArticles().subscribe((response: any) => {
- 
       this.articles = response;
- 
-      
     });
   }
 
   ajouterComment(id) {
     this.commentService.postComment(id, this.commentForm.value).subscribe();
-
   }
   getCommentsByBlog(id) {
     this.commentService.getCommentsByBlog(id).subscribe((res: any) => {
@@ -96,8 +92,8 @@ export class ArticleComponent implements OnInit {
       this.nbrReplies();
     });
   }
-  addReplies(id){
-   this.commentService.replyComment(id,this.replyForm.value).subscribe();
+  addReplies(id) {
+    this.commentService.replyComment(id, this.replyForm.value).subscribe();
   }
   getReplies() {
     this.commenteret.map((e) => {
@@ -110,13 +106,13 @@ export class ArticleComponent implements OnInit {
         });
     });
   }
-  nbrReplies(){
-    this.commenteret.map((e=>{
-      this.commentService.getNbrReplies(e._id).subscribe((res:any)=>{
-        this.nbreplies = res
+  nbrReplies() {
+    this.commenteret.map((e) => {
+      this.commentService.getNbrReplies(e._id).subscribe((res: any) => {
+        this.nbreplies = res;
       });
-    }));
-  };
+    });
+  }
   articleDetails(id: number) {
     this.router.navigate(["article", id]);
   }
@@ -143,10 +139,10 @@ export class ArticleComponent implements OnInit {
         console.log(res);
       });
   }
-  deleteComment(id,i) {
+  deleteComment(id, i) {
     this.commentService.deleteComments(id).subscribe((res: any) => {
       console.log(res);
-      this.commenteret.splice(i,1)
+      this.commenteret.splice(i, 1);
     });
   }
 }
