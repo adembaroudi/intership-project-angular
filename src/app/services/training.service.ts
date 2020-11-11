@@ -21,7 +21,6 @@ export class TrainingService {
     const url = `${this.BaseUrl}/training/Trainings/${id}`;
     return this.http.get(url);;
   }
-
   updateTraining(id: number, value: any) {
     const url = `${this.BaseUrl}/training/Trainings/${id}`;
     return this.http.put(url,value);;

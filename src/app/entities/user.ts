@@ -1,11 +1,11 @@
 export class User {
-    id : number ;
-	nome: string;
-	prenom: string;
-	dateNaissance: Date;
-	numTel: string;
-	email: string;
-	password: string;
-	role: string;
+	id: String;
+	Lastname: String;
+	Firstname: String;
+	Datedenaissance: String;
+	numTel: String;
+	email: String;
+	password: String;
+	role : String
 
 }

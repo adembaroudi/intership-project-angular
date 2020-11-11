@@ -22,7 +22,7 @@ import { RegisterComponent } from './Dashboard/register/register.component';
 export const AppRoutes: Routes = [
   { path:'', component: TemplateComponent},
   { path:'trainings', component: TrainingsComponent},
-  { path:'singleTraining', component: SingleTrainingComponent},
+  { path:'singleTraining/:id', component: SingleTrainingComponent},
   { path:'trainingRegistration', component: TrainingRegistrationComponent},
   { path:'blog', component: BlogComponent},
   { path:'article/:id', component: ArticleComponent},

@@ -29,25 +29,25 @@
           <div *ngFor="let training of trainings" class="col-lg-4" data-aos="fade-up" >
           <div class="course-item" style="margin-bottom: 30px;">
             
-            <img src="assets/images/cours/course-1.jpg" class="img-fluid" alt="...">
+            <img src="{{TrainingPicture + training._id}}" style="height:20rem;" class="img-fluid" alt="...">
             <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4>{{training?.category}}</h4>
-                <p class="price">{{training?.prix}} DT</p>
+              <div class="d-flex justify-content-between align-items-center ">
+                <h4>{{training.category}}</h4>
+                <p class="price">{{training.prix}} DT</p>
               </div>
 
-              <h3><a routerLink="/singleTraining" (click)="trainingDetails(training)"> {{training?.title}} </a></h3>
-
-              <p>{{training?.subtitle}}</p>
+              <h3><a routerLink="/singleTraining" (click)="trainingDetails(training._id)"> {{training?.title}} </a></h3>
               <div class="trainer d-flex justify-content-between align-items-center">
-                <div class="trainer-profile d-flex align-items-center">
-                  <img src="assets/images/cours/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                  <span>{{training?.user.prenom}}</span>
+                <div class="trainer-profile d-flex align-items-center col-lg-4">
+                  <img src="{{UserPicture + training.user._id}}" class="img-fluid" alt="">
+                  <span>{{training?.user?.Firstname}} {{training?.user?.Lastname}} </span>
                 </div>
                 <div class="trainer-rank d-flex align-items-center">
-                  <!-- <i class="bx bx-user"></i>&nbsp;{{training?.nbParticipants}}
+                 <i class="bx bx-user"></i>&nbsp;{{training?.nbParticipants}}
                   &nbsp;&nbsp;
-                  <i class="bx bx-heart"></i>&nbsp;{{training?.nblike}} -->
+                   <i class="bx bx-heart"></i>&nbsp;{{training?.nblike}}
+                   &nbsp;&nbsp;
+                  <button  class="btn btn-outline-secondary" [disabled] = "clicked" (click)="onClickMe(training._id,'like') ; clicked = true"><i class="bx bx-like"></i></button>
                 </div>
               </div>
             </div>

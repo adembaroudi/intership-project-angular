@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment';
 export class TemplateComponent implements OnInit {
   UserPicture : String = environment.baseuri + "/user/getUserLogo/";
   pictureBaseUrl: String = environment.baseuri + "/blog/getBlogsLogo/";
-
+ 
   intros = []
   recent = []
   blogs= [];
