@@ -1,4 +1,9 @@
 
+:host(app-services) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .section-title {
   text-align: center;
   padding-bottom: 50px;

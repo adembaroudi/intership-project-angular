@@ -1,0 +1,24 @@
+<form [formGroup]="voteForm">
+  <div class="row row-space">
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" placeholder="Ex. pat@example.com" formControlName="email" />
+      </mat-form-field>
+    </div>
+  </div><br>
+  <button type="button" class="btn btn-primary" (click)="register('like') ">like</button>
+  <!-- <button type="button" class="btn btn-secondary" (click)="  onClickMe(votId, 'like')">like </button> -->
+</form>
+<!-- <p> Please re enter your email</p> -->
+<!-- <form [formGroup]="loginForm">
+  <div class="row row-space">
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" placeholder="Ex. pat@example.com" formControlName="email" />
+      </mat-form-field>
+    </div>
+  </div><br>
+  <button type="button" class="btn btn-primary" (click)="login()">submit</button>
+</form> -->

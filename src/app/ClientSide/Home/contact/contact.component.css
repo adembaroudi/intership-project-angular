@@ -1,8 +1,14 @@
 
+:host(app-contact) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .section-title {
   text-align: center;
   padding-bottom: 50px;
 }
+
 
 .section-title h2 {
   font-size: 13px;

@@ -1,6 +1,11 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+:host(app-blog) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;

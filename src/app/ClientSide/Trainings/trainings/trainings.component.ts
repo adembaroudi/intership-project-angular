@@ -5,6 +5,9 @@ import { Training } from "../../../entities/training";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
+import * as jwt_decode from "jwt-decode";
+import { MatDialog } from "@angular/material/dialog";
+import { VoteModalComponent } from "../vote-modal/vote-modal.component";
 
 @Component({
   selector: "app-trainings",
@@ -14,53 +17,62 @@ import { environment } from "src/environments/environment";
 export class TrainingsComponent implements OnInit, OnDestroy {
   UserPicture: String = environment.baseuri + "/user/getUserLogo/";
   TrainingPicture: String = environment.baseuri + "/training/getTrainingLogo/";
- clicked  = false
-  trainings: Training[];
+  trainings = [];
   training: Training;
-
+  intros = [];
+  idVoteur = localStorage.getItem("Idvoteur")||"";
+  token = localStorage.getItem("token") || "";
+  decode = jwt_decode(this.token)||""; 
   constructor(
     private trainingService: TrainingService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
-
-  //life cycle hooks
   ngOnDestroy(): void {
     console.log("destroy training");
   }
 
   ngOnInit() {
-    // this.reloadData();
-    // console.log("init training");
-
-    this.trainingService.getTrainingsList().subscribe((response: any) => {
-      console.log(response);
-      this.trainings = response;
-    });
-
     this.trainingService.getTrainingsList().subscribe((response: any) => {
       this.trainingService.onChangeTrainings.next(response);
+      this.trainings = response;
+      this.trainings.map((e) => {
+        this.trainingService.getintroDesc(e._id).subscribe((res: any) => {
+          this.intros.push(res.intro);
+          console.log(this.intros)
+        });
+      });
     });
-
-    this.trainingService.onChangeTrainings.subscribe((data: any) => {
-      console.log("dataaa", data);
-      this.trainings = data;
-      // this.trainings.map(blog => {
-      //   this.trainingService.getIntroDesc(blog.id).subscribe((res: any) => {
-      //     blog['subtitle'] = res.jsonString;
-      //   });
-      // });
-    });
+    
   }
 
   trainingDetails(id: number) {
     this.router.navigate(["singleTraining", id]);
-    console.log(id);
-    
   }
 
-  onClickMe(id , like){
-    this.trainingService.like(id , {choice : "like"}).subscribe((response:any)=>{
-      this.trainingService.onChangeTrainings.next(response)
-   });;
+  openModal(id , like ) {
+    console.log(this.idVoteur);
+
+ console.log(this.decode.data._id)
+ if(this.token){
+    if(this.idVoteur!==this.decode.data._id){
+    const dialogRef = this.dialog.open(VoteModalComponent);
+    this.trainingService.getTraining(id).subscribe((res: any) => {});
+   
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log(`result : ${res}`);
+    });
+    }
+    else{
+        this.trainingService
+          .vote(id, this.idVoteur, { choice: like })
+          .subscribe((response: any) => {
+            this.trainingService.onChangeTrainings.next(response);
+          });
+      console.log("you are already connected");
+      console.log("you are voted");
+
+    }
+  }
   }
 }

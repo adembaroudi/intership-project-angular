@@ -7,8 +7,9 @@ import { environment } from 'src/environments/environment';
 export class CommentService {
 
   BaseUrl = environment.baseuri;
-
+  index ; 
   comments : any;
+  commentId ; 
   onChangeBlogs:BehaviorSubject<any>;
   constructor(private http: HttpClient) {
     this.onChangeBlogs = new BehaviorSubject([])
@@ -19,6 +20,10 @@ export class CommentService {
   }
   getAllComments(){
     const url = `${this.BaseUrl}/comment/Comments`;
+    return this.http.get(url);;
+  }
+  getCommentsById(id){
+    const url = `${this.BaseUrl}/comment/commentsbyid/${id}`;
     return this.http.get(url);;
   }
   getNbrComments(id){
@@ -48,6 +53,10 @@ export class CommentService {
   getNbrReplies(id){
     const url = `${this.BaseUrl}/replycomment/nbrReplies/${id}`;
     return this.http.get(url);;
+  }
+  saveIndex(i){
+   this.index = i  ; 
+    return i
   }
 
 

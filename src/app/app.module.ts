@@ -38,6 +38,10 @@ import { AccueilComponent } from './Dashboard/accueil/accueil.component';
 import { LoginComponent } from './Dashboard/login/login.component';
 import { RegisterComponent } from './Dashboard/register/register.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { VoteModalComponent } from './ClientSide/Trainings/vote-modal/vote-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReplyModalComponent } from './ClientSide/Blog/reply-modal/reply-modal.component';
+import { AuthInterceptor } from './ClientSide/Trainings/interceptor';
 
 
 @NgModule({
@@ -57,7 +61,9 @@ import { SearchPipe } from './pipes/search.pipe';
     AccueilComponent,
     LoginComponent,
     RegisterComponent,
-    SearchPipe
+    SearchPipe,
+    VoteModalComponent,
+    ReplyModalComponent
   ],
   imports: [
     BrowserModule,
@@ -72,13 +78,18 @@ import { SearchPipe } from './pipes/search.pipe';
     MatListModule,
     MatSelectModule,
     MatIconModule,
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    MatDialogModule,
 
   ],
-  entryComponents:[
-
-  ],
-  providers: [TrainingService, BlogService, UserService, ContactService,CommentService, TrainingRegistrationService, RegistrationService,],
+  entryComponents: [VoteModalComponent ,ReplyModalComponent] ,
+  providers: [
+     {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  },
+    TrainingService, BlogService, UserService, ContactService,CommentService, TrainingRegistrationService, RegistrationService,],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

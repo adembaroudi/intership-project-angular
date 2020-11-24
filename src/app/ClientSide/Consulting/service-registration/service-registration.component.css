@@ -1,4 +1,10 @@
 /* @extend display-flex; */
+
+:host(app-registration-service) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
     display: flex;
     display: -webkit-flex; }
