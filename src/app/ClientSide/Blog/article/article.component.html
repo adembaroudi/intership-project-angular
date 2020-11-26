@@ -65,7 +65,7 @@
           </article><!-- End blog entry -->
           <div *ngFor="let c of commenteret ;let i=index">
             <div class="blog-author clearfix">
-              <img src="assets/images/adem.jpg" class="rounded-circle float-left" alt="">
+              <!-- <img src="assets/images/adem.jpg" class="rounded-circle float-left" alt=""> -->
               <h4>{{c.name}}</h4>
               <div class="social-links">
                 <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
@@ -77,10 +77,10 @@
                   {{c.contenue}}
                 </p>
               </div>
-              <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
+              <!-- <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
                 style="border-radius: 150px; width: 50px; height: 50px;" (click)="modalOpened(c)"><i
-                  class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
+              <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -125,37 +125,24 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;"
+              </div> -->
+              <!-- <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;"
                 (click)="deleteComment(c._id,i)"><i class="fa fa-trash" style=" justify-content: center;"
-                  aria-hidden="true"></i></button>
+                  aria-hidden="true"></i></button> -->
             </div>
             <!-- End blog author bio -->
             <div class="blog-comments">
 
-              <h4 class="comments-count"><i class="icofont-comment"></i>{{nbreplies[i]}}</h4>
+              <a type="button" (click)=" openReadModal(c._id) ; commentService.commentId = c._id"><h4 class="comments-count"><i class="icofont-comment"></i>{{nbreplies[i]}}</h4></a>
 
 
               <div id="comment-1" class="comment clearfix">
                 <img class="comment-img  float-left" alt="">
-                <h5><a href="">{{c.name}}</a> <a pageScroll href="#comm" class="reply"><i class="icofont-reply"></i>
+                <h5><a href="">{{c.name}}</a> <a pageScroll  class="reply"><i class="icofont-reply"></i>
                     Reply</a></h5>
                 <time datetime="2020-01-01">{{c.date  | date: 'dd/MM/yyyy'}}</time>
                 <p>
-
                 </p>
-
-                <div *ngFor = "let rep of replys.reverse()" id="comment-reply-2" class="comment comment-reply clearfix">
-                  <img class="comment-img  float-left" alt="">
-                  <h5><a href="">{{rep.name }}</a> <a href="#" class="reply"><i class="icofont-reply"></i>
-                      Reply</a></h5>
-                  <time datetime="2020-01-01">{{rep.date| date: 'dd/MM/yyyy'}}</time>
-                  <p>
-                    {{rep.contenue}}
-                  </p>
-
-                </div>
-
               </div>
             </div>
 

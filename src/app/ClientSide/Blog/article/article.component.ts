@@ -8,6 +8,7 @@ import { DatePipe } from "@angular/common";
 import { environment } from "src/environments/environment";
 import { ReplyModalComponent } from "../reply-modal/reply-modal.component";
 import { MatDialog } from "@angular/material/dialog";
+import { ReadrepliesModalComponent } from '../readreplies-modal/readreplies-modal.component';
 
 @Component({
   selector: "app-article",
@@ -79,9 +80,6 @@ export class ArticleComponent implements OnInit {
     this.commentService.getCommentsByBlog(id).subscribe((res: any) => {
       this.commenteret = res.comment;
       this.commenteret.map((e) => {
-        this.commentService.getReplyByComment(e._id).subscribe((res: any) => {
-          this.replys = res.replies;
-        });
         this.commentService.getNbrReplies(e._id).subscribe((res: any) => {
           this.nbreplies.push(res) ;
         });
@@ -125,6 +123,13 @@ export class ArticleComponent implements OnInit {
         this.replys = res.replies      
       })
       // console.log(`result : ${res}`);
+    });
+  }
+  openReadModal(idcomment){
+    const dialogRef = this.dialog.open(ReadrepliesModalComponent);
+
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log(`result : ${res}`);
     });
   }
 }

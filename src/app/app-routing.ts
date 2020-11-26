@@ -10,11 +10,10 @@ import { ServicesComponent } from './ClientSide/Consulting/services/services.com
 import { ServiceRegistrationComponent } from './ClientSide/Consulting/service-registration/service-registration.component';
 import { TemplateComponent } from './ClientSide/Home/template/template.component';
 import { ContactComponent } from './ClientSide/Home/contact/contact.component';
-
 import { AccueilComponent } from './Dashboard/accueil/accueil.component';
 import { LoginComponent } from './Dashboard/login/login.component';
 import { RegisterComponent } from './Dashboard/register/register.component';
-import { ReplyModalComponent } from './ClientSide/Blog/reply-modal/reply-modal.component';
+
 
 
 /*const routes: Routes = []*/
@@ -27,7 +26,6 @@ export const AppRoutes: Routes = [
   { path:'trainingRegistration', component: TrainingRegistrationComponent},
   { path:'blog', component: BlogComponent},
   { path:'article/:id', component: ArticleComponent},
-  {path : 'reply/:idblog/:idcomment' , component:ReplyModalComponent},
   { path:'services', component: ServicesComponent},
   { path:'serviceRegistrationComponent', component: ServiceRegistrationComponent},
 

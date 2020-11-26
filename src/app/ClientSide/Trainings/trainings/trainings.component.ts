@@ -20,14 +20,15 @@ export class TrainingsComponent implements OnInit, OnDestroy {
   trainings = [];
   training: Training;
   intros = [];
-  idVoteur = localStorage.getItem("Idvoteur")||"";
   token = localStorage.getItem("token") || "";
-  decode = jwt_decode(this.token)||""; 
+  idVoteur ;
+  decode;
   constructor(
     private trainingService: TrainingService,
     private router: Router,
     public dialog: MatDialog
   ) {}
+
   ngOnDestroy(): void {
     console.log("destroy training");
   }
@@ -39,40 +40,47 @@ export class TrainingsComponent implements OnInit, OnDestroy {
       this.trainings.map((e) => {
         this.trainingService.getintroDesc(e._id).subscribe((res: any) => {
           this.intros.push(res.intro);
-          console.log(this.intros)
+          console.log(this.intros);
         });
       });
     });
-    
+    if (this.token) {
+      this.decode = jwt_decode(this.token);
+      this.idVoteur = this.decode.data._id;
+      return this.decode;
+    } else {
+      this.decode = null;
+      return this.decode;
+    }
   }
 
   trainingDetails(id: number) {
     this.router.navigate(["singleTraining", id]);
   }
 
-  openModal(id , like ) {
-    console.log(this.idVoteur);
-
- console.log(this.decode.data._id)
- if(this.token){
-    if(this.idVoteur!==this.decode.data._id){
-    const dialogRef = this.dialog.open(VoteModalComponent);
-    this.trainingService.getTraining(id).subscribe((res: any) => {});
-   
-    dialogRef.afterClosed().subscribe((res) => {
-      console.log(`result : ${res}`);
-    });
-    }
-    else{
+  openModal(id, like) {
+    if (this.token) {
+      if (this.idVoteur !== this.decode.data._id) {
+        const dialogRef = this.dialog.open(VoteModalComponent);
+        this.trainingService.getTraining(id).subscribe((res: any) => {});
+        dialogRef.afterClosed().subscribe((res) => {
+          console.log(`result : ${res}`);
+        });
+      } else {
         this.trainingService
           .vote(id, this.idVoteur, { choice: like })
           .subscribe((response: any) => {
             this.trainingService.onChangeTrainings.next(response);
           });
-      console.log("you are already connected");
-      console.log("you are voted");
-
+        console.log("you are already connected");
+        console.log("you are voted");
+      }
+    } else if (!this.token) {
+      const dialogRef = this.dialog.open(VoteModalComponent);
+      this.trainingService.getTraining(id).subscribe((res: any) => {});
+      dialogRef.afterClosed().subscribe((res) => {
+        console.log(`result : ${res}`);
+      });
     }
-  }
   }
 }

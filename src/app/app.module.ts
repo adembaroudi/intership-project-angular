@@ -42,6 +42,8 @@ import { VoteModalComponent } from './ClientSide/Trainings/vote-modal/vote-modal
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReplyModalComponent } from './ClientSide/Blog/reply-modal/reply-modal.component';
 import { AuthInterceptor } from './ClientSide/Trainings/interceptor';
+import { ReadrepliesModalComponent } from './ClientSide/Blog/readreplies-modal/readreplies-modal.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { AuthInterceptor } from './ClientSide/Trainings/interceptor';
     RegisterComponent,
     SearchPipe,
     VoteModalComponent,
-    ReplyModalComponent
+    ReplyModalComponent,
+    ReadrepliesModalComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ import { AuthInterceptor } from './ClientSide/Trainings/interceptor';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    ToastrModule.forRoot(),
     MatListModule,
     MatSelectModule,
     MatIconModule,
@@ -82,7 +86,7 @@ import { AuthInterceptor } from './ClientSide/Trainings/interceptor';
     MatDialogModule,
 
   ],
-  entryComponents: [VoteModalComponent ,ReplyModalComponent] ,
+  entryComponents: [VoteModalComponent ,ReplyModalComponent , ReadrepliesModalComponent] ,
   providers: [
      {
     provide: HTTP_INTERCEPTORS,

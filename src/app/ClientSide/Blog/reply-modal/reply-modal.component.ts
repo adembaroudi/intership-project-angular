@@ -18,9 +18,9 @@ export class ReplyModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.replyForm = new FormGroup({
-      name: new FormControl(""),
-      date: new FormControl(this.now),
-      contenue: new FormControl(""),
+      name: new FormControl("",Validators.required),
+      date: new FormControl(this.now ),
+      contenue: new FormControl("",Validators.required),
       email: new FormControl("", [Validators.required, Validators.email]),
     });
   }
