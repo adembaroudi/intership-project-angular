@@ -79,8 +79,26 @@ body {
     background-color: #f6f7f6;
   }
   
-  .section-title {
+  /* .section-title {
     padding-bottom: 40px;
+  } */
+  .section-title {
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  
+  
+  .section-title h1 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 8px 20px;
+    margin: 0;
+    /* background: #f5f9fc; */
+    color: #428bca;
+    display: inline-block;
+    text-transform: uppercase;
+    border-radius: 50px;
   }
   
   .section-title h2 {
@@ -336,6 +354,22 @@ body {
     margin-bottom: 20px;
     color: #37423b;
   }
+  /* @media{ */
+    .img-fluid{
+      min-width: 100%;
+      max-width: 100% ;
+      min-height: 290px;
+      max-height: 290px;
+      /* height: 1000px !important; */
+    }
+    .img-fluid-2{
+      min-width: 50%;
+      max-width: 50% ;
+      min-height:50px ;
+      max-height: 50px;
+      /* height: 1000px !important; */
+    }
+  /* } */
   
   .cource-details-tabs .details p {
     color: #777777;

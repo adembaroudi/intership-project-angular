@@ -44,8 +44,8 @@ import { ReplyModalComponent } from './ClientSide/Blog/reply-modal/reply-modal.c
 import { AuthInterceptor } from './ClientSide/Trainings/interceptor';
 import { ReadrepliesModalComponent } from './ClientSide/Blog/readreplies-modal/readreplies-modal.component';
 import { ToastrModule } from 'ngx-toastr';
-
-
+import { ProgrammesComponent } from './ClientSide/Trainings/programmes/programmes.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,10 +66,12 @@ import { ToastrModule } from 'ngx-toastr';
     SearchPipe,
     VoteModalComponent,
     ReplyModalComponent,
-    ReadrepliesModalComponent
+    ReadrepliesModalComponent,
+    ProgrammesComponent
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     CommonModule,
     HttpClientModule,
     RouterModule.forRoot(AppRoutes),

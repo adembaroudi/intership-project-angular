@@ -3,21 +3,25 @@
 <main id="main">
 
   <!-- ======= Breadcrumbs ======= -->
-  <section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
+  <!-- <section id="breadcrumbs" class="breadcrumbs"> -->
+  <!-- <div class="container"> -->
 
-      <ol>
+  <!-- <ol>
         <li><a href="index.html">Home</a></li>
         <li>Blog</li>
       </ol>
-      <h2>Blog</h2>
+      <h2>Blog</h2> -->
 
-    </div>
-  </section><!-- End Breadcrumbs -->
+  <!-- </div> -->
+  <!-- </section> -->
+  <!-- End Breadcrumbs -->
 
   <!-- ======= Blog Section ======= -->
   <section id="blog" class="blog">
     <div class="container">
+      <div class="section-title">
+        <h1>Blog</h1>
+      </div>
       <!-- <div class="card bg-light mb-3" >
         <div class="card-header">Add Blog</div>
         <div class="card-body">
@@ -83,11 +87,11 @@
 
           <div class="row">
 
-            <div class="col-lg-4  d-flex align-items-stretch" *ngFor="let blog of blogs|search:Search ; let i = index">
+            <div class="col-lg-6  d-flex align-items-stretch" *ngFor="let blog of blogs|search:Search ; let i = index">
               <article class="entry">
 
                 <div class="entry-img">
-                  <img src="{{pictureBaseUrl + blog._id}}" style="width: auto;height: 30rem;" alt="" class="img-fluid">
+                  <img src="{{pictureBaseUrl + blog._id}}"  routerLink = "/article/{{blog._id}}"  alt="" class="img-fluid">
                 </div>
 
                 <h2 class="entry-title">

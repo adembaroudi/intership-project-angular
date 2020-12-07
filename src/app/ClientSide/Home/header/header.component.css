@@ -3,3 +3,29 @@
     flex-direction: column;
     min-height: 100vh;
   } */
+  .fa-1x {
+    font-size: 1.5rem;
+    }
+    .navbar-toggler.toggler-example {
+    cursor: pointer;
+    }
+    .dark-blue-text {
+    color: #0A38F5;
+    }
+    .dark-pink-text {
+    color: #AC003A;
+    }
+    .dark-amber-text {
+    color: #ff6f00;
+    }
+    .dark-teal-text {
+    color: #004d40;
+    }
+    .dropdown-item{
+      color: #212529;
+      font-size: 12px!important ; 
+      font-family: sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color:white;
+    }

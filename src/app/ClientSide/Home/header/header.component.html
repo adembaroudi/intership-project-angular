@@ -1,27 +1,79 @@
 <header id="header" class="fixed-top ">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-      <div class="row justify-content-center">
-        <div class="col-xl-8 d-flex align-items-center justify-content-end">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 d-flex align-items-center justify-content-end">
 
-          <!-- <h1 class="logo mr-auto"><a href="index.html">Hidayah</a></h1> -->
-          <img _ngcontent-serverapp-c42="" src="assets/images/logo.png" class="logo mr-auto">
-          <!-- Uncomment below if you prefer to use an image logo -->
-          <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <h1 class="logo mr-auto"><a href="index.html">Hidayah</a></h1> -->
+        <img _ngcontent-serverapp-c42="" src="assets/images/logo.png" class="logo mr-auto">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-          <nav class="nav-menu d-none d-lg-block">
-            <ul>
-              <li class="active"><a href="index.html">Home</a></li>
-              <li><a routerLink="/trainings" >FivePoints Academy</a></li>
-              <li><a routerLink="/services">FivePoints Consulting</a></li>
-              <li><a routerLink="/blog">Blog</a></li>
-              <li><a routerLink="/contact">Contact</a></li>
+        <nav class=" navbar-expand-lg col-xs-12   nav-menu d-none d-lg-block">
+          <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+          aria-controls="navbarSupportedContent1" aria-expanded="true" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+              class="fas fa-bars fa-1x"></i></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+          <ul class="navbar-nav mr-auto dropdown-menu-right">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
+            <li  ngbDropdown class="nav-item dropdown">
+              <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                FivePoints Academy
+              </a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a ngbDropdownItem class="dropdown-item"  href="#" routerLink="/trainings" >Sessions</a>
+                <div class="dropdown-divider"></div>
+                <a ngbDropdownItem class="dropdown-item"  href="#" routerLink="/programmes">nos programmes</a>
+              </div>
+            </li>
+            
+            <!-- <li class="nav-item"><a class="nav-link" href="#" routerLink="/trainings"></a></li> -->
+            <!-- <li class="nav-item"><a class="nav-link" href="#" routerLink="/programmes"></a></li> -->
 
-            </ul>
-          </nav><!-- .nav-menu -->
+            <li class="nav-item"><a class="nav-link"  href="#" routerLink="/services">FivePoints Consulting</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" routerLink="/blog">Blog</a></li>
+            <li class="nav-item" ><a class="nav-link" href="#" routerLink="/contact">Contact</a></li>
 
+          </ul>
         </div>
+        </nav>
+        <!-- .nav-menu -->
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav> -->
       </div>
     </div>
-  </header><!-- End Header -->
-
+  </div>
+</header><!-- End Header -->

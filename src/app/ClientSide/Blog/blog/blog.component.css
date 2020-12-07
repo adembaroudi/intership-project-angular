@@ -1,11 +1,11 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-:host(app-blog) {
+/* :host(app-blog) {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
+} */
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
@@ -37,7 +37,24 @@ body {
   
   .section-title {
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
+    margin-top: 5rem;
+  }
+
+  
+  
+  .section-title h1 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 8px 20px;
+
+    margin: 0;
+    /* background: #f5f9fc; */
+    color: #428bca;
+    display: inline-block;
+    text-transform: uppercase;
+    border-radius: 50px;
   }
   
   .section-title h2 {
@@ -121,6 +138,7 @@ body {
   --------------------------------------------------------------*/
   .blog {
     padding: 40px 0 20px 0;
+
   }
   
   .blog .entry {

@@ -13,6 +13,8 @@ import { ContactComponent } from './ClientSide/Home/contact/contact.component';
 import { AccueilComponent } from './Dashboard/accueil/accueil.component';
 import { LoginComponent } from './Dashboard/login/login.component';
 import { RegisterComponent } from './Dashboard/register/register.component';
+import {ProgrammesComponent} from './ClientSide/Trainings/programmes/programmes.component'
+
 
 
 
@@ -22,6 +24,7 @@ import { RegisterComponent } from './Dashboard/register/register.component';
 export const AppRoutes: Routes = [
   { path:'', component: TemplateComponent},
   { path:'trainings', component: TrainingsComponent},
+  { path:'programmes', component:ProgrammesComponent},
   { path:'singleTraining/:id', component: SingleTrainingComponent},
   { path:'trainingRegistration', component: TrainingRegistrationComponent},
   { path:'blog', component: BlogComponent},
