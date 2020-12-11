@@ -13,6 +13,23 @@
   flex-direction: column;
   min-height: 100vh;
 }
+.section-title {
+  text-align: center;
+  padding-bottom: 50px;
+  margin-top: 5rem;
+}
+.section-title h1 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 8px 20px;
+  margin: 0;
+  /* background: #f5f9fc; */
+  color: #428bca;
+  display: inline-block;
+  text-transform: uppercase;
+  border-radius: 50px;
+}
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
