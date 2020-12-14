@@ -70,7 +70,7 @@
           <div class="col-lg-12">
             <div class="sidebar">
 
-              <h3 class="sidebar-title">Search</h3>
+              <h3 class="sidebar-title">Rechercher</h3>
               <div class="sidebar-item search-form">
                 <form action="">
                   <input type="text" name="Search" [(ngModel)]="Search">
@@ -113,7 +113,7 @@
                     {{intros[i]}}
                   </p>
                   <div class="read-more">
-                    <a routerLink="/singleBlog" (click)="articleDetails(blog._id)">Read More</a>
+                    <a routerLink="/singleBlog" (click)="articleDetails(blog._id)">Decouvrez plus</a>
                   </div>
                 </div>
                 <!-- <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
@@ -190,7 +190,7 @@
             <div class="sidebar col-lg-12">
 
 
-              <h3 class="sidebar-title">Recent Posts</h3>
+              <h3 class="sidebar-title">Les derniers blog</h3>
               <div class="sidebar-item recent-posts">
 
                 <div class="post-item clearfix " *ngFor="let r of recent">

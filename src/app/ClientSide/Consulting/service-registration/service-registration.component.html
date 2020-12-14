@@ -6,37 +6,33 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Join us</h2>
+                        <h2 class="form-title">Rejoignez-nous</h2>
                         <form [formGroup]="registrationForm">      
 
                             <div classe="form-group">
                                 <mat-form-field appearance="legacy">
-                                    <mat-label>Legacy form field</mat-label>
-                                    <input matInput placeholder="firstname" formControlName="firstname">
-                                    <mat-icon matSuffix>person</mat-icon>
+                                    <input matInput placeholder="prénom" formControlName="firstname">
+                              
                                 </mat-form-field>
                             </div>
 
                             <div classe="form-group">
                                 <mat-form-field appearance="legacy">
-                                    <mat-label>Legacy form field</mat-label>
-                                    <input matInput placeholder="lastname" formControlName="lastname">
-                                    <mat-icon matSuffix>person</mat-icon>
+                                    <input matInput placeholder="nom" formControlName="lastname">
+                        
                                 </mat-form-field>
                             </div>
 
                             <div classe="form-group">
                                 <mat-form-field appearance="legacy">
-                                    <mat-label>Legacy form field</mat-label>
-                                    <input matInput placeholder="email" formControlName="email">
-                                    <mat-icon matSuffix>mail</mat-icon>
+                                    <input matInput placeholder="e-mail" formControlName="email">
+                                
                                 </mat-form-field>
                             </div>
 
                             <div classe="form-group">
                                 <mat-form-field appearance="legacy">
-                                    <mat-label>Legacy form field</mat-label>
-                                    <input matInput placeholder="numTel" formControlName="numTel">
+                                    <input matInput placeholder="téléphone" formControlName="numTel">
                                     <mat-icon matSuffix>phone</mat-icon>
                                 </mat-form-field>
                             </div>
@@ -53,6 +49,7 @@
                                   <option  *ngFor ="let p of serv ">{{p}}</option>
                                 </select>
                               </div>
+                              
 
                             <mat-form-field >
                                 <textarea matInput formControlName="sujet"  rows="5" placeholder="sujet" ></textarea>
@@ -65,7 +62,7 @@
                             </div>
                             <div class="form-group form-button">
                                 <!-- <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/> -->
-                                <button type="submit" class="btn btn-primary" (click)="register()" >Submit</button>
+                                <button type="submit" class="btn btn-primary" (click)="register()" >inscription</button>
                             </div>
                         </form>
                     </div>

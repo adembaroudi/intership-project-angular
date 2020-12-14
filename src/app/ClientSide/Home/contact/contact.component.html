@@ -32,9 +32,9 @@
                   <div class="single-icon">
                     <i class="fa fa-mobile"></i>
                     <p>
-                      Call: +216 71 190 418<br>
-                      <span>Monday-Thursday (10h-17h)</span><br>
-                      <span>Friday (10h-13h)</span>
+                      tél: +216 71 190 418<br>
+                      <span>Lundi-Jeudi (10h-17h)</span><br>
+                      <span>Vendredi (10h-13h)</span>
 
                     </p>
                   </div>
@@ -46,7 +46,7 @@
                   <div class="single-icon">
                     <i class="fa fa-envelope-o"></i>
                     <p>
-                      Email: contact@FivePoints.fr<br>
+                      E-mail: contact@FivePoints.fr<br>
                       <span>Web: www.fivepoints.tn</span>
                     </p>
                   </div>
@@ -58,7 +58,7 @@
                   <div class="single-icon">
                     <i class="fa fa-map-marker"></i>
                     <p>
-                      St. la bourse, building El Wafa, Bloc A 2nd floor, Lac 2, Tunis, Tunisia<br>
+                      Rue de la bourse, batiment El Wafa, Bloc A 2éme étage, Lac 2, Tunis, Tunisie<br>
                      <!--<span>NY 535022, USA</span> --> 
                     </p>
                   </div>
@@ -80,7 +80,7 @@
                     <form [formGroup]="contactForm">
                       <div >
                         <mat-form-field style="width: 500px;">
-                           <input matInput type="text" formControlName="name" placeholder="Your Name"/>
+                           <input matInput type="text" formControlName="name" placeholder="Nom & Prénom"/>
                            <!--<div class="validate"></div>-->
                         </mat-form-field>
                       </div>
@@ -88,24 +88,24 @@
   
                       <div >
                        <mat-form-field style="width: 500px;">
-                          <input matInput type="text" formControlName="subject" placeholder="Subject" />
+                          <input matInput type="text" formControlName="subject" placeholder="Sujet" />
                           <!--<div class="validate"></div>-->
                         </mat-form-field>
                       </div>
   
                       <div >
                         <mat-form-field style="width: 500px;">
-                           <input matInput type="email" formControlName="email" placeholder="Your Email"  />
+                           <input matInput type="email" formControlName="email" placeholder="E-mail"  />
                            <!--<div class="validate"></div>-->
                         </mat-form-field>
                       </div>  
                       <div>
                         <mat-form-field style="width: 500px;">
-                          <textarea matInput formControlName="contenuMessage"  rows="5" placeholder="Message" ></textarea>
+                          <textarea matInput formControlName="contenuMessage"  rows="5" placeholder=" Votre Message" ></textarea>
                         </mat-form-field>
                       </div>
   
-                      <div class="text-center"><button  type="submit" (click)="ajouterMessage()" style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2">Send Message</button></div>
+                      <div class="text-center"><button  type="submit" (click)="ajouterMessage()" style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2">Envoyer </button></div>
                   <br><br>
                   </form>
                 </div>
