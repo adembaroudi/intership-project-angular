@@ -22,7 +22,7 @@ registrationForm : FormGroup
     this.registrationForm = new FormGroup({  
       firstname : new FormControl('' , [Validators.required] ),
       lastname : new FormControl('' , [Validators.required] ),  
-      email : new FormControl('' , [Validators.required]),  
+      email : new FormControl('' , [Validators.required , Validators.email]),  
       numTel : new FormControl('' , [Validators.required]),
       diplome : new FormControl('' , [Validators.required] ),  
       online : new FormControl('' , [Validators.required]),  

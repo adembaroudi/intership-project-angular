@@ -25,4 +25,6 @@
     line-height: 1.5;
     background-color:white;
     }
-    /* a:active { color: red; }   */
+    .active{
+      color: #0A38F5 ;
+    }  

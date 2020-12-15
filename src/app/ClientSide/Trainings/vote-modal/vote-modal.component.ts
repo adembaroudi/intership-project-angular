@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { TrainingService } from "src/app/services/training.service";
 import * as jwt_decode from "jwt-decode";
 import * as bcrypt from 'bcryptjs';
-import { ToastrService } from 'ngx-toastr';
+;
 
 @Component({
   selector: "app-vote-modal",
@@ -18,7 +18,7 @@ export class VoteModalComponent implements OnInit {
   token = localStorage.getItem("token") || "";
   decode ;
    
-    constructor(private trainingService: TrainingService , private toastr: ToastrService) {}
+    constructor(private trainingService: TrainingService) {}
   
   ngOnInit(): void {
     this.voteForm = new FormGroup({
@@ -69,10 +69,8 @@ onClickMe( idvot, like) {
     .vote(id, idvot, { choice: like })
     .subscribe((response: any) => {
       this.trainingService.onChangeTrainings.next(response);
-      this.toastr.success("voted Successfully");
-    }),  (err) => {
-      return this.toastr.warning(err.error.message);
-    } 
+
+    })
   }
 }
 // login() {
