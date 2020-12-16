@@ -40,10 +40,10 @@ export class TrainingsComponent implements OnInit, OnDestroy {
       this.trainingService.onChangeTrainings.next(response);
       this.trainings = response;
       this.trainings.map((e) => {
-        this.trainingService.getintroDesc(e._id).subscribe((res: any) => {
-          this.intros.push(res.intro);
-          console.log(this.intros);
-        });
+        // this.trainingService.getintroDesc(e._id).subscribe((res: any) => {
+        //   this.intros.push(res.intro);
+        //   console.log(this.intros);
+        // });
       });
     });
     if (this.token) {

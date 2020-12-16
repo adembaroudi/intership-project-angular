@@ -29,29 +29,17 @@ registrationForm : FormGroup
       resterInforme : new FormControl('' , [Validators.required])
     //  training : new FormControl(training);  
     }); 
-    this.trainingService.getTrainingsList().subscribe((res : any)=>{
-      console.log(res);   
-      this.trainings = res
-      console.log(this.trainings);
-      
+    this.trainingService.getTrainingsList().subscribe((res : any)=>{  
+      this.trainings = res  
       this.trainings.map((e)=>{
         this.trainingService.getTraining(e._id).subscribe((res : any)=>{
-          console.log(res);
-          this.train = res._id
-          console.log(this.train);
-          
+          this.train = res._id       
         })
       })
     })
   }
-
-
-
   register(id){
-    console.log(id);
-    
     this.registrationServ.Register(id,this.registrationForm.value).subscribe();
-     console.log(this.registrationForm.value);
    }
 
   

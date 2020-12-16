@@ -829,7 +829,7 @@ body {
     }
     
     .blog .blog-author h4 {
-      margin-left: 140px;
+      margin-left: 8px;
       font-weight: 600;
       font-size: 22px;
       margin-bottom: 0px;
@@ -1146,3 +1146,6 @@ body {
       color: #dfd8d9;
       font-size: 14px;
     }
+    /* .comment-block{
+      margin-right: 20px ;
+    } */

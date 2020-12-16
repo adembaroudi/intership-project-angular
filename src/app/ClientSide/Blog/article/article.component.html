@@ -67,18 +67,12 @@
           </article><!-- End blog entry -->
           <div *ngFor="let c of commenteret ;let i=index">
             <div class="blog-author clearfix">
-              <!-- <img src="assets/images/adem.jpg" class="rounded-circle float-left" alt=""> -->
               <h4>{{c.name}}</h4>
-              <div class="social-links">
-                <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
-                <a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
-                <a href="https://instagram.com/#"><i class="icofont-instagram"></i></a>
-              </div>
-              <div>
-                <p>
-                  {{c.contenue}}
-                </p>
-              </div>
+            
+                  <p>
+                    {{c.contenue}}
+                  </p>
+                
               <!-- <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
                 style="border-radius: 150px; width: 50px; height: 50px;" (click)="modalOpened(c)"><i
                   class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
@@ -136,24 +130,14 @@
             <div class="blog-comments">
 
               <a type="button" class="btn btn-primary" (click)=" openReadModal(c._id) ; commentService.commentId = c._id">
-                <h4 class="comments-count"><i class="icofont-comment"></i>{{nbreplies[i]}}</h4>
+                <h4 class="comments-count"><i class="icofont-eye"></i> {{nbreplies[i]}}</h4>
               </a>
-
-
               <div id="comment-1" class="comment clearfix">
                 <img class="comment-img  float-left" alt="">
-                <h5><a>{{c.name}}</a> <a pageScroll class="reply"><i class="icofont-reply"></i>
-                    Reply</a></h5>
-                <time datetime="2020-01-01">{{c.date  | date: 'dd/MM/yyyy'}}</time>
-                <p>
-                </p>
               </div>
             </div>
-
-
             <h3><a type="button" class="btn btn-primary"
-                (click)=" openModal(c._id) ;commentService.commentId = c._id "><i class="icofont-comment"></i>Laisser
-                une replique</a></h3>
+                (click)=" openModal(c._id) ;commentService.commentId = c._id "><i class="icofont-comment"></i></a></h3>
           </div>
 
 
