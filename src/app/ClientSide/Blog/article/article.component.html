@@ -135,12 +135,14 @@
             <!-- End blog author bio -->
             <div class="blog-comments">
 
-              <a type="button" (click)=" openReadModal(c._id) ; commentService.commentId = c._id"><h4 class="comments-count"><i class="icofont-comment"></i>{{nbreplies[i]}}</h4></a>
+              <a type="button" class="btn btn-primary" (click)=" openReadModal(c._id) ; commentService.commentId = c._id">
+                <h4 class="comments-count"><i class="icofont-comment"></i>{{nbreplies[i]}}</h4>
+              </a>
 
 
               <div id="comment-1" class="comment clearfix">
                 <img class="comment-img  float-left" alt="">
-                <h5><a>{{c.name}}</a> <a pageScroll  class="reply"><i class="icofont-reply"></i>
+                <h5><a>{{c.name}}</a> <a pageScroll class="reply"><i class="icofont-reply"></i>
                     Reply</a></h5>
                 <time datetime="2020-01-01">{{c.date  | date: 'dd/MM/yyyy'}}</time>
                 <p>
@@ -149,9 +151,11 @@
             </div>
 
 
-            <h3><a type="button" class="btn btn-primary"  (click)=" openModal(c._id) ;commentService.commentId = c._id "><i class="icofont-comment"></i>Laisser une replique</a></h3>
+            <h3><a type="button" class="btn btn-primary"
+                (click)=" openModal(c._id) ;commentService.commentId = c._id "><i class="icofont-comment"></i>Laisser
+                une replique</a></h3>
           </div>
-          
+
 
 
           <section id="comm">

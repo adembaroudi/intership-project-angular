@@ -10,12 +10,12 @@
           <div   class="row row-space">
             <div class="form-group">
               <mat-form-field>
-                <input matInput type="text" formControlName="lastname" placeholder="lastname" />
+                <input matInput type="text" formControlName="lastname" placeholder="nom" />
               </mat-form-field>
             </div>
             <div class="form-group">
               <mat-form-field>
-                <input matInput type="text" formControlName="firstname" placeholder="firstname" />
+                <input matInput type="text" formControlName="firstname" placeholder="prénom" />
               </mat-form-field>
             </div>
           </div>
@@ -36,23 +36,23 @@
           </div><br>
           <div class="row row-space">
             <div class="form-group">
-              <label  style="margin-right: 50px;">you wanna take our coures: </label>
-              <input type="radio" formControlName="online" value="true"> online
-              <input type="radio" formControlName="online" value="false"> presentiel
+              <p  >voulez vous suivez nos cours : </p>
+              <label><input type="radio"  formControlName="online" value="true"> en ligne</label>
+              <label style="margin-left: 10px;"><input  type="radio" formControlName="online" value="false">présentiel</label> 
               <br>
             </div>
-            <div class="form-group">
-              <label style="margin-right: 100px;">Are you graduated?</label>
-              <input type="radio" formControlName="diplome" value="true"> yes
-              <input type="radio" formControlName="diplome" value="false"> no
+            <div class="form-group" style="margin-right: 35px;">
+              <p > etes-vous diplomé ?</p>
+              <label><input type="radio" formControlName="diplome" value="true"> oui</label>
+              <label style="margin-left: 10px;"><input type="radio" formControlName="diplome" value="false"> non </label>
               <br>
             </div>
-          </div>
+          </div><br>
           <div class="row">
             <div class="form-group">
-                <label  >Stay updated?</label>
-                <input type="radio" formControlName="resterInforme" value="true"> yes
-                <input type="radio" formControlName="resterInforme" value="false"> no
+                <p>rester à jour ?</p>
+                <label><input type="radio" formControlName="resterInforme" value="true"> oui </label>
+                <label style="margin-left : 10px;"><input type="radio" formControlName="resterInforme" value="false"> non </label>
               </div>
           </div>
        
@@ -63,6 +63,7 @@
 
 
         </form>
+
 
       </div>
 
