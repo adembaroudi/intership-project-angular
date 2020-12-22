@@ -878,6 +878,13 @@ body {
       color: #444444;
       transition: 0.3s;
     }
+    .img-fluid{
+      min-width: 80%;
+      max-width: 80% ;
+      min-height: 300px;
+      max-height: 300px;
+      /* height: 1000px !important; */
+    }
     
     .blog .blog-comments .comment h5 a:hover {
       color: #e43c5c;

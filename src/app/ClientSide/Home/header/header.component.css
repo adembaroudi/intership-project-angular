@@ -28,3 +28,6 @@
     .active{
       color: #428bca ;
     }  
+    .navbar-dark.navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;..");
+    }

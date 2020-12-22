@@ -22,6 +22,7 @@ import {ProgrammesComponent} from './ClientSide/Trainings/programmes/programmes.
 
 
 export const AppRoutes: Routes = [
+  { path:'', component: TemplateComponent},
   { path:'template', component: TemplateComponent},
   { path:'trainings', component: TrainingsComponent},
   { path:'programmes', component:ProgrammesComponent},

@@ -667,8 +667,8 @@ body {
     font-size: 14px;
   }
   .img-fluid{
-    min-width: 120%;
-    max-width: 120% ;
+    min-width: 100%;
+    max-width: 100% ;
     min-height: 290px;
     max-height: 290px;
     /* height: 1000px !important; */

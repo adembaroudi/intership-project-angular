@@ -82,6 +82,13 @@
       width: 50%;
     }
   }
+  .img-fluid{
+    min-width: 100%;
+    max-width: 100% ;
+    min-height: 290px;
+    max-height: 290px;
+    /* height: 1000px !important; */
+  }
 
   
 

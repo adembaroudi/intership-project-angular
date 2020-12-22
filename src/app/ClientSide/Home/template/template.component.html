@@ -1,6 +1,6 @@
 <app-header></app-header>
 <!-- ======= Hero Section ======= -->
-<section id="hero">
+<section id="hero" class="col-xs-10">
   <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
     <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
@@ -62,6 +62,19 @@
 
   </div>
 </section><!-- End Hero -->
+  <!-- ======= Cta Section ======= -->
+  <section id="cta" class="cta">
+    <div class="container">
+
+      <div class="text-center">
+        <h3>Appel à l'action</h3>
+        <p>Notre startup vous garantit un bon coaching et une excellente formation dans les meilleures conditions.</p>
+        <a class="cta-btn" routerLink="/trainingRegistration">Appel à l'action</a>
+      </div>
+
+    </div>
+  </section><br><br>
+  <!-- End Cta Section -->
 
 <main id="main">
 
@@ -343,7 +356,7 @@
 
             <div style=" display:flex; align-items:center; justify-content: space-between; flex-wrap: wrap;">
 
-              <div *ngFor="let user of users" class="col-lg-3" data-aos="fade-up">
+              <div *ngFor="let user of users" class="col-lg-4" data-aos="fade-up">
                 <div class="member">
                   <img src="{{UserPicture + user._id}}" class="img-fluid" alt="">
                   <div class="member-info">
@@ -466,19 +479,7 @@
 
 
 
-  <!-- ======= Cta Section ======= -->
-  <section id="cta" class="cta">
-    <div class="container">
 
-      <div class="text-center">
-        <h3>Appel à l'action</h3>
-        <p>Notre startup vous garantit un bon coaching et une excellente formation dans les meilleures conditions.</p>
-        <a class="cta-btn" routerLink="/trainingRegistration">Appel à l'action</a>
-      </div>
-
-    </div>
-  </section><br><br>
-  <!-- End Cta Section -->
 
 
 

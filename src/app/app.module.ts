@@ -43,9 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReplyModalComponent } from './ClientSide/Blog/reply-modal/reply-modal.component';
 import { AuthInterceptor } from './ClientSide/Trainings/interceptor';
 import { ReadrepliesModalComponent } from './ClientSide/Blog/readreplies-modal/readreplies-modal.component';
-
-import { ToasterModule, ToasterService } from 'angular2-toaster';
-
+import {PdfViewerModule} from 'ng2-pdf-viewer'
 import { ProgrammesComponent } from './ClientSide/Trainings/programmes/programmes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -82,17 +80,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ToasterModule.forRoot(),
+
     MatListModule,
     MatSelectModule,
     MatIconModule,
     Ng2PageScrollModule,
     MatDialogModule,
+    PdfViewerModule
 
   ],
   entryComponents: [VoteModalComponent ,ReplyModalComponent , ReadrepliesModalComponent] ,
   providers: [
-    ToasterService,
+    ,
      {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

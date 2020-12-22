@@ -8,7 +8,6 @@ import { environment } from "src/environments/environment";
 import * as jwt_decode from "jwt-decode";
 import { MatDialog } from "@angular/material/dialog";
 import { VoteModalComponent } from "../vote-modal/vote-modal.component";
-import { ToasterService } from 'angular2-toaster';
 
 @Component({
   selector: "app-trainings",
@@ -28,7 +27,6 @@ export class TrainingsComponent implements OnInit, OnDestroy {
     private trainingService: TrainingService,
     private router: Router,
     public dialog: MatDialog,
-    private toasterService: ToasterService
   ) {}
 
   ngOnDestroy(): void {
@@ -73,12 +71,8 @@ export class TrainingsComponent implements OnInit, OnDestroy {
           .vote(id, this.idVoteur, { choice: like })
           .subscribe((response: any ) => {
             this.trainingService.onChangeTrainings.next(response );
-              this.toasterService.pop('success', 'success', 'Welcom back');
-              (err) => {
-                this.toasterService.pop('error', 'Erreur', 'something wrong');
-              }
           });
-
+      
         console.log("you are already connected");
         console.log("you are voted");
       }

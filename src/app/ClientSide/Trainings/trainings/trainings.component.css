@@ -185,7 +185,6 @@ body {
   }
   
   .courses .trainer .trainer-profile img {
-    max-width: 50px;
     border-radius: 50px;
   }
   
@@ -354,22 +353,21 @@ body {
     margin-bottom: 20px;
     color: #37423b;
   }
-  /* @media{ */
     .img-fluid{
       min-width: 100%;
       max-width: 100% ;
       min-height: 290px;
       max-height: 290px;
-      /* height: 1000px !important; */
+
     }
     .img-fluid-2{
-      min-width: 50%;
-      max-width: 50% ;
+      min-width: 30%;
+      max-width: 30% ;
       min-height:50px ;
       max-height: 50px;
-      /* height: 1000px !important; */
+ 
     }
-  /* } */
+  
   
   .cource-details-tabs .details p {
     color: #777777;
