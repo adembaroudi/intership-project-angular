@@ -150,12 +150,16 @@
                   <div class="col-md-6 form-group">
                     <mat-form-field style="width: 250px;">
                       <input matInput type="text" formControlName="name" placeholder="Your Name*">
+                      <mat-error *ngIf="commentForm.hasError('required','name')">*votre nom et prénom est requis </mat-error>
+
                     </mat-form-field>
                   </div>
 
                   <div class="col-md-6 form-group">
                     <mat-form-field>
                       <input matInput type="text" formControlName="email" placeholder="Your Email*">
+                      <mat-error *ngIf="commentForm.hasError('required','email')">*votre email est requis</mat-error>
+                      <mat-error *ngIf="commentForm.hasError('email','email')">*votre format email est invalide (exemple :...@gmail.com)</mat-error>
                     </mat-form-field>
                   </div>
 
@@ -165,12 +169,14 @@
                   <div class="col form-group">
                     <mat-form-field style="width: 550px;">
                       <textarea matInput formControlName="contenue" placeholder="Your Comment*"></textarea>
+                      <mat-error *ngIf="commentForm.hasError('required','contenue')">*votre commentaire est requis</mat-error>
+
                     </mat-form-field>
                   </div>
                 </div>
 
 
-                <button type="submit" class="btn btn-primary" (click)="ajouterComment(blog._id)"> Commenter</button>
+                <button [disabled]="!commentForm.valid" type="submit" class="btn btn-primary" (click)="ajouterComment(blog._id)"> Commenter</button>
               </form>
             </div>
           </section>

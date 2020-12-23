@@ -7,18 +7,12 @@
       <div class="signup-content">
         <div class="signup-form">
           <h2 class="form-title">Rejoignez-nous</h2>
-          <a type="button" routerLink = "/companyRegistration" > etes vous une société?</a><br>
+          <a type="button" routerLink="/serviceRegistrationComponent" > etes vous un individu?</a><br>
           <form [formGroup]="registrationForm">
             <div classe="form-group">
               <mat-form-field>
-                <input matInput placeholder="prénom" formControlName="firstname">
-                <mat-error *ngIf="registrationForm.hasError('required','firstname')">*votre prénom est requis</mat-error>           
-              </mat-form-field>
-            </div>
-            <div classe="form-group">
-              <mat-form-field>
-                <input matInput placeholder="nom" formControlName="lastname">
-                <mat-error *ngIf="registrationForm.hasError('required','lastname')">*votre nom est requis</mat-error>
+                <input matInput placeholder="nom de company" formControlName="companyName">
+                <mat-error *ngIf="registrationForm.hasError('required','companyName')">*le nom de company est requis</mat-error>           
               </mat-form-field>
             </div>
             <div classe="form-group">
@@ -28,12 +22,6 @@
                 <mat-error *ngIf="registrationForm.hasError('email','email')">*votre format email est invalide</mat-error>
               </mat-form-field>
             </div>
-            <div classe="form-group">
-              <!-- <mat-form-field> -->
-                <input  type="file" class="upload" formControlName="cv" name="file-input"  (change)="onFileChange($event)">
-              <!-- </mat-form-field> -->
-            </div>
-
             <div classe="form-group">
               <mat-form-field>
                 <input matInput placeholder="téléphone" formControlName="numTel">
@@ -74,3 +62,4 @@
 
 </div>
 <app-footer></app-footer>
+

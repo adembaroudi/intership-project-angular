@@ -22,7 +22,7 @@ file: File;
     lastname : new FormControl('' , [Validators.required] ),  
     email : new FormControl('' , [Validators.required]),  
     numTel : new FormControl('' , [Validators.required]),
-    cv : new FormControl(''  ),  
+    cv : new FormControl('',[Validators.required]  ),  
     sujet : new FormControl('' , [Validators.required]),  
     service : new FormControl('' , [Validators.required])
   });

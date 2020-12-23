@@ -3,7 +3,7 @@
   <div  classe="form-group">
     <mat-form-field appearance="legacy">
       <input matInput placeholder="name" formControlName="name">
-      <mat-error *ngIf="replyForm.hasError('required','name')">email is required</mat-error>
+      <mat-error *ngIf="replyForm.hasError('required','name')">votre nom et prénom est requis</mat-error>
     </mat-form-field>
   </div>
   <!-- <div classe="form-group">
@@ -15,16 +15,16 @@
   <div classe="form-group">
     <mat-form-field appearance="legacy">
       <input matInput placeholder="contenue" formControlName="contenue">
-      <mat-error *ngIf="replyForm.hasError('required','contenue')">email is required</mat-error>
+      <mat-error *ngIf="replyForm.hasError('required','contenue')">que voulez vous répondre ?</mat-error>
     </mat-form-field>
   </div>
   <div classe="form-group">
     <mat-form-field>
       <input matInput formControlName="email" placeholder="email">
-      <mat-error *ngIf="replyForm.hasError('required','email')">email is required</mat-error>
-      <mat-error ></mat-error>
+      <mat-error *ngIf="replyForm.hasError('required','email')">votre email est requis</mat-error>
+      <mat-error *ngIf="replyForm.hasError('email','email')">*votre format email est invalide (exemple :...@gmail.com)</mat-error>
     </mat-form-field>
-    <p class="text-muted">Your email address will not be published* </p>
-      <button [disabled] = "!replyForm.valid" type="button" class="btn btn-primary" (click)="addReplies()">Reply</button>
+    <p class="text-muted">Votre adresse e-mail ne sera pas publié . Les champs requis sont indiqués * </p>
+      <button [disabled] = "!replyForm.valid" type="button" class="btn btn-primary" (click)="addReplies()">Répondre</button>
   </div>
 </form>

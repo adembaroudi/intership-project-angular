@@ -358,7 +358,7 @@
 
               <div *ngFor="let user of users" class="col-lg-4" data-aos="fade-up">
                 <div class="member">
-                  <img src="{{UserPicture + user._id}}" class="img-fluid" alt="">
+                  <img src="{{UserPicture + user._id}}" style="border-radius:50%;" class=" img-fluid-2" alt="">
                   <div class="member-info">
                     <div class="member-info-content">
                       <h4>{{user.Firstname}} {{user.Lastname}}</h4>
@@ -369,10 +369,11 @@
 
                     </div>
                     <div class="social">
-                      <a href=""><i class="icofont-twitter"></i></a>
-                      <a href=""><i class="icofont-facebook"></i></a>
-                      <a href=""><i class="icofont-instagram"></i></a>
+                      <!-- <a href=""><i class="icofont-twitter"></i></a> -->
+                      <!-- <a href=""><i class="icofont-facebook"></i></a> -->
+                      <!-- <a href=""><i class="icofont-instagram"></i></a> -->
                       <a href=""><i class="icofont-linkedin"></i></a>
+                      <a href=""><i class="fa fa-github"></i></a>
                     </div>
                   </div>
                 </div>
@@ -393,7 +394,7 @@
 
       <div class="row">
         <div class="col-lg-6 video-box">
-          <img src="assets/images/why_us.jpg" class="img-fluid" alt="">
+          <img src="assets/images/why_us.jpg" class=" img-fluid" alt="">
           <a href="https://vimeo.com/45830194" class="venobox play-btn mb-4 button popup-vimeo" data-vbtype="video"
             data-autoplay="true"></a>
         </div>
@@ -442,7 +443,7 @@
           <article class="entry">
 
             <div class="entry-img">
-              <img src="{{pictureBaseUrl + r._id}}" routerLink="/article/{{r._id}}" alt="" class="img-fluid">
+              <img src="{{pictureBaseUrl + r._id}}" routerLink="/article/{{r._id}}" alt="" class="img-fluid-2">
             </div>
 
             <h2 class="entry-title">
@@ -549,6 +550,7 @@
                 <div>
                   <mat-form-field style="width: 500px;">
                     <input matInput type="text" formControlName="name" placeholder="Nom & Prénom" />
+                    <mat-error *ngIf="contactForm.hasError('required','name')">*votre nom et prénom est requis</mat-error>
                     <!--<div class="validate"></div>-->
                   </mat-form-field>
                 </div>
@@ -557,6 +559,7 @@
                 <div>
                   <mat-form-field style="width: 500px;">
                     <input matInput type="text" formControlName="subject" placeholder="Sujet" />
+                    <mat-error *ngIf="contactForm.hasError('required','subject')">*quel est votre sujet ?</mat-error>
                     <!--<div class="validate"></div>-->
                   </mat-form-field>
                 </div>
@@ -564,17 +567,20 @@
                 <div>
                   <mat-form-field style="width: 500px;">
                     <input matInput type="email" formControlName="email" placeholder="E-mail" />
+                    <mat-error *ngIf="contactForm.hasError('required','email')">* votre email est requis</mat-error>
+                    <mat-error *ngIf="contactForm.hasError('email','email')">*votre email est invalide</mat-error>
                     <!--<div class="validate"></div>-->
                   </mat-form-field>
                 </div>
                 <div>
                   <mat-form-field style="width: 500px;">
                     <textarea matInput formControlName="contenuMessage" rows="5" placeholder="Message"></textarea>
+                    <mat-error *ngIf="contactForm.hasError('required','contenuMessage')">*quel est votre message ?</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2"
+                  <button [disabled]="!contactForm.valid" type="submit" style="background-color:#428bca;" class="btn btn-primary mr-2 mb-2"
                     (click)="ajouterMessage()">Envoyer</button></div>
                 <br><br>
               </form>

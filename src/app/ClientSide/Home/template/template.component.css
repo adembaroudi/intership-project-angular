@@ -85,9 +85,16 @@
   .img-fluid{
     min-width: 100%;
     max-width: 100% ;
-    min-height: 290px;
-    max-height: 290px;
+    /* min-height: 290px;
+    max-height: 290px; */
+    /* border-radius : 50% */
     /* height: 1000px !important; */
+  }
+  .img-fluid-2{
+    min-width: 100%;
+    max-width: 100% ;
+    min-height: 290px;
+    max-height: 290px; 
   }
 
   

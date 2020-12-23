@@ -46,6 +46,7 @@ import { ReadrepliesModalComponent } from './ClientSide/Blog/readreplies-modal/r
 import {PdfViewerModule} from 'ng2-pdf-viewer'
 import { ProgrammesComponent } from './ClientSide/Trainings/programmes/programmes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CompanyRegistrationComponent } from './ClientSide/Consulting/company-registration/company-registration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     VoteModalComponent,
     ReplyModalComponent,
     ReadrepliesModalComponent,
-    ProgrammesComponent
+    ProgrammesComponent,
+    CompanyRegistrationComponent
   ],
   imports: [
     BrowserModule,

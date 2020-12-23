@@ -5,17 +5,18 @@
       <div class="card-heading"></div>
       <div  class="card-body">
         <h2 class="title">Inscription </h2>
-        <form   [formGroup]="registrationForm">
-            
+        <form   [formGroup]="registrationForm">      
           <div   class="row row-space">
             <div class="form-group">
               <mat-form-field>
                 <input matInput type="text" formControlName="lastname" placeholder="nom" />
+                <mat-error *ngIf="registrationForm.hasError('required','lastname')">*votre nom est requis</mat-error>
               </mat-form-field>
             </div>
             <div class="form-group">
               <mat-form-field>
                 <input matInput type="text" formControlName="firstname" placeholder="prénom" />
+                <mat-error *ngIf="registrationForm.hasError('required','firstname')">*votre prénom est requis</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -24,6 +25,8 @@
               <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Ex. pat@example.com" formControlName="email" />
+                <mat-error *ngIf="registrationForm.hasError('required','email')">* votre email est requis</mat-error>
+                <mat-error *ngIf="registrationForm.hasError('email','email')">*votre email est invalide</mat-error>
               </mat-form-field>
             </div>
             <div class="form-group">
@@ -31,6 +34,8 @@
               <mat-form-field>
                 <mat-label>Numéro tel</mat-label>
                 <input matInput placeholder="+216 xx xxx xxx" formControlName="numTel" />
+                <mat-error *ngIf="registrationForm.hasError('required','numTel')">*votre numéro de téléphone est requis</mat-error>
+
               </mat-form-field>
             </div>
           </div><br>

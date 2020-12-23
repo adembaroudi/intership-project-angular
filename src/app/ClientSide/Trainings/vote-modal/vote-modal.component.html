@@ -4,23 +4,11 @@
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput type="text" placeholder="Ex. pat@example.com" formControlName="email" />
-        <mat-error *ngIf="voteForm.hasError('required','email')">email is required</mat-error>
-        <mat-error *ngIf="voteForm.hasError('email','email')">email is invalid</mat-error>
+        <mat-error *ngIf="voteForm.hasError('required','email')">* votre email est requis</mat-error>
+        <mat-error *ngIf="voteForm.hasError('email','email')">*votre email est invalide</mat-error>
       </mat-form-field>
     </div>
   </div><br>
-  <button [disabled]="!voteForm.valid" type="button" class="btn btn-primary" (click)="register('like') ">like</button>
-  <!-- <button type="button" class="btn btn-secondary" (click)="  onClickMe(votId, 'like')">like </button> -->
+  <button [disabled]="!voteForm.valid" type="button" class="btn btn-primary" (click)="register('like') ">J'aime</button> 
 </form>
-<!-- <p> Please re enter your email</p> -->
-<!-- <form [formGroup]="loginForm">
-  <div class="row row-space">
-    <div class="form-group">
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput type="text" placeholder="Ex. pat@example.com" formControlName="email" />
-      </mat-form-field>
-    </div>
-  </div><br>
-  <button type="button" class="btn btn-primary" (click)="login()">submit</button>
-</form> -->
+

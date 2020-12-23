@@ -12,6 +12,10 @@ export class RegistrationService {
     const url = `${this.BaseUrl}/auth/serviceregistration`;
     return this.http.post(url, reg);
   }
+  companyRegister(reg) {
+    const url = `${this.BaseUrl}/auth/companyregistration`;
+    return this.http.post(url, reg);
+  }
   uploadCv(id ,file){
     const url = `${this.BaseUrl}/auth/file/${id}`;
     return this.http.put(url, file);

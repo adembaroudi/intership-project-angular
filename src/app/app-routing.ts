@@ -14,6 +14,7 @@ import { AccueilComponent } from './Dashboard/accueil/accueil.component';
 import { LoginComponent } from './Dashboard/login/login.component';
 import { RegisterComponent } from './Dashboard/register/register.component';
 import {ProgrammesComponent} from './ClientSide/Trainings/programmes/programmes.component'
+import { CompanyRegistrationComponent } from './ClientSide/Consulting/company-registration/company-registration.component';
 
 
 
@@ -32,6 +33,7 @@ export const AppRoutes: Routes = [
   { path:'article/:id', component: ArticleComponent},
   { path:'services', component: ServicesComponent},
   { path:'serviceRegistrationComponent', component: ServiceRegistrationComponent},
+  { path:'companyRegistration', component: CompanyRegistrationComponent},
 
   { path:'contact', component: ContactComponent},
 
