@@ -120,15 +120,15 @@
       <section id="clients" class="clients">
         <div class="container">
   
-          <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+          <div class="row no-gutters clients-wrap clearfix wow fadeInUp " >
   
-            <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="col-lg-3 col-md-4 col-xs-6 " *ngFor="let p of partenaires ; ">
               <div class="client-logo">
-                <img src="assets/images/clients/expensya.png" class="img-fluid" alt="">
+                <img src="{{pictureBaseUrl + p._id}}" class="img-fluid" alt="">
               </div>
             </div>
   
-            <div class="col-lg-3 col-md-4 col-xs-6">
+            <!-- <div class="col-lg-3 col-md-4 col-xs-6">
               <div class="client-logo">
                 <img src="assets/images/clients/criteol.png" class="img-fluid" alt="">
               </div>
@@ -193,7 +193,7 @@
                   <img src="assets/images/clients/SmartTunisia.png" class="img-fluid" alt="">
                 </div>
             </div>
-  
+   -->
           </div>
   
         </div>

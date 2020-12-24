@@ -21,6 +21,7 @@ import { BlogService } from './services/blog.service';
 import { UserService } from './services/user.service';
 import { CommentService } from './services/comment.service';
 import { ContactService } from './services/contact.service';
+import{PartenairesService} from './services/partenaires.service'
 import { TrainingRegistrationService } from './services/training-registration.service';
 import { RegistrationService } from './services/registration.service';
 import { TemplateComponent } from './ClientSide/Home/template/template.component';
@@ -99,7 +100,7 @@ import { CompanyRegistrationComponent } from './ClientSide/Consulting/company-re
     useClass: AuthInterceptor,
     multi: true,
   },
-    TrainingService, BlogService, UserService, ContactService,CommentService, TrainingRegistrationService, RegistrationService,],
+    TrainingService, BlogService, UserService, ContactService,PartenairesService,CommentService, TrainingRegistrationService, RegistrationService,],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

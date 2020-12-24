@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegistrationService } from "../../../services/registration.service";
 
 @Component({
@@ -11,7 +12,7 @@ export class ServiceRegistrationComponent implements OnInit {
 serv = ["Consulting","Coach","Developpeur"]
 data: FormData;
 file: File;
-  constructor(  private registrationServ: RegistrationService) { }
+  constructor(  private registrationServ: RegistrationService , private  router : Router) { }
 
   ngOnInit(): void {
         
@@ -31,6 +32,8 @@ file: File;
     this.registrationServ.Register(this.registrationForm.value).subscribe((res:any)=>{   
       this.uploadCv(res.service._id)
     });
+    this.router.navigateByUrl("/service");
+
    }
    onchange(selectedValue) {
     console.log(selectedValue);

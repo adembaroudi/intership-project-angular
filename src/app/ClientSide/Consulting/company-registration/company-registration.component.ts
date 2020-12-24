@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { RegistrationService } from 'src/app/services/registration.service';
 export class CompanyRegistrationComponent implements OnInit {
   serv = ["Consulting","Coach","Developpeur"]
   file: File;
-  constructor( private registrationServ: RegistrationService) { }
+  constructor( private registrationServ: RegistrationService , private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,7 @@ export class CompanyRegistrationComponent implements OnInit {
   register(){
     this.registrationServ.companyRegister(this.registrationForm.value).subscribe((res:any)=>{   
     });
+    this.router.navigateByUrl("/service");
    }
   onchange(selectedValue) {
     console.log(selectedValue);
