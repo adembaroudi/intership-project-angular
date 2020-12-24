@@ -50,6 +50,8 @@ export class SingleTrainingComponent implements OnInit {
   }
 
   traininReg(id: number){
+    console.log(id);
+    
     this.router.navigate(['trainingRegistration', id]);
   }
   getTrainingById(id){

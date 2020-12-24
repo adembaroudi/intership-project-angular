@@ -1,48 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { TrainingRegistration } from "../../../entities/trainingRegistration";
 import { TrainingRegistrationService } from "../../../services/training-registration.service";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Training } from 'src/app/entities/training';
-import { TrainingService } from 'src/app/services/training.service';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Training } from "src/app/entities/training";
+import { TrainingService } from "src/app/services/training.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-training-registration',
-  templateUrl: './training-registration.component.html',
-  styleUrls: ['./training-registration.component.css']
+  selector: "app-training-registration",
+  templateUrl: "./training-registration.component.html",
+  styleUrls: ["./training-registration.component.css"],
 })
 export class TrainingRegistrationComponent implements OnInit {
-regs = []
-trainings=[];
-training: Training;
-registrationForm : FormGroup
+  regs = [];
+  trainings = [];
+  training: Training;
+  registrationForm: FormGroup;
   train: any;
-  constructor( private trainingService : TrainingService ,private registrationServ: TrainingRegistrationService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private trainingService: TrainingService,
+    private registrationServ: TrainingRegistrationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.registrationForm = new FormGroup({  
-      firstname : new FormControl('' , [Validators.required] ),
-      lastname : new FormControl('' , [Validators.required] ),  
-      email : new FormControl('' , [Validators.required , Validators.email]),  
-      numTel : new FormControl('' , [Validators.required]),
-      diplome : new FormControl('' , [Validators.required] ),  
-      online : new FormControl('' , [Validators.required]),  
-      resterInforme : new FormControl('' , [Validators.required])
-    //  training : new FormControl(training);  
-    }); 
-    this.trainingService.getTrainingsList().subscribe((res : any)=>{  
-      this.trainings = res  
-      this.trainings.map((e)=>{
-        this.trainingService.getTraining(e._id).subscribe((res : any)=>{
-          this.train = res._id       
-        })
-      })
-    })
+    this.registrationForm = new FormGroup({
+      firstname: new FormControl("", [Validators.required]),
+      lastname: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, Validators.email]),
+      numTel: new FormControl("", [Validators.required]),
+      diplome: new FormControl("", [Validators.required]),
+      online: new FormControl("", [Validators.required]),
+      resterInforme: new FormControl("", [Validators.required]),
+      //  training : new FormControl(training);
+    });
+    this.trainingService.getTrainingsList().subscribe((res: any) => {
+      this.trainings = res;
+      this.trainings.map((e) => {
+        this.trainingService.getTraining(e._id).subscribe((res: any) => {
+          this.train = res._id;
+        });
+      });
+    });
   }
-  register(id){
-    this.registrationServ.Register(id,this.registrationForm.value).subscribe();
-   }
-
-  
-  
-
+  register() {
+    const id = this.route.snapshot.params["id"];
+    if (!id) {
+      this.registrationServ
+        .RegisterWitoutAffectation(this.registrationForm.value)
+        .subscribe();
+      this.router.navigateByUrl("/template");
+    } else {
+      this.registrationServ
+        .Register(id, this.registrationForm.value)
+        .subscribe();
+      this.router.navigateByUrl("/trainings");
+    }
+  }
 }

@@ -7,6 +7,7 @@ import { UserService } from "../../../services/user.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ContactService } from "../../../services/contact.service";
 import { environment } from 'src/environments/environment';
+import { TrainingRegistrationService } from "src/app/services/training-registration.service";
 
 @Component({
   selector: "app-template",
@@ -28,7 +29,8 @@ export class TemplateComponent implements OnInit {
     private blogService: BlogService,
     private userService: UserService,
     private contactService: ContactService,
-    private router: Router
+    private router: Router,
+    private registrationServ: TrainingRegistrationService
   ) {}
 
   contactForm = new FormGroup({
@@ -56,6 +58,18 @@ export class TemplateComponent implements OnInit {
     });
     this.getRecentBlog() 
   }
+  // registrationForm = new FormGroup({  
+  //   firstname : new FormControl('' , [Validators.required] ),
+  //   lastname : new FormControl('' , [Validators.required] ),  
+  //   email : new FormControl('' , [Validators.required , Validators.email]),  
+  //   numTel : new FormControl('' , [Validators.required]),
+  //   diplome : new FormControl('' , [Validators.required] ),  
+  //   online : new FormControl('' , [Validators.required]),  
+  //   resterInforme : new FormControl('' , [Validators.required])
+  // }); 
+  // register(){
+  //   this.registrationServ.RegisterWitoutAffectation(this.registrationForm.value).subscribe();
+  //  }
 
   ajouterMessage() {
     this.contactService.sendMessage(this.contactForm.value).subscribe();
