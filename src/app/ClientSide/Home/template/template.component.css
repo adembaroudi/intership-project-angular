@@ -1,11 +1,7 @@
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-:host(app-template) {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+
     
     .single-well > a {
     display: block;

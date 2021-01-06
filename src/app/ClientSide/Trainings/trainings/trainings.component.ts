@@ -71,15 +71,11 @@ export class TrainingsComponent implements OnInit, OnDestroy {
         this.trainingService.getTraining(id).subscribe((res: any) => {});
         dialogRef.afterClosed().subscribe((res) => {
           console.log(`result : ${res}`);
-          event.target.disabled = true;
-
         });
       } else {
         this.trainingService
           .vote(id, this.idVoteur, { choice: like })
           .subscribe((response: any ) => {
-            event.target.disabled = true;
-       
             const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -99,7 +95,7 @@ export class TrainingsComponent implements OnInit, OnDestroy {
           },error=>{
             const Toast = Swal.mixin({
               toast: true,
-              position: 'center',
+              position: 'top-end',
               showConfirmButton: false,
               timer: 3000,
               timerProgressBar: true,
@@ -121,7 +117,7 @@ export class TrainingsComponent implements OnInit, OnDestroy {
       this.trainingService.getTraining(id).subscribe((res: any) => {});
       dialogRef.afterClosed().subscribe((res) => {
         console.log(`result : ${res}`);
-        event.target.disabled = true;
+      
       });
     }
   }

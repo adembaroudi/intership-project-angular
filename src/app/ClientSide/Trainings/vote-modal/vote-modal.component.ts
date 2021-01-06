@@ -27,34 +27,28 @@ export class VoteModalComponent implements OnInit {
     });
     this.loginForm = new FormGroup({
       email: new FormControl(''),
-    });
- 
-    
+    }); 
   }
   register(like) {
     this.trainingService
       .registerForVote(this.voteForm.value)
       .subscribe((res: any) => {
-        localStorage.setItem("token", res.data);
-        console.log(jwt_decode(localStorage.getItem("token")).data._id);
-    this.onClickMe(jwt_decode(localStorage.getItem("token")).data._id,like) 
-       console.log(jwt_decode(localStorage.getItem("token")).data._id);
-       
-    this.dialogRef.close()
-    
-  });
-  
+        localStorage.setItem("token", res.data);  
+        this.onClickMe(like) 
+        this.dialogRef.close()     
+      }); 
 }
 
-onClickMe( idvot, like) {
+onClickMe(  like) {
   const id = this.trainingService.trainingId
-  if(this.token){
-    this.decode= jwt_decode(this.token)
-    idvot = this.decode.data._id;
-    console.log(idvot);  
+
+  // if(this.token){
+ 
     this.trainingService
-    .vote(id, idvot, { choice: like })
+    .vote(id, jwt_decode(localStorage.getItem("token")).data._id, { choice: like })
     .subscribe((response: any) => {
+      console.log(response);
+      
       this.trainingService.onChangeTrainings.next(response);
       const Toast = Swal.mixin({
         toast: true,
@@ -70,13 +64,13 @@ onClickMe( idvot, like) {
       
       Toast.fire({
         icon: 'success',
-        title: 'merci pour votre reaction'
+        title: 'merci pour votre reaction',
       })
 
     },error=>{
       const Toast = Swal.mixin({
         toast: true,
-        position: 'center',
+        position: 'top-end',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -92,6 +86,6 @@ onClickMe( idvot, like) {
       })
 
     })
-  }
+  // }
 }
 }

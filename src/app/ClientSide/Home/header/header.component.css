@@ -26,8 +26,12 @@
     background-color:white;
     }
     .active{
-      color: #428bca ;
+      color: #428bca!important ;
     }  
+    .active:hover{
+      color: #428bca!important ;
+    }
+  
     .navbar-dark.navbar-toggler-icon {
       background-image: url("data:image/svg+xml;..");
     }
