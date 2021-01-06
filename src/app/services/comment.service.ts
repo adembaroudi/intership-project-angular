@@ -10,10 +10,14 @@ export class CommentService {
   index ; 
   comments : any;
   commentId ; 
-  onChangeBlogs:BehaviorSubject<any>;
+  onChangeBlogs$:BehaviorSubject<any>;
   constructor(private http: HttpClient) {
-    this.onChangeBlogs = new BehaviorSubject([])
+    this.onChangeBlogs$ = new BehaviorSubject(this.getAllComments())
    }
+   reload() {
+    this.onChangeBlogs$.next(this.getAllComments());
+  }
+
   postComment(id,data) {
     const url = `${this.BaseUrl}/comment/Comments/${id}`;
     return this.http.put(url,data);;

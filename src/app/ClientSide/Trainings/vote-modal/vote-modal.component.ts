@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { TrainingService } from "src/app/services/training.service";
 import * as jwt_decode from "jwt-decode";
 import * as bcrypt from 'bcryptjs';
-;
+import { MatDialogRef } from "@angular/material/dialog";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-vote-modal",
@@ -18,7 +19,7 @@ export class VoteModalComponent implements OnInit {
   token = localStorage.getItem("token") || "";
   decode ;
    
-    constructor(private trainingService: TrainingService) {}
+    constructor(private trainingService: TrainingService , public dialogRef : MatDialogRef<VoteModalComponent>) {}
   
   ngOnInit(): void {
     this.voteForm = new FormGroup({
@@ -27,58 +28,70 @@ export class VoteModalComponent implements OnInit {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
     });
-    if(this.token){
-      this.decode = jwt_decode(this.token)
-      this.votId = this.decode.data._id;
-      console.log(this.votId);   
-      return this.decode
-    }
-    else{
-      console.log("hello");
-      
-      this.decode = null
-      return this.decode
-    }
-
+ 
     
   }
   register(like) {
     this.trainingService
       .registerForVote(this.voteForm.value)
       .subscribe((res: any) => {
-        console.log(res);   
         localStorage.setItem("token", res.data);
-        // if(this.token){
-        //   this.decode = jwt_decode(this.token)
-        //   localStorage.setItem("Idvoteur" ,this.decode.data._id)
-        // }
-        
-        // console.log(this.decode.data._id);
-    // const salt = 10;
-    // const id =  bcrypt.hash(this.decode.data._id, salt);
-    this.onClickMe(this.votId ,like)
+        console.log(jwt_decode(localStorage.getItem("token")).data._id);
+    this.onClickMe(jwt_decode(localStorage.getItem("token")).data._id,like) 
+       console.log(jwt_decode(localStorage.getItem("token")).data._id);
+       
+    this.dialogRef.close()
+    
   });
   
 }
+
 onClickMe( idvot, like) {
   const id = this.trainingService.trainingId
   if(this.token){
     this.decode= jwt_decode(this.token)
     idvot = this.decode.data._id;
+    console.log(idvot);  
     this.trainingService
     .vote(id, idvot, { choice: like })
     .subscribe((response: any) => {
       this.trainingService.onChangeTrainings.next(response);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'merci pour votre reaction'
+      })
+
+    },error=>{
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'center',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'error',
+        title: 'vous avez déja aimé cette publication'
+      })
 
     })
   }
 }
-// login() {
-//   this.trainingService
-//   .loginForVote(this.loginForm.value)
-//   .subscribe((res: any) => {
-//     console.log(res);
-//     localStorage.setItem("token", res.voteur);
-//   });
-// }
 }

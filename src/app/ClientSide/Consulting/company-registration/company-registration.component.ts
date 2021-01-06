@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-company-registration',
   templateUrl: './company-registration.component.html',
@@ -24,7 +24,8 @@ export class CompanyRegistrationComponent implements OnInit {
   });
   
   register(){
-    this.registrationServ.companyRegister(this.registrationForm.value).subscribe((res:any)=>{   
+    this.registrationServ.companyRegister(this.registrationForm.value).subscribe((res:any)=>{  
+      Swal.fire('merci pour votre inscription') 
     });
     this.router.navigateByUrl("/service");
    }

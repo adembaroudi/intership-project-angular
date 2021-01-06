@@ -1120,10 +1120,11 @@ section {
 .team .member {
   text-align: center;
   margin-bottom: 20px;
-  background: #343a40;
   position: relative;
   overflow: hidden;
   border-radius: 4px;
+  
+  
 }
 
 .team .member .member-info {
@@ -1134,6 +1135,8 @@ section {
   left: 0;
   right: 0;
   transition: 0.2s;
+  
+  /* margin-left:85px ; */
 }
 
 .team .member .member-info-content {
@@ -1328,7 +1331,7 @@ section {
 }
 
 .blog .entry .entry-content .read-more a:hover {
- /* background: #a6ca63;*/
+ background: #a6ca63;
 }
 
 .blog .entry .entry-content h3 {

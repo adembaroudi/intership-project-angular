@@ -24,19 +24,23 @@ export class ArticleComponent implements OnInit {
   commentForm: FormGroup;
   updateForm: FormGroup;
   articles = [];
-  commenteret = [];
+  commenteret : any
   replys = [];
   pipe = new DatePipe("en-US");
   now = Date.now();
   myFormattedDate = this.pipe.transform(this.now, "yyyy-mm-dd");
   index;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private blogService: BlogService,
     public dialog: MatDialog,
-    private commentService: CommentService
-  ) {}
+    private commentService: CommentService,
+
+  ) {
+    this.getCommentsByBlog(this.id);
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params["id"];
@@ -74,7 +78,13 @@ export class ArticleComponent implements OnInit {
     });
   }
   ajouterComment(id) {
-    this.commentService.postComment(id, this.commentForm.value).subscribe();
+    this.commentService.postComment(id, this.commentForm.value).subscribe((res: any)=>{
+      console.log(res);
+    this.getCommentsByBlog(this.id);
+
+      
+    });
+    // this.commenteret = this.commentService.onChangeBlogs$
   }
   getCommentsByBlog(id) {
     this.commentService.getCommentsByBlog(id).subscribe((res: any) => {

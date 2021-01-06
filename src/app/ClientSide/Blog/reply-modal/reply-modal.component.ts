@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CommentService } from "src/app/services/comment.service";
 import { DatePipe } from "@angular/common";
+import { MatDialogRef } from "@angular/material/dialog";
 
 
 @Component({
@@ -13,7 +14,7 @@ export class ReplyModalComponent implements OnInit {
   replyForm: FormGroup;
   now = Date.now();
   constructor(
-    private commentService: CommentService,
+    private commentService: CommentService,public dialogRef : MatDialogRef<ReplyModalComponent>
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +28,8 @@ export class ReplyModalComponent implements OnInit {
   addReplies() {
       const id = this.commentService.commentId;
       this.commentService.replyComment(id, this.replyForm.value).subscribe((res: any) => {
-          console.log(res);
+          // console.log(res);
+          this.dialogRef.close() 
         });
   }
 }

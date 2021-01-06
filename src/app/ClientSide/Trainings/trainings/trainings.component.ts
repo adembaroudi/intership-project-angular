@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 import * as jwt_decode from "jwt-decode";
 import { MatDialog } from "@angular/material/dialog";
 import { VoteModalComponent } from "../vote-modal/vote-modal.component";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-trainings",
@@ -23,6 +24,7 @@ export class TrainingsComponent implements OnInit, OnDestroy {
   token = localStorage.getItem("token") || "";
   idVoteur ;
   decode;
+  btnClicked = false
   constructor(
     private trainingService: TrainingService,
     private router: Router,
@@ -36,7 +38,11 @@ export class TrainingsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.trainingService.getTrainingsList().subscribe((response: any) => {
       this.trainingService.onChangeTrainings.next(response);
+      console.log(response);
+      
       this.trainings = response;
+    
+      
       this.trainings.map((e) => {
         // this.trainingService.getintroDesc(e._id).subscribe((res: any) => {
         //   this.intros.push(res.intro);
@@ -58,29 +64,64 @@ export class TrainingsComponent implements OnInit, OnDestroy {
     this.router.navigate(["singleTraining", id]);
   }
 
-  openModal(id, like) {
+  openModal(id, like ,event) {
     if (this.token) {
       if (this.idVoteur !== this.decode.data._id) {
         const dialogRef = this.dialog.open(VoteModalComponent);
         this.trainingService.getTraining(id).subscribe((res: any) => {});
         dialogRef.afterClosed().subscribe((res) => {
           console.log(`result : ${res}`);
+          event.target.disabled = true;
+
         });
       } else {
         this.trainingService
           .vote(id, this.idVoteur, { choice: like })
           .subscribe((response: any ) => {
-            this.trainingService.onChangeTrainings.next(response );
+            event.target.disabled = true;
+       
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+            
+            Toast.fire({
+              icon: 'success',
+              title: 'merci pour votre reaction'
+            })
+          },error=>{
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'center',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+            
+            Toast.fire({
+              icon: 'error',
+              title: 'vous avez déja aimé cette publication'
+            })
+
           });
-      
-        console.log("you are already connected");
-        console.log("you are voted");
       }
     } else if (!this.token) {
       const dialogRef = this.dialog.open(VoteModalComponent);
       this.trainingService.getTraining(id).subscribe((res: any) => {});
       dialogRef.afterClosed().subscribe((res) => {
         console.log(`result : ${res}`);
+        event.target.disabled = true;
       });
     }
   }

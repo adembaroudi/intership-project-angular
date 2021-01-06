@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ContactService } from "../../../services/contact.service";
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -24,6 +24,7 @@ export class ContactComponent implements OnInit {
   ajouterMessage(){
     this.contactService.sendMessage(this.contactForm.value).subscribe();
      console.log(this.contactForm.value);
+     Swal.fire('votre message est bien envoyé ')
    }
 
 }

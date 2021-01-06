@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from "../../../services/registration.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-service-registration',
@@ -9,7 +10,7 @@ import { RegistrationService } from "../../../services/registration.service";
   styleUrls: ['./service-registration.component.css']
 })
 export class ServiceRegistrationComponent implements OnInit {
-serv = ["Consulting","Coach","Developpeur"]
+serv = ["Consulting","Coaching","Web Developpement"]
 data: FormData;
 file: File;
   constructor(  private registrationServ: RegistrationService , private  router : Router) { }
@@ -31,6 +32,7 @@ file: File;
   register(){
     this.registrationServ.Register(this.registrationForm.value).subscribe((res:any)=>{   
       this.uploadCv(res.service._id)
+      Swal.fire('merci pour votre inscription')
     });
     this.router.navigateByUrl("/service");
 

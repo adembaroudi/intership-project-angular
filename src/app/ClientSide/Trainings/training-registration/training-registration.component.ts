@@ -5,13 +5,19 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Training } from "src/app/entities/training";
 import { TrainingService } from "src/app/services/training.service";
 import { Router, ActivatedRoute } from "@angular/router";
-
+import Swal from 'sweetalert2';
 @Component({
   selector: "app-training-registration",
   templateUrl: "./training-registration.component.html",
   styleUrls: ["./training-registration.component.css"],
 })
 export class TrainingRegistrationComponent implements OnInit {
+  programmes = [ "FullStack Web(Dans la peau d’un développeur Web)",
+  "Angular/ReactJS",
+  "NodeJs/JavaJee/Spring",
+  "FullStack Web(Dans la peau d’un ingenieur DevOps)",
+  "Business Intelligence",
+  "DATA SCIENCE/DEEP LEARNING",]
   regs = [];
   trainings = [];
   training: Training;
@@ -32,7 +38,8 @@ export class TrainingRegistrationComponent implements OnInit {
       numTel: new FormControl("", [Validators.required]),
       diplome: new FormControl("", [Validators.required]),
       online: new FormControl("", [Validators.required]),
-      resterInforme: new FormControl("", [Validators.required]),
+      typePresence: new FormControl("", [Validators.required]),
+      programme : new FormControl("" , [Validators.required])
       //  training : new FormControl(training);
     });
     this.trainingService.getTrainingsList().subscribe((res: any) => {
@@ -49,13 +56,27 @@ export class TrainingRegistrationComponent implements OnInit {
     if (!id) {
       this.registrationServ
         .RegisterWitoutAffectation(this.registrationForm.value)
-        .subscribe();
-      this.router.navigateByUrl("/template");
+        .subscribe((response  )=>{
+          Swal.fire({title:"merci pour votre inscription",icon:"success"})
+        } , error =>{
+          Swal.fire({title:"vous etes deja inscrits",icon:"error"})
+        });
+     
+      // this.router.navigateByUrl("/template");
     } else {
       this.registrationServ
         .Register(id, this.registrationForm.value)
-        .subscribe();
-      this.router.navigateByUrl("/trainings");
+        .subscribe((res)=>{
+          Swal.fire({title:"merci pour votre inscription",icon:"success"})
+        }, error =>{
+          Swal.fire({title:"vous etes deja inscrits",icon:"error"})
+        });
+
+      // this.router.navigateByUrl("/trainings");
     }
+  }
+  onchange(selectedValue) {
+    console.log(selectedValue);
+    this.registrationForm.controls["programme"].setValue(selectedValue);
   }
 }

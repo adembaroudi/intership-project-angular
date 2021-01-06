@@ -2,11 +2,11 @@
 <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
   <div class="wrapper wrapper--w680">
     <div class="card card-1">
-      <div class="card-heading"></div>
-      <div  class="card-body">
+      <!-- <div class="card-heading"></div> -->
+      <div class="card-body">
         <h2 class="title">Inscription </h2>
-        <form   [formGroup]="registrationForm">      
-          <div   class="row row-space">
+        <form [formGroup]="registrationForm">
+          <div class="row row-space">
             <div class="form-group">
               <mat-form-field>
                 <input matInput type="text" formControlName="lastname" placeholder="nom" />
@@ -16,7 +16,8 @@
             <div class="form-group">
               <mat-form-field>
                 <input matInput type="text" formControlName="firstname" placeholder="prénom" />
-                <mat-error *ngIf="registrationForm.hasError('required','firstname')">*votre prénom est requis</mat-error>
+                <mat-error *ngIf="registrationForm.hasError('required','firstname')">*votre prénom est requis
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -34,36 +35,71 @@
               <mat-form-field>
                 <mat-label>Numéro tel</mat-label>
                 <input matInput placeholder="+216 xx xxx xxx" formControlName="numTel" />
-                <mat-error *ngIf="registrationForm.hasError('required','numTel')">*votre numéro de téléphone est requis</mat-error>
+                <mat-error *ngIf="registrationForm.hasError('required','numTel')">*votre numéro de téléphone est requis
+                </mat-error>
 
               </mat-form-field>
             </div>
           </div><br>
-          <div class="row row-space">
-            <div class="form-group">
-              <p  >voulez vous suivez nos cours : </p>
-              <label><input type="radio"  formControlName="online" value="true"> en ligne</label>
-              <label style="margin-left: 10px;"><input  type="radio" formControlName="online" value="false">présentiel</label> 
-              <br>
+          <div class="row">
+            <div class="form-group vertical-center">
+              <select class="form-control select" formControleName="programme" (click)="onchange($event.target.value)">
+                <option *ngFor="let prog of programmes ">{{prog}}</option>
+              </select>
             </div>
-            <div class="form-group" style="margin-right: 35px;">
-              <p > etes-vous diplomé ?</p>
-              <label><input type="radio" formControlName="diplome" value="true"> oui</label>
-              <label style="margin-left: 10px;"><input type="radio" formControlName="diplome" value="false"> non </label>
-              <br>
+          </div>
+
+
+          <div class="row">
+            <div class="form-group ">
+              <div class="radio-toolbar ">
+                <h5> Vous êtes :</h5><br>
+                <input type="radio" id="info" formControlName="diplome" value="informatique">
+                <label for="info"> Diplomés en informatique</label>&nbsp;&nbsp;
+               
+                <input type="radio" id="reconversion" formControlName="diplome"  value="reconversion">
+                <label for="reconversion"> Un Profil de reconversion</label>
+              </div>
+    
             </div>
           </div><br>
-          <div class="row row-space">
-            <div class="form-group">
-                <p>rester à jour ?</p>
-                <label><input type="radio" formControlName="resterInforme" value="true"> oui </label>
-                <label style="margin-left : 10px;"><input type="radio" formControlName="resterInforme" value="false"> non </label>
+          <div class="row ">
+            <div class="form-group ">
+              <div class="radio-toolbar ">
+                <h5> Je veux assister :</h5><br>
+                <input type="radio" id="quotidien" formControlName="typePresence" value="quotidien">
+                <label for="quotidien"> Du Lundi au Vendredi </label>&nbsp;&nbsp;
+
+                <input type="radio" id="weekend" formControlName="typePresence" value="week-end">
+                <label for="weekend">Chaque Samedi</label>
               </div>
+            
+            </div>
           </div>
-       
-          <div  class="p-t-20">
+          <div class="row ">
+            <div class="form-group ">
+              <div class="radio-toolbar">
+                <h5 > Je veux suivre le programme :</h5><br>
+                <div class="d-flex">
+                  <input type="radio" id="online" formControlName="online" value="en ligne">
+                  <label for="online"> En ligne sur la plateforme (avec assistance des coachs) </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                 
+                  <input type="radio" id="surplace" formControlName="online" value="sur place">
+                  <label for="surplace"> présentiel dans les locaux de FivePoints</label>
+
+                </div>
+              </div>
+            
+            </div>
+          </div><br>
+
+          <div class="p-t-20">
             <br>
-            <button [disabled] = "!registrationForm.valid" type="submit" class="btn btn-primary" (click)="register()">inscription</button>
+            <div class="vertical-center">
+              <button [disabled]="!registrationForm.valid" type="submit" class="btn btn-primary"
+                (click)="register()">inscription</button>
+
+            </div>
           </div>
 
 

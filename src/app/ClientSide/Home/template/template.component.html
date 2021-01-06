@@ -15,6 +15,8 @@
             <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat
               sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque
               accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+              <p>Notre startup vous garantit un bon coaching et une excellente formation dans les meilleures conditions.</p>
+              <a routerLink="/trainingRegistration" class="btn-get-started animated fadeInUp scrollto">inscription</a>
             <!-- <a href="#about" class="btn-get-started animated fadeInUp scrollto">Read More</a> -->
           </div>
         </div>
@@ -29,7 +31,10 @@
             <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat
               sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque
               accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <!-- <a href="#about" class="btn-get-started animated fadeInUp scrollto">Read More</a> -->
+              <p>Notre startup vous garantit un bon coaching et une excellente formation dans les meilleures conditions.</p>
+        
+            <a routerLink="/trainingRegistration" class="btn-get-started animated fadeInUp scrollto">inscription</a>
+    
           </div>
         </div>
       </div>
@@ -43,13 +48,12 @@
             <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat
               sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque
               accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <!-- <a href="#about" class="btn-get-started animated fadeInUp scrollto">Read More</a> -->
+              <p>Notre startup vous garantit un bon coaching et une excellente formation dans les meilleures conditions.</p>
+              <a routerLink="/trainingRegistration" class="btn-get-started animated fadeInUp scrollto">inscription</a>
           </div>
         </div>
       </div>
-
     </div>
-
     <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -59,11 +63,12 @@
       <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-
+    
   </div>
-</section><!-- End Hero -->
+</section>
+<!-- End Hero -->
   <!-- ======= Cta Section ======= -->
-  <section id="cta" class="cta">
+  <!-- <section id="cta" class="cta">
     <div class="container">
 
       <div class="text-center">
@@ -73,7 +78,7 @@
       </div>
 
     </div>
-  </section><br><br>
+  </section><br><br> -->
   <!-- End Cta Section -->
 
 <main id="main">
@@ -91,7 +96,7 @@
           <div class="well-left">
             <div class="single-well">
               <a href="#">
-                <img src="assets/images/1.jpg" alt="" style="width: 540px;height: 270px;">
+                <img src="assets/images/1.jpg" alt="" style="width: 540px;height: 305px;">
               </a>
             </div>
           </div>
@@ -178,6 +183,7 @@
 
   <!-- Services -->
   <section class="site-section">
+    
     <div class="container">
 
       <div class="row mb-5 justify-content-center">
@@ -212,7 +218,7 @@
                 succès, Fivepoints est votre allié pour atteindre vos objectifs grâce à un programme solide et une
                 équipe compétente.</p>
               <br>
-              <p><a href="/trainings" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+              <p><a href="/trainings" class="btn btn-primary mr-2 mb-2">Plus de details</a></p>
             </div>
             <div>
               <h3 style="font-weight: 600;
@@ -222,7 +228,7 @@
                 en travaillant avec toute technologie de pointe. Nos développeurs qualifiés seront là pour vous et
                 veilleront à vous donner une longueur d'avance.</p>
               <br>
-              <p><a href="/services" class="btn btn-primary mr-2 mb-2" style="color:mr-2 mb-2;">Learn More</a></p>
+              <p><a href="/services" class="btn btn-primary mr-2 mb-2" style="color:mr-2 mb-2;">Plus de details</a></p>
             </div>
 
 
@@ -237,7 +243,7 @@
                 veilleront à vous donner une longueur d'avance.</p>
               <br>
               <p><a href="https://academy.fivepoints.fr/home" class="btn btn-primary mr-2 mb-2"
-                  style="color:mr-2 mb-2;">Learn More</a></p>
+                  style="color:mr-2 mb-2;">Plus de details</a></p>
             </div>
           </div>
 
@@ -358,7 +364,7 @@
 
               <div *ngFor="let user of users" class="col-lg-4" data-aos="fade-up">
                 <div class="member">
-                  <img src="{{UserPicture + user._id}}" style="border-radius:50%;" class=" img-fluid-2" alt="">
+                  <img src="{{UserPicture + user._id}}" style="border-radius:50%;" class=" img-fluid-3" alt="">
                   <div class="member-info">
                     <div class="member-info-content">
                       <h4>{{user.Firstname}} {{user.Lastname}}</h4>
@@ -429,17 +435,19 @@
 
 
   <!-- ======= Blog Section ======= -->
+  
   <br><br>
   <section id="blog" class="blog">
     <div class="container">
+  
       <div class="section-title">
         <h1> Dernier blog</h1>
         <h3>Jetez un œil sur notre <span>blog</span></h3>
       </div>
 
       <div style=" display:flex; align-items:center; justify-content: space-between; flex-wrap: wrap;">
-
         <div *ngFor="let r of recent ; let i = index" class="col-lg-4" data-aos="fade-up">
+   
           <article class="entry">
 
             <div class="entry-img">

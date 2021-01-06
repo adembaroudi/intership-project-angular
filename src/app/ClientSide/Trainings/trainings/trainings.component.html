@@ -45,7 +45,7 @@
                   &nbsp;&nbsp;
                   <i class="bx bx-heart"></i>&nbsp;{{training?.nblike}}
                   &nbsp;&nbsp;
-                  <button class="btn btn-outline-secondary" (click)="openModal(training._id ,'like'); trainingService.trainingId=training._id"><i class="bx bx-like"></i></button>
+                  <button   class="btn btn-outline-secondary" (click)="openModal(training._id ,'like' , $event); trainingService.trainingId=training._id"><i class="bx bx-like"></i></button>
                      
                 </div>
               </div>

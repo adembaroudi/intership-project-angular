@@ -96,6 +96,12 @@
     min-height: 290px;
     max-height: 290px; 
   }
+  .img-fluid-3{
+    min-width: 50%;
+    max-width: 50% ;
+    min-height: 180px;
+    max-height: 180px; 
+  }
 
   
 

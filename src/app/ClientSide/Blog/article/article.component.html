@@ -65,7 +65,7 @@
             </div>
 
           </article><!-- End blog entry -->
-          <div *ngFor="let c of commenteret ;let i=index">
+          <div *ngFor="let c of commenteret  ;let i=index ">
             <div class="blog-author clearfix">
               <h4>{{c.name}}</h4>
             
@@ -129,15 +129,15 @@
             <!-- End blog author bio -->
             <div class="blog-comments">
 
-              <a type="button" class="btn btn-primary" (click)=" openReadModal(c._id) ; commentService.commentId = c._id">
-                <h4 class="comments-count"><i class="icofont-eye"></i> {{nbreplies[i]}}</h4>
+              <a style="height: 40px;" type="button" class="btn btn-primary" (click)=" openReadModal(c._id) ; commentService.commentId = c._id">
+                <h4 style="color: white;" class="comments-count"><i class="icofont-eye"></i> {{nbreplies[i]}}</h4>
               </a>
+              <a style="height: 40px;" type="button" class="btn btn-primary"
+                  (click)=" openModal(c._id) ;commentService.commentId = c._id "><i class="icofont-comment"></i></a>
               <div id="comment-1" class="comment clearfix">
                 <img class="comment-img  float-left" alt="">
               </div>
             </div>
-            <h3><a type="button" class="btn btn-primary"
-                (click)=" openModal(c._id) ;commentService.commentId = c._id "><i class="icofont-comment"></i></a></h3>
           </div>
 
 

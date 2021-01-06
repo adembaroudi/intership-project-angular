@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ContactService } from "../../../services/contact.service";
 import { environment } from 'src/environments/environment';
 import { TrainingRegistrationService } from "src/app/services/training-registration.service";
-
+import Swal from 'sweetalert2'
 @Component({
   selector: "app-template",
   templateUrl: "./template.component.html",
@@ -74,6 +74,7 @@ export class TemplateComponent implements OnInit {
   ajouterMessage() {
     this.contactService.sendMessage(this.contactForm.value).subscribe();
     console.log(this.contactForm.value);
+    Swal.fire("votre message est bien envoyé")
   }
   getRecentBlog() {
     this.loading = true;
