@@ -6,9 +6,8 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class BlogService {
 
- 
+ BlogId ; 
   BaseUrl = environment.baseuri;
-
   blogs : any;
   onChangeBlogs:BehaviorSubject<any>;
   constructor(private http: HttpClient) {

@@ -38,17 +38,13 @@ export class TrainingsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.trainingService.getTrainingsList().subscribe((response: any) => {
       this.trainingService.onChangeTrainings.next(response);
-      console.log(response);
-      
-      this.trainings = response;
-    
-      
-      this.trainings.map((e) => {
+      this.trainings = this.trainingService.onChangeTrainings.value;
+      // this.trainings.map((e) => {
         // this.trainingService.getintroDesc(e._id).subscribe((res: any) => {
         //   this.intros.push(res.intro);
         //   console.log(this.intros);
         // });
-      });
+      // });
     });
     if (this.token) {
       this.decode = jwt_decode(this.token);
@@ -68,7 +64,13 @@ export class TrainingsComponent implements OnInit, OnDestroy {
     if (this.token) {
       if (this.idVoteur !== this.decode.data._id) {
         const dialogRef = this.dialog.open(VoteModalComponent);
-        this.trainingService.getTraining(id).subscribe((res: any) => {});
+        this.trainingService.getTraining(id).subscribe((res: any) => {
+          const trani = this.trainings.find(train=>train._id == id)
+          console.log(id);
+          
+    
+          
+        });
         dialogRef.afterClosed().subscribe((res) => {
           console.log(`result : ${res}`);
         });
@@ -76,6 +78,15 @@ export class TrainingsComponent implements OnInit, OnDestroy {
         this.trainingService
           .vote(id, this.idVoteur, { choice: like })
           .subscribe((response: any ) => {
+            const trani = this.trainings.find(train=>train._id == id)
+            console.log(id);
+            
+            this.trainings.map(train=>{
+              if(train._id == id){
+                train.nblike ++
+              }
+              return train
+            })
             const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -114,8 +125,19 @@ export class TrainingsComponent implements OnInit, OnDestroy {
       }
     } else if (!this.token) {
       const dialogRef = this.dialog.open(VoteModalComponent);
-      this.trainingService.getTraining(id).subscribe((res: any) => {});
+      this.trainingService.getTraining(id).subscribe((res: any) => {
+        const trani = this.trainings.find(train=>train._id == id)      
+            this.trainings.map(train=>{
+              if(train._id == id){
+                train.nblike ++
+              }
+              return train
+            })
+            console.log("hi");
+            
+      });
       dialogRef.afterClosed().subscribe((res) => {
+    
         console.log(`result : ${res}`);
       
       });

@@ -15,6 +15,7 @@ import { BlogComponent } from './ClientSide/Blog/blog/blog.component';
 import { SingleTrainingComponent } from './ClientSide/Trainings/single-training/single-training.component';
 import { TrainingsComponent } from './ClientSide/Trainings/trainings/trainings.component';
 import { TrainingRegistrationComponent } from './ClientSide/Trainings/training-registration/training-registration.component';
+import { authAdminService } from './services/authAdmin.service';
 
 import { TrainingService } from './services/training.service';
 import { BlogService } from './services/blog.service';
@@ -24,8 +25,9 @@ import { ContactService } from './services/contact.service';
 import{PartenairesService} from './services/partenaires.service'
 import { TrainingRegistrationService } from './services/training-registration.service';
 import { RegistrationService } from './services/registration.service';
+import{MemberService} from './services/member.service';
+import{GuardbyroleService} from './services/guardbyrole.service'
 import { TemplateComponent } from './ClientSide/Home/template/template.component';
-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
@@ -48,6 +50,16 @@ import {PdfViewerModule} from 'ng2-pdf-viewer'
 import { ProgrammesComponent } from './ClientSide/Trainings/programmes/programmes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CompanyRegistrationComponent } from './ClientSide/Consulting/company-registration/company-registration.component';
+import { AddBlogComponent } from './Dashboard/blog/addBlog/add-blog.component';
+import { ListBlogComponent } from './Dashboard/blog/list-blog/list-blog.component';
+import { ListCommentsComponent } from './Dashboard/Comments/list-comments/list-comments.component';
+import { AddTrainingComponent } from './Dashboard/sessions/add-training/add-training.component';
+import { ListTrainingComponent } from './Dashboard/sessions/list-training/list-training.component';
+import { AddMemberComponent } from './Dashboard/team/add-member/add-member.component';
+import { ListMemberComponent } from './Dashboard/team/list-member/list-member.component';
+import { AddPartenaireComponent } from './Dashboard/Partenaire/add-partenaire/add-partenaire.component';
+import { ListPartenaireComponent } from './Dashboard/Partenaire/list-partenaire/list-partenaire.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +82,17 @@ import { CompanyRegistrationComponent } from './ClientSide/Consulting/company-re
     ReplyModalComponent,
     ReadrepliesModalComponent,
     ProgrammesComponent,
-    CompanyRegistrationComponent
+    CompanyRegistrationComponent,
+    AddBlogComponent,
+    ListBlogComponent,
+    ListCommentsComponent,
+    AddTrainingComponent,
+    ListTrainingComponent,
+    AddMemberComponent,
+    ListMemberComponent,
+    AddPartenaireComponent,
+    ListPartenaireComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -100,7 +122,7 @@ import { CompanyRegistrationComponent } from './ClientSide/Consulting/company-re
     useClass: AuthInterceptor,
     multi: true,
   },
-    TrainingService, BlogService, UserService, ContactService,PartenairesService,CommentService, TrainingRegistrationService, RegistrationService,],
+  authAdminService,TrainingService, BlogService, UserService, ContactService,PartenairesService,CommentService, TrainingRegistrationService, RegistrationService,MemberService , GuardbyroleService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,0 +1,338 @@
+<!-- <br>
+<br>
+<div class="row">
+    <div class="col-lg-10 ml-9 mt-3">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Liste des blogs
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field appearance="outline" style="margin-left: 50px;">
+                <mat-label><i class="fa fa-search" aria-hidden="true"></i>
+                  Search...</mat-label>
+                <input matInput type="text" [(ngModel)]="Search"/>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+          <br />
+          <table class="table table-bordered table-responsive-sm table-hover">
+            <thead>
+              <tr>
+                <th class="text-center">Auteur</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Commenter</th>
+                <th class="text-center">date</th>
+                <th class="text-center">Blog</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor = "let comment of comments ; let i = index"  style="cursor: pointer;">
+              <tr>
+                <td class="text-center"  routerLinkActive="router-link-active">
+                    {{comment.name}}
+                </td>
+                <td class="text-center">{{comment.email}}</td>
+                <td class="text-center"><textarea>{{comment.contenue}}</textarea></td>
+                <td class="text-center"> <time datetime="2020-01-01">{{comment.date | date: 'dd/MM/yyyy'}}</time></td>
+                <td class="text-center"> {{comment.blog.Title}}</td>
+
+                <td class="text-center">
+                <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteComments(i,comment._id)"
+                 ><i class="fa fa-trash" style=" justify-content: center;"
+                    aria-hidden="true"></i></button> 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <nav>
+            <mat-paginator 
+              ></mat-paginator>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+   -->
+   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+        <a class="navbar-brand" href="javascript:void(0)">
+          <img src="assets/images/logo1.png" class="navbar-brand-img" alt="...">
+        </a>
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fa fa-home text-primary"></i>
+                <a class="nav-link-text" routerLinkActive="active"  routerLink="/acceuil" >acceuil</a>
+              </a>
+            </li>
+            <li ngbDropdown class="nav-item dropdown">
+              <a ngbDropdownToggle class="nav-link dropdown-toggle" routerLinkActive="active" 
+              id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="ni ni-laptop text-primary"></i>
+              Sessions
+              </a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                routerLink="/addtraining"><i class="ni ni-fat-add text-primary "></i>Ajouter session</a>
+                <div class="dropdown-divider"></div>
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                  routerLink="/listtraining"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des sessions</a>
+              </div>
+            </li>
+            <li ngbDropdown class="nav-item dropdown">
+              <a ngbDropdownToggle class="nav-link dropdown-toggle" routerLinkActive="active" 
+              id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-newspaper-o text-primary"></i>
+              Blog
+              </a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                routerLink="/addblog"><i class="ni ni-fat-add text-primary "></i>Ajouter blog</a>
+                <div class="dropdown-divider"></div>
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                  routerLink="/listblog"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des blogs</a>
+              </div>
+            </li>
+            <li ngbDropdown class="nav-item dropdown">
+              <a ngbDropdownToggle class="nav-link dropdown-toggle" routerLinkActive="active" 
+              id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-users text-primary"></i>
+              équipe Five Points
+              </a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                routerLink="/addmember"><i class="ni ni-fat-add text-primary "></i>Ajouter membre</a>
+                <div class="dropdown-divider"></div>
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                  routerLink="/listmember"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des membres</a>
+              </div>
+            </li>
+            <li ngbDropdown class="nav-item dropdown">
+              <a ngbDropdownToggle class="nav-link dropdown-toggle" routerLinkActive="active" 
+              id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-handshake-o text-primary"></i>
+              Partenaire
+              </a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                routerLink="/addpartenaire"><i class="ni ni-fat-add text-primary "></i>Ajouter partenaire</a>
+                <div class="dropdown-divider"></div>
+                <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
+                  routerLink="/listpartenaire"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des partenaires</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" >
+                <i class="ni ni-button-power text-red"></i>
+                <a class="nav-link-text" (click)="logout()">Logout</a>
+              </a>
+            </li>
+          </ul>
+          <!-- Divider -->
+          <hr class="my-3">
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Search form -->
+          <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+            <div class="form-group mb-0">
+              <div class="input-group input-group-alternative input-group-merge">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+                <input class="form-control" placeholder="Search" type="text">
+              </div>
+            </div>
+         
+          </form>
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+                data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="assets/images/theme/team-4.jpg">
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                  </div>
+                </div>
+              </a>
+             
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <!-- Card header -->
+            <div class="card-header border-0">
+              <h3 class="mb-0">Liste des commentaires</h3>
+            </div>
+            <!-- Light table -->
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th class="text-center" scope="col" >Auteur</th>
+                    <th class="text-center" scope="col" >Email</th>
+                    <th class="text-center" scope="col" >Commenter</th>
+                    <th class="text-center" scope="col" >Repliques</th>
+                    <th class="text-center" scope="col">Date</th>
+                    <th class="text-center" scope="col">Blog</th>
+                    <th class="text-center" scope="col">Actions</th>
+                 
+                  </tr>
+                </thead>
+                <tbody *ngFor="let comment of comments ; let i = index" class="list">
+                  <tr>
+                    <td class="text-center">
+                      <div class="media align-items-center">
+                          <div class="media-body">
+                              <span class="name mb-0 text-sm">{{comment.name}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        {{comment.email}}
+                    </td>
+                    <td class="text-center">
+                        <textarea rows="2">{{comment.contenue}}</textarea>
+                    </td>
+                    <td class="text-center">
+                      <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
+                      (click)="modalOpened(comment._id,i)" style="border-radius: 150px; width: 50px; height: 50px;;"><i
+                        class="fa fa-folder-open" aria-hidden="true"></i></button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">liste des repliques</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th scope="col" class="sort" data-sort="name">Auteur</th>
+                                    <th scope="col" class="sort" data-sort="budget">Email</th>
+                                    <th scope="col" class="sort" data-sort="status">Contenue</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col" class="sort" data-sort="completion">Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody *ngFor="let reply of replys ; let j = jindex" class="list">
+                                  <tr>
+                                    <td class="text-center">
+                                      <div class="media align-items-center">
+                                          <div class="media-body">
+                                              <span class="name mb-0 text-sm">{{reply.name}}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        {{reply.email}}
+                                    </td>
+                                    <td class="text-center">
+                                        <textarea rows="2">{{reply.contenue}}</textarea>
+                                    </td>
+                                 
+                                    <td class="text-center">
+                                        <time datetime="2020-01-01">{{reply.date | date: 'dd/MM/yyyy'}}</time>
+                                    </td>
+                        
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteReplies(j,reply._id)"
+                                        ><i class="fa fa-trash" style=" justify-content: center;"
+                                           aria-hidden="true"></i></button> 
+                                    </td>
+                                  </tr>
+                                
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                  </td>
+                    <td class="text-center">
+                        <time datetime="2020-01-01">{{comment.date | date: 'dd/MM/yyyy'}}</time>
+                    </td>
+                    <td class="text-center"> 
+                        <div class="media align-items-center">
+
+                            <a href="#" class="avatar rounded-circle mr-3">
+                              <img alt="Image placeholder" src="{{pictureBaseUrl + comment.blog._id}}">
+                            </a>
+                            {{comment.blog.Title}}
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteComments(i,comment._id)"
+                        ><i class="fa fa-trash" style=" justify-content: center;"
+                           aria-hidden="true"></i></button> 
+                    </td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            </div>
+            <!-- Card footer -->
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+ 
+    </div>
+  </div>

@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class UserService {
-
+userId;
   BaseUrl = environment.baseuri;
   constructor(private http: HttpClient) { }
 

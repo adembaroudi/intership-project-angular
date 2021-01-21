@@ -12,11 +12,9 @@ export class CommentService {
   commentId ; 
   onChangeBlogs$:BehaviorSubject<any>;
   constructor(private http: HttpClient) {
-    this.onChangeBlogs$ = new BehaviorSubject(this.getAllComments())
+    this.onChangeBlogs$ = new BehaviorSubject([])
    }
-   reload() {
-    this.onChangeBlogs$.next(this.getAllComments());
-  }
+ 
 
   postComment(id,data) {
     const url = `${this.BaseUrl}/comment/Comments/${id}`;
@@ -58,10 +56,10 @@ export class CommentService {
     const url = `${this.BaseUrl}/replycomment/nbrReplies/${id}`;
     return this.http.get(url);;
   }
-  saveIndex(i){
-   this.index = i  ; 
-    return i
-  }
 
+deleteReplies(idrep){
+  const url = `${this.BaseUrl}/replycomment/Replies/${idrep}`;
+  return this.http.delete(url); 
+}
 
 }

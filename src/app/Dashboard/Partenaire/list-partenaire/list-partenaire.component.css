@@ -1,0 +1,5 @@
+.sidebar .search-form form input[type="text"] {
+    border: 0;
+    padding: 4px;
+    width: calc(100% - 42px);
+  }

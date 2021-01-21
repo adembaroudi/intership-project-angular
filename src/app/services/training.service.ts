@@ -49,5 +49,9 @@ export class TrainingService {
     const url = `${this.BaseUrl}/training/intro/${id}`;
     return this.http.get(url);
   }
+  uplodLogoTraining(id , file){
+    const url = `${this.BaseUrl}/training/Trainings/file/${id}`;
+    return this.http.put(url , file)
+  }
 
 }

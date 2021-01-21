@@ -57,11 +57,7 @@ export class BlogComponent implements OnInit {
 
     this.getRecentBlog();
   }
-  createBlogs() {
-    this.blogService.createBlog(this.BlogForm.value).subscribe((res: any) => {
-      this.upload(res.blog._id);
-    });
-  }
+
 
   upload(id) {
     this.data = new FormData();
@@ -91,11 +87,7 @@ export class BlogComponent implements OnInit {
     });
     this.index = i;
   }
-  deleteBlog(i, id) {
-    this.blogService.deleteBlog(id).subscribe((res: any) => {
-      this.blogs.splice(i, 1);
-    });
-  }
+ 
   articleDetails(id: number) {
     this.router.navigate(["/article", id]);
   }

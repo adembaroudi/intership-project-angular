@@ -34,13 +34,13 @@
 
               <mat-form-field>
                 <mat-label>Numéro tel</mat-label>
-                <input matInput placeholder="+216 xx xxx xxx" formControlName="numTel" />
+                <input matInput placeholder="+216 xx xxx xxx" formControlName="numTel" type="number" />
                 <mat-error *ngIf="registrationForm.hasError('required','numTel')">*votre numéro de téléphone est requis
                 </mat-error>
 
               </mat-form-field>
             </div>
-          </div><br>
+          </div><br><br>
           <div class="row">
             <div class="form-group vertical-center">
               <select class="form-control select" formControleName="programme" (click)="onchange($event.target.value)">

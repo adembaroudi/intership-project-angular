@@ -56,13 +56,14 @@ export class TrainingRegistrationComponent implements OnInit {
     if (!id) {
       this.registrationServ
         .RegisterWitoutAffectation(this.registrationForm.value)
-        .subscribe((response  )=>{
+        .subscribe((response : any  )=>{
           Swal.fire({title:"merci pour votre inscription",icon:"success"})
         } , error =>{
           Swal.fire({title:"vous etes deja inscrits",icon:"error"})
-        });
+        }
+        );
      
-      // this.router.navigateByUrl("/template");
+      this.router.navigateByUrl("/template");
     } else {
       this.registrationServ
         .Register(id, this.registrationForm.value)
@@ -72,7 +73,7 @@ export class TrainingRegistrationComponent implements OnInit {
           Swal.fire({title:"vous etes deja inscrits",icon:"error"})
         });
 
-      // this.router.navigateByUrl("/trainings");
+      this.router.navigateByUrl("/trainings");
     }
   }
   onchange(selectedValue) {

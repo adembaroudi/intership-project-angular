@@ -79,18 +79,17 @@ export class ArticleComponent implements OnInit {
   }
   ajouterComment(id) {
     this.commentService.postComment(id, this.commentForm.value).subscribe((res: any)=>{
-      console.log(res);
-    this.getCommentsByBlog(this.id);
-
-      
+     this.getCommentsByBlog(id)
     });
-    // this.commenteret = this.commentService.onChangeBlogs$
+   
   }
   getCommentsByBlog(id) {
     this.commentService.getCommentsByBlog(id).subscribe((res: any) => {
-      this.commenteret = res.comment;
+      this.commentService.onChangeBlogs$.next(res);
+      this.commenteret = res.comment
       this.commenteret.map((e) => {
         this.commentService.getNbrReplies(e._id).subscribe((res: any) => {
+      this.commentService.onChangeBlogs$.next(res);
           this.nbreplies.push(res) ;
         });
       });

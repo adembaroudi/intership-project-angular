@@ -15,10 +15,33 @@ import { LoginComponent } from "./Dashboard/login/login.component";
 import { RegisterComponent } from "./Dashboard/register/register.component";
 import { ProgrammesComponent } from "./ClientSide/Trainings/programmes/programmes.component";
 import { CompanyRegistrationComponent } from "./ClientSide/Consulting/company-registration/company-registration.component";
+import { AddBlogComponent } from "./Dashboard/blog/addBlog/add-blog.component";
+import { ListBlogComponent } from "./Dashboard/blog/list-blog/list-blog.component";
+import { ListCommentsComponent } from "./Dashboard/Comments/list-comments/list-comments.component";
+import { AddTrainingComponent } from "./Dashboard/sessions/add-training/add-training.component";
+import { ListTrainingComponent } from "./Dashboard/sessions/list-training/list-training.component";
+import { AddPartenaireComponent } from "./Dashboard/Partenaire/add-partenaire/add-partenaire.component";
+import { ListPartenaireComponent } from "./Dashboard/Partenaire/list-partenaire/list-partenaire.component";
+import { AddMemberComponent } from "./Dashboard/team/add-member/add-member.component";
+import { ListMemberComponent } from "./Dashboard/team/list-member/list-member.component";
 
 /*const routes: Routes = []*/
 
 export const AppRoutes: Routes = [
+  { path: "acceuil", component: AccueilComponent },
+  { path: "addblog", component: AddBlogComponent },
+  { path: "listblog", component: ListBlogComponent },
+  { path: "listcomments", component: ListCommentsComponent },
+  { path: "addtraining", component: AddTrainingComponent},
+  { path: "listtraining", component: ListTrainingComponent},
+  { path: "addpartenaire", component: AddPartenaireComponent },
+  { path: "listpartenaire", component: ListPartenaireComponent },
+  { path: "addmember", component: AddMemberComponent },
+  { path: "listmember", component: ListMemberComponent },
+
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+
   { path: "", component: TemplateComponent },
   { path: "template", component: TemplateComponent },
   { path: "trainings", component: TrainingsComponent },
