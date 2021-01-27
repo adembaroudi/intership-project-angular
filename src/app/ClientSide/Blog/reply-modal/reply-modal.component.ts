@@ -28,7 +28,6 @@ export class ReplyModalComponent implements OnInit {
   addReplies() {
       const id = this.commentService.commentId;
       this.commentService.replyComment(id, this.replyForm.value).subscribe((res: any) => {
-          // console.log(res);
           this.dialogRef.close() 
         });
   }

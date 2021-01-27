@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MemberService } from 'src/app/services/member.service';
@@ -13,7 +13,7 @@ export class AddMemberComponent implements OnInit {
 memberForm : FormGroup ; 
 file : File;
 data : FormData;
-roole = ["Coach","Developpeur"];
+roole = ["Coach","Developpeur" , "Program manager" , "social relationship" , "CEO" , "co-founder" , "designeur"];
   constructor(private memeberService: MemberService , private router : Router) { }
 
   ngOnInit(): void {
@@ -40,7 +40,8 @@ roole = ["Coach","Developpeur"];
   addMember(){
     this.memeberService.addMember(this.memberForm.value).subscribe((res:any)=>{
      this.uploadLogo(res.user._id)
-    })
+     Swal.fire({title:`${this.memberForm.value.Firstname} a rejoint l'équipe five points`})
+    },error=>{({title:"oups ! il ya un probléme"})})
   }
   uploadLogo(id){
     this.data = new FormData();
@@ -49,24 +50,23 @@ roole = ["Coach","Developpeur"];
 }
 logout() {
   Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
+    title: 'etes vous sure?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, logout !'
+    confirmButtonText: 'oui !'
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.removeItem('adminToken');
   this.router.navigate(['/']);
       Swal.fire(
-        'Deconnected!',
+        'Deconnecté!',
         'success'
       )
+    }else{
+      Swal.fire({title:"oups ! il ya un probléme " , icon:"error"})
     }
   })
-
 }
-
 }

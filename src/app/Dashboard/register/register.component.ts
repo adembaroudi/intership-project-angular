@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { authAdminService } from 'src/app/services/authAdmin.service';
 import Swal from 'sweetalert2';
 
@@ -10,8 +11,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm : FormGroup
-  constructor( private authService : authAdminService) { }
+  registerForm : FormGroup;
+fieldTextType: boolean;
+  constructor( private authService : authAdminService , private router : Router) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -20,13 +22,24 @@ export class RegisterComponent implements OnInit {
       password: new FormControl('', [
         Validators.required,
       ]),
-    });
+    }); 
+  }
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
   registerAdmin(){
-    this.authService.registerAdmin(this.registerForm.value).subscribe((res:any)=>{
-      Swal.fire({title:"you are registred" , icon:"success"})
-    },error=>{
-      Swal.fire({title : "email in use" , icon : "error"})
-    })
+    if(this.registerForm.value.name == "abir"){
+      this.authService.registerAdmin(this.registerForm.value).subscribe((res:any)=>{
+        Swal.fire({title:"inscription aboutie avec succés" , icon:"success"})
+        this.router.navigateByUrl("/login");
+
+      },error=>{
+        Swal.fire({title : "l'adresse email est déjà utulisé" , icon : "error"})
+      })
+    }
+    else{
+      Swal.fire({title : "vous n'etes administrateur !" , icon : "error"})
+      this.router.navigateByUrl("/");
+    }
   }
 }

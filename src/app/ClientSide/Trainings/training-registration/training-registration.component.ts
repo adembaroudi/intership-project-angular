@@ -58,26 +58,25 @@ export class TrainingRegistrationComponent implements OnInit {
         .RegisterWitoutAffectation(this.registrationForm.value)
         .subscribe((response : any  )=>{
           Swal.fire({title:"merci pour votre inscription",icon:"success"})
+          
+           this.router.navigateByUrl("/template");
         } , error =>{
           Swal.fire({title:"vous etes deja inscrits",icon:"error"})
         }
         );
-     
-      this.router.navigateByUrl("/template");
     } else {
       this.registrationServ
         .Register(id, this.registrationForm.value)
         .subscribe((res)=>{
           Swal.fire({title:"merci pour votre inscription",icon:"success"})
+          this.router.navigateByUrl("/trainings");
         }, error =>{
           Swal.fire({title:"vous etes deja inscrits",icon:"error"})
         });
 
-      this.router.navigateByUrl("/trainings");
     }
   }
   onchange(selectedValue) {
-    console.log(selectedValue);
     this.registrationForm.controls["programme"].setValue(selectedValue);
   }
 }

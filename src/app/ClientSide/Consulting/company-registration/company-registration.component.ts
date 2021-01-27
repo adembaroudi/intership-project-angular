@@ -30,7 +30,6 @@ export class CompanyRegistrationComponent implements OnInit {
     this.router.navigateByUrl("/service");
    }
   onchange(selectedValue) {
-    console.log(selectedValue);
     this.registrationForm.controls["service"].setValue(selectedValue);
   
   }

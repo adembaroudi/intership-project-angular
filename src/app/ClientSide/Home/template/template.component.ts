@@ -51,9 +51,9 @@ export class TemplateComponent implements OnInit {
       });
     });
     this.userService.getUsersList().subscribe((response: any) => {
-      console.log(response);
+
       this.users = response;
-      console.log(this.users);
+  
       
     });
     this.getRecentBlog() 
@@ -73,16 +73,13 @@ export class TemplateComponent implements OnInit {
 
   ajouterMessage() {
     this.contactService.sendMessage(this.contactForm.value).subscribe();
-    console.log(this.contactForm.value);
     Swal.fire("votre message est bien envoyé")
   }
   getRecentBlog() {
     this.loading = true;
     this.blogService.getLatestBlog().subscribe((res: any) => {
       this.blogService.onChangeBlogs.next(res);
-      this.recent = res;
-      console.log(this.recent);
-      
+      this.recent = res;     
     });
   }
   articleDetails(id: number) {

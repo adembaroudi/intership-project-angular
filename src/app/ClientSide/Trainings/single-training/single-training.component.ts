@@ -24,21 +24,13 @@ export class SingleTrainingComponent implements OnInit {
 
   ngOnInit(): void {
     this.training = new Training()
-  
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
-    // this.getTrainingById(this.id)
     this.trainingService.getTraining(this.id)
     .subscribe((data : any) => {
-      console.log(data)
-      this.training = data;
-      console.log(this.training);
-      
+      this.training = data; 
     });
     this.userService.getUsersList().subscribe((res : any)=>{
-      this.users = res
-      console.log(this.users);
-      
+      this.users = res  
       this.users.map((e)=>{
         // this.trainingService.getTrainingsByUser()
       })
@@ -50,14 +42,14 @@ export class SingleTrainingComponent implements OnInit {
   }
 
   traininReg(id: number){
-    console.log(id);
+ 
     
     this.router.navigate(['trainingRegistration', id]);
   }
   getTrainingById(id){
     this.trainingService.getTraining(id)
     .subscribe((data : any) => {
-      console.log(data)
+   
       this.training = data;
     }, error => console.log(error));
   }

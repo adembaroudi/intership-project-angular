@@ -6,14 +6,9 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class authAdminService {
-
- 
   BaseUrl = environment.baseuri;
-
-
-
+  adminToken = JSON.parse(localStorage.getItem("adminToken")) || {};
   constructor(private http: HttpClient) {
-   
    }
   registerAdmin(regAdmin){
     const url = `${this.BaseUrl}/auth/admin`;

@@ -30,34 +30,37 @@ export class AddPartenaireComponent implements OnInit {
     this.data.append("file", this.file, this.file.name);
     this.partenaireService
       .uploadLogo(id, this.data)
-      .subscribe((res: any) => {});
+      .subscribe((res: any) => {},error=>{Swal.fire({title:"l'upload image n'est pas abouti"})});
   }
   addPartenaire() {
     this.partenaireService
       .AjoutPartenaire(this.partenaireForm.value)
       .subscribe((res: any) => {
         this.uploadLogo(res.added._id);
+        this.router.navigateByUrl('/listpartenaire')
+      },error=>{
+        Swal.fire({title:"l'ajout partenaire n'est pas abouti"})
       });
   }
   logout() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'etes vous sure?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, logout !'
+      confirmButtonText: 'oui !'
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem('adminToken');
     this.router.navigate(['/']);
         Swal.fire(
-          'Deconnected!',
+          'Deconnecté!',
           'success'
         )
+      }else{
+        Swal.fire({title:"oups ! il ya un probléme " , icon:"error"})
       }
     })
- 
   }
 }

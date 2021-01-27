@@ -14,9 +14,7 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.partenairesService.getAllPartenaires().subscribe((res:any)=>{
-      this.partenaires = res
-      console.log(this.partenaires);
-      
+      this.partenaires = res  
     })
   }
 

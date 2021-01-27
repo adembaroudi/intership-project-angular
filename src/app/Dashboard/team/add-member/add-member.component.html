@@ -76,7 +76,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="nav-link"  type="submit">
               <i class="ni ni-button-power text-red"></i>
               <a class="nav-link-text" (click)="logout()">Logout</a>
             </a>
@@ -159,18 +159,19 @@
             <strong>Membre</strong>
             <small>Form</small>
           </div>
-          <div class="col-sm-10">
-            <div class="card">
+      
               <form [formGroup]="memberForm" class="card-body ml-3">
                 <div class="row">
                   <div class="form-group col-sm-6">
                     <mat-form-field>
                       <input matInput type="text" formControlName="Firstname" placeholder="saisir votre prénom" />
+                     <mat-error *ngIf="memberForm.hasError('required','Firstname')">*le prénom est réquis</mat-error>
                     </mat-form-field>
                   </div>
                   <div class="form-group col-sm-6">
                     <mat-form-field>
                       <input matInput type="text" formControlName="Lastname" placeholder="saisir votre nom" />
+                     <mat-error *ngIf="memberForm.hasError('required','Firstname')">*le nom est réquis</mat-error>
                     </mat-form-field>
                   </div>
                 </div>
@@ -179,46 +180,50 @@
                     <mat-form-field>
                       <input matInput type="date" formControlName="Datedenaissance"
                         placeholder="votre date de naissance" />
+                     <mat-error *ngIf="memberForm.hasError('required','Datedenaissance')">*la date de naissance est réquise</mat-error>
                     </mat-form-field>
                   </div>
                   <div class="form-group col-sm-6">
                     <mat-form-field>
                       <input matInput type="number" formControlName="numTel" placeholder="votre numéro de telephone" />
+                     <mat-error *ngIf="memberForm.hasError('required','numTel')">*la numéro de téléphone est requis</mat-error>                 
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="form-group col-sm-6">
                     <mat-form-field>
                       <input matInput type="email" formControlName="email" placeholder="votre email" />
+                     <mat-error *ngIf="memberForm.hasError('required','email')">*l'email est réquise</mat-error>                 
+                     <mat-error *ngIf="memberForm.hasError('email','email')">*vérifier l'adresse email</mat-error>                 
                     </mat-form-field>
                   </div>
                   <div class="form-group col-sm-6">
                     <mat-form-field>
                       <input matInput type="text" formControlName="password" placeholder="password" />
+                      <mat-error *ngIf="memberForm.hasError('required','password')">*le mot de pass est réquis</mat-error>                 
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-sm-6">
-
                     <input type="file" class="upload" formControlName="img" name="file-input"
                       (change)="onFileChange($event)" />
-
+                     <mat-error *ngIf="memberForm.hasError('required','img')">*</mat-error>                 
                   </div>
                   <div class="form-group col-sm-6">
                     <select class="form-control select" formControleName="role" (click)="onchange($event.target.value)">
                       <option *ngFor="let r of roole ">{{r}}</option>
                     </select>
+                    <mat-error *ngIf="memberForm.hasError('required','role')">*</mat-error>                 
                   </div>
                 </div>
               </form>
-              <button type="button" class="btn btn-primary px-4" (click)="addMember() ">
-                <i class="fa fa-dot-circle-o"></i> ADD
+              <button [disabled]="!memberForm.valid" type="button" class="btn btn-primary  col-sm-12 px-4" (click)="addMember() ">
+                <i class="fa fa-plus"></i> ADD
               </button>
-            </div>
-          </div>
+            
+          
         </div>
       </div>
     </div>

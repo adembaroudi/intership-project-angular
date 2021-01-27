@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public cdata: any;
+table = [] ;
   title = 'fivepoints-website-angular';
   onActivate(event) {
     let scrollToTop = window.setInterval(() => {
@@ -18,6 +20,8 @@ export class AppComponent {
         }
     }, 16);
 }
+
+
 // onActivate(event) {
 //   window.scroll(0,0);
 // }

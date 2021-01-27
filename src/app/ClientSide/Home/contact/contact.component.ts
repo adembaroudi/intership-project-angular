@@ -23,7 +23,6 @@ export class ContactComponent implements OnInit {
 
   ajouterMessage(){
     this.contactService.sendMessage(this.contactForm.value).subscribe();
-     console.log(this.contactForm.value);
      Swal.fire('votre message est bien envoyé ')
    }
 

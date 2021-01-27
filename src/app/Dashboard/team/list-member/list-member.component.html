@@ -75,7 +75,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="nav-link"  type="submit">
               <i class="ni ni-button-power text-red"></i>
               <a class="nav-link-text" (click)="logout()">Logout</a>
             </a>
@@ -99,9 +99,9 @@
           <div class="form-group mb-0">
             <div class="input-group input-group-alternative input-group-merge">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
               </div>
-              <input class="form-control" placeholder="Search" type="text">
+              <input class="form-control" placeholder="Search" type="text" name="Search" [(ngModel)]="Search" >
             </div>
           </div>
 
@@ -155,11 +155,11 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
-            <h3 class="mb-0">Liste des blogs</h3>
+            <h3 class="mb-0"><strong>Liste des membres</strong></h3>
           </div>
           <!-- Light table -->
-          <div class="table-responsive">
-            <table class="table align-items-center table-flush">
+          <div >
+            <table class="table align-items-center table-flush table-responsive">
               <thead class="thead-light">
                 <tr>
                   <th class="text-center" scope="col">Nom & Prénom</th>
@@ -172,7 +172,7 @@
 
                 </tr>
               </thead>
-              <tbody *ngFor="let member of members ; let i = index" class="list">
+              <tbody *ngFor="let member of members|listmembrespipe:Search ; let i = index" class="list">
                 <tr>
                   <td class="text-center" scope="row">
                     <div class="media align-items-center">
@@ -187,6 +187,7 @@
                   <td class="text-center">
                     {{member.numTel}}
                   </td>
+
                   <td class="text-center">
                     {{member.email}}
                   </td>
@@ -194,7 +195,7 @@
                   <td class="text-center">
                     <div class="media align-items-center">
 
-                      <a href="#" class=" text-center avatar rounded-circle mr-3">
+                      <a  class=" text-center avatar rounded-circle mr-3">
                         <img alt="Image placeholder" style="height: 70px;width: 80px;"
                           src="{{pictureBaseUrl + member._id}}">
                       </a>
@@ -203,11 +204,10 @@
                   </td>
                   <td class="text-center">
                     <button type="button" class="btn btn-danger "
-                      style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteMember(member._id,i)"><i
+                      style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteMember(member._id,i) "><i
                         class="fa fa-trash" style=" justify-content: center;" aria-hidden="true"></i></button>
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>

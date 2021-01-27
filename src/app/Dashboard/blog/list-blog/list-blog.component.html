@@ -26,10 +26,10 @@
               </a>
               <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/addtraining"><i class="ni ni-fat-add "></i>Ajouter session</a>
+                routerLink="/addtraining"><i class="ni ni-fat-add text-primary "></i>Ajouter session</a>
                 <div class="dropdown-divider"></div>
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                  routerLink="/listtraining"><i class="ni ni-bullet-list-67 "></i>Liste des sessions</a>
+                  routerLink="/listtraining"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des sessions</a>
               </div>
             </li>
             <li class="nav-item">
@@ -46,10 +46,10 @@
               </a>
               <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/addmember"><i class="ni ni-fat-add "></i>Ajouter membre</a>
+                routerLink="/addmember"><i class="ni ni-fat-add text-primary "></i>Ajouter membre</a>
                 <div class="dropdown-divider"></div>
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                  routerLink="/listmember"><i class="ni ni-bullet-list-67 "></i>Liste des membres</a>
+                  routerLink="/listmember"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des membres</a>
               </div>
             </li>
     
@@ -75,7 +75,7 @@
               </div>
             </li>  
             <li class="nav-item">
-              <a class="nav-link" >
+              <a class="nav-link" type="submit" >
                 <i class="ni ni-button-power text-red"></i>
                 <a class="nav-link-text" (click)="logout()">Logout</a>
               </a>
@@ -99,9 +99,9 @@
             <div class="form-group mb-0">
               <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  <span class="input-group-text"><i class="fa fa-search"></i></span>
                 </div>
-                <input class="form-control" placeholder="Search" type="text">
+                <input class="form-control" placeholder="Search" type="text" name="Search" [(ngModel)]="Search">
               </div>
             </div>
          
@@ -153,7 +153,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Liste des blogs</h3>
+              <h3 class="mb-0"><strong>Liste des blogs</strong></h3>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
@@ -165,12 +165,10 @@
                     <th class="text-center" scope="col" >Auteur</th>
                     <th class="text-center" scope="col">Contenue</th>
                     <th class="text-center" scope="col">Image</th>
-
-                    <th class="text-center" scope="col">Actions</th>
-                 
+                    <th class="text-center" scope="col">Actions</th> 
                   </tr>
                 </thead>
-                <tbody *ngFor="let blog of blogs ; let i = index" class="list">
+                <tbody *ngFor="let blog of blogs|listblogpipe:Search ; let i = index" class="list">
                   <tr>
                     <td class="text-center">
                       <div class="media align-items-center">
@@ -193,7 +191,7 @@
                               <img alt="Image placeholder"  style="height: 70px;width: 80px;" src="{{pictureBaseUrl + blog._id}}">
                             </a>
                     </td>
-                    <td>
+                    <td class="text-center">
                       <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
                       (click)="modalOpened(i, blog)" style="border-radius: 150px; width: 50px; height: 50px;;"><i
                         class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
@@ -201,43 +199,47 @@
                       aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">edit blog</h5>
+                          <div class="modal-header ">
+                            <strong>Modifier Blog</strong>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-    
-    
-                          <form [formGroup]="updateForm">
-                            <div classe="form-group">
-                              <mat-form-field appearance="legacy">
-                                <input matInput placeholder="Title" formControlName="Title">
-                              
-                              </mat-form-field>
-                            </div>
-    
-                        
-    
-                            <div classe="form-group">
-                              <mat-form-field appearance="legacy">
-                                <input matInput placeholder="auteur" formControlName="auteur">
-                               
-                              </mat-form-field>
-                            </div>
-    
-                            <div classe="form-group">
-                              <mat-form-field>
-                                <textarea matInput formControlName="Contenue" rows="5" placeholder="Contenue"></textarea>
-                              </mat-form-field>
-                            </div>
-                            <div classe="form-group">
-                              <input type="file" class="upload" accept="image/*" fromControlName="image" name="file-input" (change)=" onFileChange($event)">
-                           
+                          <div>
+                  <div >  
+                      <form [formGroup]="updateForm" class="card-body ml-3">
+                        <div class="row">
+                          <div class="form-group col-sm-6">
+                            <mat-form-field>
+                              <input matInput type="text" formControlName="Title" />
+                            </mat-form-field>
                           </div>
-    
-                          </form>
-    
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-sm-6">
+                            <mat-form-field>
+                              <input matInput type="text" formControlName="auteur"  />
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      
+                        <div class="row">
+                          <div class="form-group col-sm-6">
+                            <mat-form-field>
+                              <textarea matInput rows="5" type="text" formControlName="Contenue"
+                         ></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <input type="file" class="upload" accept="image/*" fromControlName="image"
+                        name="file-input" (change)=" onFileChange($event)">
+                      </div>
+                    </div>
+                      </form>         
+                  </div>
+                     </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" (click)="updateBlog(blog._id)">Save
@@ -246,12 +248,11 @@
                         </div>
                       </div>
                     </div>
-                        <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;" 
+                        <button type="button" class="btn btn-danger " style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteBlog(i,blog._id)" 
                         ><i class="fa fa-trash" style=" justify-content: center;"
                            aria-hidden="true"></i></button> 
                     </td>
-                  </tr>
-                
+                  </tr>         
                 </tbody>
               </table>
             </div>

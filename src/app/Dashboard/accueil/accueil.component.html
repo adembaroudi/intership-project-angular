@@ -1,3 +1,4 @@
+<app-header></app-header>
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
       <!-- Brand -->
@@ -14,6 +15,12 @@
             <li class="nav-item">
               <a class="nav-link">
                 <i class="fa fa-home text-primary"></i>
+                <a class="nav-link-text"  routerLink="/template" >home</a>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fa fa-home text-primary"></i>
                 <a class="nav-link-text"  routerLink="/acceuil" >acceuil</a>
               </a>
             </li>
@@ -25,10 +32,10 @@
               </a>
               <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/addtraining">Ajouter session</a>
+                routerLink="/addtraining"><i class="ni ni-fat-add text-primary "></i>Ajouter session</a>
                 <div class="dropdown-divider"></div>
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                  routerLink="/listtraining">Liste des sessions</a>
+                  routerLink="/listtraining"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des sessions</a>
               </div>
             </li>
             <li ngbDropdown class="nav-item dropdown">
@@ -39,10 +46,10 @@
               </a>
               <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/addblog">Ajouter blog</a>
+                routerLink="/addblog"><i class="ni ni-fat-add text-primary "></i>Ajouter blog</a>
                 <div class="dropdown-divider"></div>
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                  routerLink="/listblog">Liste des blogs</a>
+                  routerLink="/listblog"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des blogs</a>
               </div>
             </li>
             <li ngbDropdown class="nav-item dropdown">
@@ -53,10 +60,10 @@
               </a>
               <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/addmember">Ajouter membre</a>
+                routerLink="/addmember"><i class="ni ni-fat-add text-primary "></i>Ajouter membre</a>
                 <div class="dropdown-divider"></div>
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                  routerLink="/listmember">Liste des membres</a>
+                  routerLink="/listmember"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des membres</a>
               </div>
             </li>
     
@@ -74,14 +81,14 @@
               </a>
               <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/addpartenaire">Ajouter partenaire</a>
+                routerLink="/addpartenaire"><i class="ni ni-fat-add text-primary "></i>Ajouter partenaire</a>
                 <div class="dropdown-divider"></div>
                 <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                  routerLink="/listpartenaire">Liste des partenaires</a>
+                  routerLink="/listpartenaire"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des partenaires</a>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" >
+              <a class="nav-link"  type="submit">
                 <i class="ni ni-button-power text-red"></i>
                 <a class="nav-link-text" (click)="logout()">Logout</a>
               </a>

@@ -24,11 +24,11 @@ import { AddPartenaireComponent } from "./Dashboard/Partenaire/add-partenaire/ad
 import { ListPartenaireComponent } from "./Dashboard/Partenaire/list-partenaire/list-partenaire.component";
 import { AddMemberComponent } from "./Dashboard/team/add-member/add-member.component";
 import { ListMemberComponent } from "./Dashboard/team/list-member/list-member.component";
-
+import {AuthguardGuard} from "./authguard.guard"
 /*const routes: Routes = []*/
 
 export const AppRoutes: Routes = [
-  { path: "acceuil", component: AccueilComponent },
+  { path: "acceuil", component: AccueilComponent  },
   { path: "addblog", component: AddBlogComponent },
   { path: "listblog", component: ListBlogComponent },
   { path: "listcomments", component: ListCommentsComponent },
@@ -43,7 +43,7 @@ export const AppRoutes: Routes = [
   { path: "register", component: RegisterComponent },
 
   { path: "", component: TemplateComponent },
-  { path: "template", component: TemplateComponent },
+  { path: "template", component: TemplateComponent  },
   { path: "trainings", component: TrainingsComponent },
   { path: "programmes", component: ProgrammesComponent },
   { path: "singleTraining/:id", component: SingleTrainingComponent },

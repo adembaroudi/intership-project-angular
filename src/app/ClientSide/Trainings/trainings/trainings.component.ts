@@ -78,9 +78,7 @@ export class TrainingsComponent implements OnInit, OnDestroy {
         this.trainingService
           .vote(id, this.idVoteur, { choice: like })
           .subscribe((response: any ) => {
-            const trani = this.trainings.find(train=>train._id == id)
-            console.log(id);
-            
+            const trani = this.trainings.find(train=>train._id == id)     
             this.trainings.map(train=>{
               if(train._id == id){
                 train.nblike ++

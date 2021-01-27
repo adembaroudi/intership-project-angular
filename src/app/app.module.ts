@@ -26,7 +26,7 @@ import{PartenairesService} from './services/partenaires.service'
 import { TrainingRegistrationService } from './services/training-registration.service';
 import { RegistrationService } from './services/registration.service';
 import{MemberService} from './services/member.service';
-import{GuardbyroleService} from './services/guardbyrole.service'
+
 import { TemplateComponent } from './ClientSide/Home/template/template.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -59,6 +59,11 @@ import { AddMemberComponent } from './Dashboard/team/add-member/add-member.compo
 import { ListMemberComponent } from './Dashboard/team/list-member/list-member.component';
 import { AddPartenaireComponent } from './Dashboard/Partenaire/add-partenaire/add-partenaire.component';
 import { ListPartenaireComponent } from './Dashboard/Partenaire/list-partenaire/list-partenaire.component';
+import { ListblogpipePipe } from './pipes/listblogpipe.pipe';
+import { ListsessionspipePipe } from './pipes/listsessionspipe.pipe';
+import { ListmembrespipePipe } from './pipes/listmembrespipe.pipe';
+import { ListpartenairespipePipe } from './pipes/listpartenairespipe.pipe';
+import { ListcommentairespipePipe } from './pipes/listcommentairespipe.pipe';
 
 @NgModule({
   declarations: [
@@ -92,6 +97,11 @@ import { ListPartenaireComponent } from './Dashboard/Partenaire/list-partenaire/
     ListMemberComponent,
     AddPartenaireComponent,
     ListPartenaireComponent,
+    ListblogpipePipe,
+    ListsessionspipePipe,
+    ListmembrespipePipe,
+    ListpartenairespipePipe,
+    ListcommentairespipePipe,
   
   ],
   imports: [
@@ -122,7 +132,7 @@ import { ListPartenaireComponent } from './Dashboard/Partenaire/list-partenaire/
     useClass: AuthInterceptor,
     multi: true,
   },
-  authAdminService,TrainingService, BlogService, UserService, ContactService,PartenairesService,CommentService, TrainingRegistrationService, RegistrationService,MemberService , GuardbyroleService],
+  authAdminService,TrainingService, BlogService, UserService, ContactService,PartenairesService,CommentService, TrainingRegistrationService, RegistrationService,MemberService ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -12,7 +12,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-loginForm : FormGroup
+loginForm : FormGroup;
+hide = true
+fieldTextType: boolean;
   constructor(private authService : authAdminService , private router : Router) { }
 
   ngOnInit(): void {
@@ -20,15 +22,17 @@ loginForm : FormGroup
     email : new FormControl ('' , Validators.required),
     password : new FormControl ('' , Validators.required)
   });
-  }
+}
+toggleFieldTextType() {
+  this.fieldTextType = !this.fieldTextType;
+}
   loginAdmin(){
     this.authService.loginAdmin(this.loginForm.value).subscribe((res:any)=>{
-      console.log(res);
       localStorage.setItem("adminToken", res.admin);
       this.router.navigateByUrl('/acceuil') 
       Swal.fire({title:"logged" , icon:"success"})
     },error=>{
-      Swal.fire({title:"please check your email addres or password again"})
+      Swal.fire({title:"please check your email addres or password again" , icon:"error"})
     })
   }
 

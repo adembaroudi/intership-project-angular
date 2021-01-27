@@ -77,7 +77,7 @@
               </a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link" >
+              <a class="nav-link"  type="submit" >
                 <i class="ni ni-button-power text-red"></i>
                 <a class="nav-link-text" (click)="logout()">Logout</a>
               </a>
@@ -101,9 +101,9 @@
             <div class="form-group mb-0">
               <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  <span class="input-group-text"><i class="fa fa-search"></i></span>
                 </div>
-                <input class="form-control" placeholder="Search" type="text">
+                <input class="form-control" placeholder="Rechercher" type="text" name="Search" [(ngModel)]="Search">
               </div>
             </div>
          
@@ -156,7 +156,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Liste des partenaires</h3>
+              <h3 class="mb-0"><strong>Liste des partenaires</strong></h3>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
@@ -168,7 +168,7 @@
                     <th class="text-center" scope="col" >Actions</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let partenaire of partenaires ; let i = index" class="list">
+                <tbody *ngFor="let partenaire of partenaires|listpartenairespipe:Search ; let i = index" class="list">
                   <tr>
                     <td class="text-center">
                       <div class="media align-items-center">

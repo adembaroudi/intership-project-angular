@@ -43,8 +43,9 @@
           </div><br><br>
           <div class="row">
             <div class="form-group vertical-center">
+              <h5> veuillez choisir une session :</h5><br>
               <select class="form-control select" formControleName="programme" (click)="onchange($event.target.value)">
-                <option *ngFor="let prog of programmes ">{{prog}}</option>
+                <option *ngFor="let training of trainings ">{{training.title}}</option>
               </select>
             </div>
           </div>

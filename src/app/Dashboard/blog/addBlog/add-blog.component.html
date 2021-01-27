@@ -26,10 +26,10 @@
             </a>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-              routerLink="/addtraining"><i class="ni ni-fat-add "></i>Ajouter session</a>
+              routerLink="/addtraining"><i class="ni ni-fat-add text-primary "></i>Ajouter session</a>
               <div class="dropdown-divider"></div>
               <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/listtraining"><i class="ni ni-bullet-list-67 "></i>Liste des sessions</a>
+                routerLink="/listtraining"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des sessions</a>
             </div>
           </li>
           <li class="nav-item">
@@ -46,10 +46,10 @@
             </a>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-              routerLink="/addmember"><i class="ni ni-fat-add "></i>Ajouter membre</a>
+              routerLink="/addmember"><i class="ni ni-fat-add text-primary "></i>Ajouter membre</a>
               <div class="dropdown-divider"></div>
               <a ngbDropdownItem class="dropdown-item" routerLinkActive="active" href="#"
-                routerLink="/listmember"><i class="ni ni-bullet-list-67 "></i>Liste des membres</a>
+                routerLink="/listmember"><i class="ni ni-bullet-list-67 text-primary "></i>Liste des membres</a>
             </div>
           </li>
   
@@ -75,7 +75,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" >
+            <a class="nav-link" type="submit" >
               <i class="ni ni-button-power text-red"></i>
               <a class="nav-link-text" (click)="logout()">Logout</a>
             </a>
@@ -126,7 +126,7 @@
                   <img alt="Image placeholder" src="assets/images/theme/team-4.jpg">
                 </span>
                 <div class="media-body  ml-2  d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">{{admin}}</span>
+                  <span class="mb-0 text-sm  font-weight-bold"></span>
                 </div>
               </div>
             </a>
@@ -165,11 +165,14 @@
           <mat-form-field>
             <input matInput type="text" formControlName="Title" id="inputError2"
               placeholder="Saisir le titre de blog" />
+              <mat-error *ngIf="blogForm.hasError('required','Title')">* le titre de blog est requis</mat-error>
+            
           </mat-form-field>
         </div>
         <div class="form-group col-sm-6">
           <mat-form-field>
             <input matInput type="text" formControlName="auteur" placeholder="Saisir le nom d'auteur" />
+            <mat-error *ngIf="blogForm.hasError('required','auteur')">* le nom de l'auteur de blog est requis</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -178,15 +181,17 @@
           <mat-form-field>
             <textarea matInput rows="5" type="text" formControlName="Contenue"
               placeholder="saisir le contenue du blog" ></textarea>
+              <mat-error *ngIf="blogForm.hasError('required','Contenue')">* le contenue de blog est requis</mat-error>
           </mat-form-field>
         </div>
         <div class="form-group col-sm-6">
           <input type="file" class="upload" formControlName="image" name="file-input" (change)="onFileChange($event)" />
+          <!-- <mat-error *ngIf="blogForm.hasError('required','image')">* l'image de blog est requis</mat-error> -->
         </div>
       </div>
     </form>
-    <button type="button" class="btn btn-primary px-4 col-sm-12" (click)="addBlog()">
-      <i class="fa fa-dot-circle-o"></i> ADD
+    <button  [disabled]="!blogForm.valid" type="button" class="btn btn-primary px-4 col-sm-12" (click)="addBlog()">
+      <i class="fa fa-plus"></i> ADD
     </button>
   
 </div>

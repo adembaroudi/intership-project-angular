@@ -7,13 +7,13 @@ import { environment } from 'src/environments/environment';
 })
 export class MemberService {
   BaseUrl = environment.baseuri;
+  UserId;
   constructor( private http : HttpClient) { }
   addMember( data) {
     const url = `${this.BaseUrl}/user/Users`;
     return this.http.post(url,data);;
   }
   getAllMembers(){
-
     const url = `${this.BaseUrl}/user/Users`;
     return this.http.get(url);;
   }

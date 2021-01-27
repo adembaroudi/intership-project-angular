@@ -93,9 +93,7 @@ export class BlogComponent implements OnInit {
   }
   getRecentBlog() {
     this.blogService.getLatestBlog().subscribe((res: any) => {
-      this.recent = res;
-      console.log(this.recent);
-      
+      this.recent = res; 
     });
   }
 }

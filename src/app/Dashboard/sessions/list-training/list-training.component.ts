@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Training } from "src/app/entities/training";
+import { MemberService } from "src/app/services/member.service";
 import { TrainingService } from "src/app/services/training.service";
 import { environment } from "src/environments/environment";
 import Swal from "sweetalert2";
@@ -13,6 +14,7 @@ import Swal from "sweetalert2";
 })
 export class ListTrainingComponent implements OnInit {
   pictureBaseUrl: String = environment.baseuri + "/training/getTrainingLogo/";
+  imageBaseUrl: String = environment.baseuri + "/user/getUserLogo/";
   niveau = ["Begginer", "Intermediate", " Advanced"];
   category= ["Web_Development","Data_Science","AI"]
   Search = "";
@@ -21,17 +23,21 @@ export class ListTrainingComponent implements OnInit {
   file: File;
   data: FormData;
   index;
-  Training: Training;
-  id;
+  idMember;
+  members= []
   constructor(
     private trainingService: TrainingService,
+    private memberService : MemberService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.trainingService.getTrainingsList().subscribe((res: any) => {
+    this.trainingService.getTrainingsList().subscribe((res: any) => {  
       this.trainings = res;
     });
+    this.memberService.getAllMembers().subscribe((res:any)=>{
+      this.members= res
+    })
     this.updateForm = new FormGroup({
       prix: new FormControl("", Validators.required),
       title: new FormControl("", Validators.required),
@@ -43,6 +49,7 @@ export class ListTrainingComponent implements OnInit {
       nblike: new FormControl("", Validators.required),
       level: new FormControl("", Validators.required),
       TrainingCategory: new FormControl("", Validators.required),
+      member : new FormControl("" , Validators.required)
     });
   }
   onFileChange(event) {
@@ -54,8 +61,12 @@ export class ListTrainingComponent implements OnInit {
     console.log(selectedValue);
     this.updateForm.controls["level"].setValue(selectedValue);
   }
+  onchangeMember(selectedValue) {
+    this.idMember=selectedValue
+    this.updateForm.controls["member"].setValue(selectedValue);
+  }
   onchangeCategory(selectedValue) {
-    console.log(selectedValue);
+  
     this.updateForm.controls["TrainingCategory"].setValue(selectedValue);
   }
   modalOpened(i, training) {
@@ -69,14 +80,15 @@ export class ListTrainingComponent implements OnInit {
       level: new FormControl(training.level),
       TrainingCategory: new FormControl(training.TrainingCategory),
       picture: new FormControl(this.trainings[i].picture),
+      member : new FormControl(training.member)
     });
     this.index = i;
   }
-  updateTraining(id) {
+  updateTraining(id , idMember) {
     this.trainingService.updateTraining(id, this.updateForm.value).subscribe(
       (res: any) => {
-        this.uploadLogo(res._id);
         Swal.fire({ title: "la session est bien modifié", icon: "success" });
+        this.uploadLogo(res.training._id);
       },
       (error) => {
         Swal.fire({ title: "oups il ya un probleme", icon: "error" });
@@ -110,19 +122,23 @@ export class ListTrainingComponent implements OnInit {
   }
   logout() {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
+      title: 'etes vous sure?',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, logout !",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'oui !'
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.removeItem("adminToken");
-        this.router.navigate(["/"]);
-        Swal.fire("Deconnected!", "success");
+        localStorage.removeItem('adminToken');
+    this.router.navigate(['/']);
+        Swal.fire(
+          'Deconnecté!',
+          'success'
+        )
+      }else{
+        Swal.fire({title:"oups ! il ya un probléme " , icon:"error"})
       }
-    });
+    })
   }
 }

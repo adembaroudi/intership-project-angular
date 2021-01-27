@@ -42,8 +42,9 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <h1 class="text-white">Create an account</h1>
-              <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+              <h1 class="text-white">Ce formulaire est spécefique pour l'administrateur </h1>
+              <p class="text-white"> Merci de <a routerLink="/" class="text-black">retourner</a> à la page d'acceuil</p>
+
             </div>
           </div>
         </div>
@@ -83,11 +84,23 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" formControlName="password" placeholder="Password" type="password">
+                    <input class="form-control" formControlName="password" placeholder="Password" [type]="fieldTextType ? 'text' : 'password'">
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i
+                          class="fa"
+                          [ngClass]="{
+                            'fa-eye-slash': !fieldTextType,
+                            'fa-eye': fieldTextType
+                          }"
+                          (click)="toggleFieldTextType()"
+                        ></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4" (click)="registerAdmin()">Create account</button>
+                  <button [disabled]="!registerForm.valid" type="button" class="btn btn-primary mt-4" (click)="registerAdmin()">Créer</button>
                 </div>
               </form>
             </div>

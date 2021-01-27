@@ -19,7 +19,7 @@ now = Date.now();
 myFormattedDate = this.pipe.transform(this.now, "yyyy-mm-dd");
 file: File;
 data: FormData;
-decode = jwt_decode(localStorage.getItem("adminToken"))
+// decode = jwt_decode(localStorage.getItem("adminToken"))
   constructor(private blogService : BlogService , private router : Router) { }
 
   ngOnInit(): void {
@@ -28,9 +28,9 @@ decode = jwt_decode(localStorage.getItem("adminToken"))
       // date : new FormControl(this.myFormattedDate),
       auteur : new FormControl('', Validators.required),
       Contenue: new FormControl('' , Validators.required),
-      image : new FormControl('')
+      image : new FormControl('' ,  Validators.required)
     })
-    this.admin = this.decode.email   
+    // this.admin = this.decode.email   
   }
   onFileChange(event) {
     if (event.target.files && event.target.files.length) {
@@ -40,6 +40,7 @@ decode = jwt_decode(localStorage.getItem("adminToken"))
   addBlog(){
   this.blogService.createBlog(this.blogForm.value).subscribe((res:any)=>{
     this.uploadLogo(res.blog._id)
+    this.router.navigateByUrl('/listblog')
     Swal.fire({title:"le blog est bien ajouté", icon:"success"})
   },error=>{
     Swal.fire({title:"ouups ! il ya un probléme" , icon:"error"})
@@ -52,23 +53,24 @@ uploadLogo(id){
 }
 logout() {
   Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
+    title: 'etes vous sure?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, logout !'
+    confirmButtonText: 'oui !'
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.removeItem('adminToken');
-  this.router.navigate(['/']);
+      this.router.navigate(['/']);
       Swal.fire(
-        'Deconnected!',
+        'Deconnecté!',
         'success'
-      )
+        )
+    }
+    else{
+      Swal.fire({title:"oups ! il ya un probléme " , icon:"error"})
     }
   })
-
 }
 }

@@ -82,23 +82,23 @@ idrep;
   }
   logout() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'etes vous sure?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, logout !'
+      confirmButtonText: 'oui !'
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem('adminToken');
     this.router.navigate(['/']);
         Swal.fire(
-          'Deconnected!',
+          'Deconnecté!',
           'success'
         )
+      }else{
+        Swal.fire({title:"oups ! il ya un probléme " , icon:"error"})
       }
     })
- 
   }
 }

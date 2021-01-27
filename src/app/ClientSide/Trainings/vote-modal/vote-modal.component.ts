@@ -45,6 +45,8 @@ export class VoteModalComponent implements OnInit {
 
   onClickMe(like) {
     const id = this.trainingService.trainingId;
+    console.log(id);
+    
     this.trainingService
       .vote(id, jwt_decode(localStorage.getItem("token")).data._id, {
         choice: like,

@@ -38,7 +38,6 @@ file: File;
 
    }
    onchange(selectedValue) {
-    console.log(selectedValue);
     this.registrationForm.controls["service"].setValue(selectedValue);
   }
   uploadCv(id){
