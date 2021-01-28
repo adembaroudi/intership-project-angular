@@ -20,7 +20,7 @@ export class ListBlogComponent implements OnInit {
   updateForm: FormGroup;
   file: File;
 data: FormData;
-
+blog ;
   constructor(private blogService: BlogService ,private commentService : CommentService, private router :Router) {}
 
   ngOnInit(): void {
@@ -36,6 +36,7 @@ data: FormData;
     
   }
   modalOpened(i, blog ) { 
+    this.blog = blog
     console.log(i)
     console.log(blog);
     this.updateForm = new FormGroup({
@@ -46,17 +47,18 @@ data: FormData;
     });
     this.index = i;
   }
-  updateBlog( id ) {
-    console.log(id);
-    
-    // this.blogService
-    //   .updateBlog(id, this.updateForm.value)
-    //   .subscribe((res: any) => {
-    //     Swal.fire({title:"le blog est bien modifié" , icon:"success"})
-    //       this.uploadLogo(res._id);
-    //     },error=>{
-    //         Swal.fire({title:`${error}`, icon:"error"})
-    //       });
+  updateBlog( ) {
+    this.blogService
+      .updateBlog(this.blog._id, this.updateForm.value)
+      .subscribe((res: any) => {
+        Swal.fire({title:`${this.blog.Title} est bien modfié` , icon:"success"})
+          this.uploadLogo(res._id);
+          this.blogService.getBlogsList().subscribe((response: any) => {
+            this.blogs = response;
+          });
+        },error=>{
+            Swal.fire({title:`${error}`, icon:"error"})
+          });
   }
   deleteBlog(i, id) {
     Swal.fire({

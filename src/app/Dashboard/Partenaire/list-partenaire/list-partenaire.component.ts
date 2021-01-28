@@ -20,6 +20,7 @@ export class ListPartenaireComponent implements OnInit {
   partenaires = [];
   file: File;
   data: FormData;
+  partenaireID;
   index;
   constructor(
     private partenaireService: PartenairesService,
@@ -50,15 +51,16 @@ export class ListPartenaireComponent implements OnInit {
     );
   }
   modalOpened(i, partenaire) {
+    this.partenaireID = partenaire
     this.updateForm = new FormGroup({
       nomPartenaire: new FormControl(partenaire.nomPartenaire),
       Logo: new FormControl(this.partenaires[i].Logo),
     });
     this.index = i;
   }
-  updatePartenaire(id) {
+  updatePartenaire() {
     this.partenaireService
-      .updatePartenaire(id, this.updateForm.value)
+      .updatePartenaire(this.partenaireID, this.updateForm.value)
       .subscribe(
         (res: any) => {
           this.uploadLogo(res.part._id);

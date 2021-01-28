@@ -164,7 +164,7 @@
                 <tr>
                   <th class="text-center" scope="col">Nom & Prénom</th>
                   <th class="text-center" scope="col">Date de naissance</th>
-                  <th class="text-center" scope="col">Numéro de téléphone</th>
+                  <th class="text-center" scope="col">Téléphone</th>
                   <th class="text-center" scope="col">Email</th>
                   <th class="text-center" scope="col">Role</th>
                   <th class="text-center" scope="col">Image</th>
@@ -196,15 +196,101 @@
                     <div class="media align-items-center">
 
                       <a  class=" text-center avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" style="height: 70px;width: 80px;"
+                        <img alt="Image placeholder" style="height: 50px;width: 50px;"
                           src="{{pictureBaseUrl + member._id}}">
                       </a>
 
                     </div>
                   </td>
                   <td class="text-center">
+                    <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal"
+                    (click)="modalOpened(i, member)" style="border-radius: 150px; width: 40px; height: 40px;;"><i
+                      class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header ">
+                          <strong>Modifier Membre</strong>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div>
+                <div >  
+                    <form [formGroup]="updateForm" class="card-body ml-3">
+                      <div class="row">
+                        <div class="form-group col-sm-6">
+                          <mat-form-field>
+                            <input matInput type="text" formControlName="Firstname" />
+                           
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <mat-form-field>
+                            <input matInput type="text" formControlName="Lastname" />
+                    
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-6">
+                          <mat-form-field>
+                            <input matInput type="date" formControlName="Datedenaissance" />
+                        
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <mat-form-field>
+                            <input matInput type="number" formControlName="numTel"  />
+                                    
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-6">
+                          <mat-form-field>
+                            <input matInput type="email" formControlName="email" />
+                                    
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <mat-form-field>
+                            <input matInput type="password" formControlName="password"  />
+                                      
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                     
+                        <div classe="form-group">
+                          <input type="file" class="upload" accept="image/*" fromControlName="img"
+                            name="file-input" (change)=" onFileChange($event)">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-6">
+                          <select class="form-control select" formControleName="role" (click)="onchange($event.target.value)">
+                            <option *ngFor="let r of roole ">{{r}}</option>
+                          </select>
+                                 
+                        </div>
+
+                      </div>
+                    </form>         
+                </div>
+                   </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="updateMember()">Save
+                            changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                     <button type="button" class="btn btn-danger "
-                      style=" border-radius: 150px; width: 50px; height: 50px;" (click)="deleteMember(member._id,i) "><i
+                      style=" border-radius: 150px; width: 40px; height: 40px;" (click)="deleteMember(member._id,i) "><i
+                      
                         class="fa fa-trash" style=" justify-content: center;" aria-hidden="true"></i></button>
                   </td>
                 </tr>

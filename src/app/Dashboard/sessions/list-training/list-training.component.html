@@ -74,7 +74,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  type="submit">
+            <a class="nav-link" type="submit">
               <i class="ni ni-button-power text-red"></i>
               <a class="nav-link-text" (click)="logout()">Logout</a>
             </a>
@@ -101,7 +101,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-search"></i></span>
               </div>
-              <input class="form-control" placeholder="Rechercher" type="text"name="Search" [(ngModel)]="Search">
+              <input class="form-control" placeholder="Rechercher" type="text" name="Search" [(ngModel)]="Search">
             </div>
           </div>
 
@@ -196,13 +196,13 @@
                       <a href="#" class="avatar rounded-circle mr-3">
                         <img alt="Image placeholder" style="height: 50px;width: 50px;"
                           src="{{imageBaseUrl + training.user._id}}">
-                        </a>
-                        {{training.user.Firstname}} {{training.user.Lastname}}
+                      </a>
+                      {{training.user.Firstname}} {{training.user.Lastname}}
 
                     </div>
                   </td>
                   <td class="text-center">{{training.nbHeuresD}}</td>
-           
+
                   <td class="text-center">{{training.nblike}}</td>
                   <td class="text-center">{{training.level}}</td>
                   <td class="text-center">{{training.TrainingCategory}}</td>
@@ -286,7 +286,8 @@
                             <div class="form-group col-sm-6">
                               <select class="form-control select" formControlName="member"
                                 (click)="onchangeMember($event.target.value)">
-                                <option *ngFor="let m of members" value="m._id">{{m.Firstname}} {{m.Lastname}}</option>
+                                <option *ngFor="let m of members" value="{{m._id}}">{{m.Firstname}} {{m.Lastname}}
+                                </option>
                               </select>
                             </div>
                             <div class="form-group col-sm-6">
@@ -298,8 +299,7 @@
                           </form>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary"
-                              (click)="updateTraining(training._id, idMember  )">Save
+                            <button type="button" class="btn btn-primary" (click)="updateTraining()">Save
                               changes</button>
                           </div>
                         </div>

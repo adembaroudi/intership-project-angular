@@ -21,6 +21,10 @@ export class MemberService {
     const url = `${this.BaseUrl}/user/Users/${id}`;
     return this.http.get(url);;
   }
+  updateMember(id , data){
+    const url = `${this.BaseUrl}/user/updateuser/${id}`;
+    return this.http.put(url , data)
+  }
   deleteMember(id){
     const url = `${this.BaseUrl}/user/Users/${id}`;
     return this.http.delete(url);
